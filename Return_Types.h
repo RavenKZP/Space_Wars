@@ -1,0 +1,31 @@
+#ifndef RETURN_TYPES_H
+#define RETURN_TYPES_H
+
+#include <vector>
+#include <string>
+
+#define E_OK 0
+#define E_NOK 1
+
+typedef int Return_Type;
+
+typedef struct Input
+{
+	int MAP_SIZE_IN;
+	std::vector<std::vector<char> > MAP_IN;
+	int No_Ships_IN;
+	std::vector<int> ID_IN;
+	std::vector<int> Type_IN;
+	std::vector<int> Rotation_IN;
+	std::vector<int> HP_IN;
+	std::vector<int> Storage_IN;
+
+} Input_type;
+
+typedef struct Output
+{
+	std::vector<std::string> Commands_OUT;
+
+} Output_type;
+
+#endif
