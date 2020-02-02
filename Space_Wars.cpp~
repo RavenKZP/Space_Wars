@@ -82,8 +82,11 @@ int main()
 	//placing Head Quaters for both players
 	std::vector<Ship_Class> Ships_Player_1;
 	std::vector<Ship_Class> Ships_Player_2;
+<<<<<<< HEAD
 	std::vector<Mine_Class> Mines;
 	std::vector<Asteroid_Class> Asteroids;
+=======
+>>>>>>> eca7698c07d7432a88d13e2f8635b208a2c2c874
 
 	Ship_Class HQ_Player_1 = Ship_Class(0, 1, 0, 0, 3);
 	Ship_Class HQ_Player_2 = Ship_Class(0, 2, MAP_SIZE-1, MAP_SIZE-1, 4);
@@ -91,6 +94,7 @@ int main()
 	Ships_Player_1.push_back(HQ_Player_1);
 	Ships_Player_2.push_back(HQ_Player_2);
 
+<<<<<<< HEAD
 
 	for (int i = 0; i < A_coords.size(); i++)
 	{
@@ -148,7 +152,11 @@ int main()
 	}
 
 	
+	int game_end = 5; //MAP_SIZE*MAP_SIZE*5;
+=======
+	
 	int game_end = MAP_SIZE*MAP_SIZE*5;
+>>>>>>> eca7698c07d7432a88d13e2f8635b208a2c2c874
 	while(game_end > 0)
 	{
 		//reset spped for ships
@@ -162,6 +170,7 @@ int main()
 		}
 
 		//placing Asteroids on map
+<<<<<<< HEAD
 		for (int i = 0; i <	Asteroids.size(); i++)
 		{
 			MAP[Asteroids[i].y][Asteroids[i].x] = 'A';
@@ -171,6 +180,56 @@ int main()
 		for (int i = 0; i <	Mines.size(); i++)
 		{
 			MAP[Mines[i].y][Mines[i].x] = 'M';
+=======
+
+		for (int i = 0; i < A_coords.size(); i++)
+		{
+			int max_size = MAP_SIZE ;
+			int x = A_coords[i];
+			int y = 0;
+			while(1)
+			{
+				if (x >= max_size)
+				{
+					y++;
+					x -= max_size;
+					max_size--;
+				}
+				else
+				{
+					MAP[y][x] = 'A';
+					//std::cout << "y " << y << " x " << x <<std::endl;
+					MAP[MAP_SIZE - y - 1][MAP_SIZE - x - 1] = 'A';
+					break;
+				}
+			}
+		}
+	
+		//placing Mines on map
+	
+		for (int i = 0; i < M_coords.size(); i++)
+		{
+			int max_size = MAP_SIZE;
+			int x = M_coords[i];
+			int y = 0;
+			while(1)
+			{
+				if (x >= max_size)
+				{
+					y++;
+					x -= max_size;
+					//std::cout << x << std::endl; 
+					max_size--;
+				}
+				else
+				{
+					MAP[y][x] = 'M';
+					//std::cout << "y " << y << "x " << x <<std::endl;
+					MAP[MAP_SIZE - y - 1][MAP_SIZE - x - 1] = 'M';
+					break;
+				}
+			}
+>>>>>>> eca7698c07d7432a88d13e2f8635b208a2c2c874
 		}
 	
 		//Placing Ships on map
@@ -354,7 +413,11 @@ int main()
 					{
 						int Rotate_ID = std::stoi(split[1]);
 						char Rotate_Direction = split[2][0];
+<<<<<<< HEAD
 						if (Rotate_ID < Ships_Player_2.size() )
+=======
+						if (Rotate_ID > Ships_Player_2.size() )
+>>>>>>> eca7698c07d7432a88d13e2f8635b208a2c2c874
 						{
 							if ( Ships_Player_2[Rotate_ID].Speed > 0 )
 							{
@@ -372,6 +435,10 @@ int main()
 						{
 							std::cout << "INAVLID SHIP ID" << std::endl;
 						}
+<<<<<<< HEAD
+=======
+						
+>>>>>>> eca7698c07d7432a88d13e2f8635b208a2c2c874
 					}
 					else
 					{
@@ -383,6 +450,7 @@ int main()
 					if ( count_digits(split[1]) )
 					{
 						int Shoot_ID = std::stoi(split[1]);
+<<<<<<< HEAD
 						if (Shoot_ID < Ships_Player_2.size() )
 						{
 							if ( Ships_Player_2[Shoot_ID].Speed > 0)
@@ -433,6 +501,9 @@ int main()
 					else
 					{
 						std::cout << "WRONG SHOOT COMMAND" << std::endl;
+=======
+						std::cout << "ID " << Shoot_ID << std::endl;
+>>>>>>> eca7698c07d7432a88d13e2f8635b208a2c2c874
 					}
 				}
 				if (split[0] == "WORKSHOP")
