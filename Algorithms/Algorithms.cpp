@@ -37,8 +37,8 @@ Return_Type Test_Alg_1 (Input_type Input, Output_type* Output)
 	Output_local.Commands_OUT.push_back("BUILD 1 0 2 1");
 	Output_local.Commands_OUT.push_back("BUILD 1 0 99999999999999999999999 5");
 	Output_local.Commands_OUT.push_back("BUILD ");
-	Output_local.Commands_OUT.push_back("BUILD 19 18 2 1");
-	Output_local.Commands_OUT.push_back("BUILD 18 19 1 1");
+	Output_local.Commands_OUT.push_back("BUILD 9 8 2 1");
+	Output_local.Commands_OUT.push_back("BUILD 8 9 1 1");
 	Output_local.Commands_OUT.push_back("BUILD 10 10 1 1");
 	Output_local.Commands_OUT.push_back("MOVE 1 0 2");
 	Output_local.Commands_OUT.push_back("MOVE sadh 0 2");

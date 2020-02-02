@@ -4,21 +4,44 @@
 #include "Return_Types.h"
 
 extern int MAP_SIZE;
-int Global_ID_Counter = 0;
+int Global_ID_Ship = 0;
+int Global_ID_Mine = 0;
+int Global_ID_Asteroid = 0;
 
 class Asteroid_Class
 {
 public:
+	int ID;
 	int x, y; // coordinates in space
 	int HP; // Health points
 	int Workshop; // 0 - none, 1 = Player 1, 2 = Player 2;
+
+	Asteroid_Class (int p_x, int p_y)
+	{
+		ID = Global_ID_Asteroid;
+		Global_ID_Asteroid++;
+		x = p_x;
+		y = p_y;
+		HP = 50;
+		Workshop = 0;
+	}
 };
 
 class Mine_Class
 {
 public:
+	int ID;
 	int x, y; // coordinates in space
 	int HP; // Health points
+
+	Mine_Class (int p_x, int p_y)
+	{
+		ID = Global_ID_Mine;
+		Global_ID_Mine++;
+		x = p_x;
+		y = p_y;
+		HP = 50;
+	}
 };
 
 class Ship_Class
@@ -38,8 +61,8 @@ public:
 
 	Ship_Class (int p_Type, int p_Player, int p_x, int p_y, int p_Rotation)
 	{
-		ID = Global_ID_Counter;
-		Global_ID_Counter++;
+		ID = Global_ID_Ship;
+		Global_ID_Ship++;
 		Type = p_Type;
 		Player = p_Player;
 		x = p_x;

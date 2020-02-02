@@ -8,6 +8,7 @@ Return_Type Test_Alg_1 (Input_type Input, Output_type* Output)
 {
 
 	//Test
+	/*
 	std::cout << "TEST_Alg_1" << std::endl;
 	std::cout << Input.MAP_SIZE_IN << std::endl;
 	for (int y = 0; y < Input.MAP_SIZE_IN; y++)
@@ -27,6 +28,7 @@ Return_Type Test_Alg_1 (Input_type Input, Output_type* Output)
 		std::cout << Input.HP_IN[i] << std::endl;
 		std::cout << Input.Storage_IN[i] << std::endl;
 	}
+	*/
 
 
 	Output_type Output_local;
