@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <iostream>
 
-#include "../Return_Types.h"
 #include "Algorithms.h"
 
 Return_Type Test_Alg_1 (Input_type Input, Output_type* Output)
@@ -33,34 +32,17 @@ Return_Type Test_Alg_1 (Input_type Input, Output_type* Output)
 
 	Output_type Output_local;
 
-	Output_local.Commands_OUT.push_back("BUILD 0 x 1 3");
-	Output_local.Commands_OUT.push_back("BUILD 1 0 2 1");
-	Output_local.Commands_OUT.push_back("BUILD 1 0 99999999999999999999999 5");
-	Output_local.Commands_OUT.push_back("BUILD ");
-	Output_local.Commands_OUT.push_back("BUILD 9 8 2 1");
-	Output_local.Commands_OUT.push_back("BUILD 8 9 1 1");
-	Output_local.Commands_OUT.push_back("BUILD 10 10 1 1");
-	Output_local.Commands_OUT.push_back("MOVE 1 0 2");
-	Output_local.Commands_OUT.push_back("MOVE sadh 0 2");
-	Output_local.Commands_OUT.push_back("MOVE 10");
-	Output_local.Commands_OUT.push_back("ROTATE 1 L");
-	Output_local.Commands_OUT.push_back("ROTATE sadh 0 2");
-	Output_local.Commands_OUT.push_back("ROTATE 5 R");
-	Output_local.Commands_OUT.push_back("");
 	Output_local.Commands_OUT.push_back("SHOOT 1");
-	Output_local.Commands_OUT.push_back("ShOoT sadh 0 2");
-	Output_local.Commands_OUT.push_back("asdfsdfads 10");
-	Output_local.Commands_OUT.push_back(" ");
+	Output_local.Commands_OUT.push_back("SHOOT 2");
+	Output_local.Commands_OUT.push_back("SHOOT 3");
+	Output_local.Commands_OUT.push_back("BUILD 9 8 2 2");
+	Output_local.Commands_OUT.push_back("BUILD 8 9 1 2");
+	Output_local.Commands_OUT.push_back("MOVE 3");
+//	Output_local.Commands_OUT.push_back("MOVE 2");
+	Output_local.Commands_OUT.push_back("DIG 2");
+	Output_local.Commands_OUT.push_back("ROTATE 2 L");
+	Output_local.Commands_OUT.push_back("SHOOT 1");
 	Output_local.Commands_OUT.push_back("END");
-	Output_local.Commands_OUT.push_back("BUILD 1 0 2");
-	Output_local.Commands_OUT.push_back("MOVE 10");
-	Output_local.Commands_OUT.push_back("ROTATE 1 L");
-	Output_local.Commands_OUT.push_back("ROTATE sadh 0 2");
-	Output_local.Commands_OUT.push_back("ROTATE 5 R");
-	Output_local.Commands_OUT.push_back("");
-	Output_local.Commands_OUT.push_back("SHOOT 1");
-	Output_local.Commands_OUT.push_back("ShOoT sadh 0 2");
-	Output_local.Commands_OUT.push_back("asdfsdfads 10");
 
 	*Output = Output_local;
 	return E_OK;
