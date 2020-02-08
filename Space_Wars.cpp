@@ -10,6 +10,7 @@ int MAP_SIZE = 10;
 
 #include "Algorithms/Algorithms.h"
 #include "Space_Functions.h"
+#include "Space_Graphic.h"
 
 int main()
 {
@@ -144,7 +145,7 @@ int main()
 		}
 	}
 
-	
+	Create_Display(MAP_SIZE);
 	int game_end = MAP_SIZE*MAP_SIZE*5;
 	while(game_end > 0)
 	{
@@ -235,6 +236,7 @@ int main()
 		std::cout << std::endl;
 		}
 
+		Draw_Bitmap(MAP, Ships);
 		// MAP is ready, now let's call algorithms
 	
 		//Preparing input structure for Player 1;
@@ -353,5 +355,6 @@ int main()
 		std::cout << "Seed: " << seed << std::endl;
 		std::cout << "Turns Left: " << --game_end << std::endl;
 	}
+	Destroy_Display();
 	return E_OK;
 }

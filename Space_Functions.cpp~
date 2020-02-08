@@ -348,7 +348,7 @@ int COLISION_DETECTOR(int x, int y, std::vector<Mine_Class> Mines, std::vector<A
 }
 
 
-void Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>* Mines, std::vector<Asteroid_Class>* Asteroids, std::vector<Ship_Class>* Ships, std::vector<std::vector<char> >* MAP, int Player)
+void Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, std::vector<Asteroid_Class>& Asteroids, std::vector<Ship_Class>& Ships, std::vector<std::vector<char> >& MAP, int Player)
 {
 	int MAP_SIZE = MAP[0].size();
 	for (int i = 0; i < Output_Player.Commands_OUT.size(); i++)
@@ -369,12 +369,12 @@ void Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>* Mines, 
 					int Build_Rotation = std::stoi(split[4]);
 					if ( (Build_x >= 0 && Build_x < MAP_SIZE) && (Build_y >= 0 && Build_y < MAP_SIZE) && (Build_Type == 1 || Build_Type == 2) && (Build_Rotation > 0 && Build_Rotation < 5) ) 
 					{
-						if ( (Build_Type == 1 && *Ships[Player -1].Storage >= 10) || (Build_Type == 2 && *Ships[Player -1].Storage >= 20))
+						if ( (Build_Type == 1 && Ships[Player -1].Storage >= 10) || (Build_Type == 2 && Ships[Player -1].Storage >= 20))
 						{
 							if (MAP[Build_y][Build_x] == '.' && Build_Near_By(Build_x,Build_y, Player, MAP) )
 							{
 								Ship_Class Ship = Ship_Class(Build_Type, Player, Build_x, Build_y, Build_Rotation);
-								*Ships.push_back(Ship);
+								Ships.push_back(Ship);
 								char res;
 								if (Player == 1)
 								{
@@ -385,11 +385,11 @@ void Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>* Mines, 
 											break;
 										case 1:
 											res = 'F';
-											*Ships[Player -1].Storage -= 10;
+											Ships[Player -1].Storage -= 10;
 											break;
 										case 2:
 											res = 'T';
-											*Ships[Player -1].Storage -= 20;
+											Ships[Player -1].Storage -= 20;
 											break;
 									}
 									MAP[Build_y][Build_x] = res;
@@ -403,11 +403,11 @@ void Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>* Mines, 
 											break;
 										case 1:
 											res = 'f';
-											*Ships[Player -1].Storage -= 10;
+											Ships[Player -1].Storage -= 10;
 											break;
 										case 2:
 											res = 't';
-											*Ships[Player -1].Storage -= 20;
+											Ships[Player -1].Storage -= 20;
 											break;
 									}
 									MAP[Build_y][Build_x] = res;
@@ -439,46 +439,46 @@ void Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>* Mines, 
 				{
 					int Move_ID = std::stoi(split[1]);
 					int Move_iterator = -1;
-					for (int i = 0; i < *Ships.size(); i++)
+					for (int i = 0; i < Ships.size(); i++)
 					{
-						if (Move_ID == *Ships[i].ID &&  *Ships[i].Player == Player)
+						if (Move_ID == Ships[i].ID &&  Ships[i].Player == Player)
 						{
 							Move_iterator = i;
 						}
 					}
 					if (( Move_ID != 0 && Move_ID != 1) && Move_iterator != -1)
 					{
-						if ( *Ships[Move_iterator].Speed > 0)
+						if ( Ships[Move_iterator].Speed > 0)
 						{
-							if (E_OK == *Ships[Move_iterator].MOVE() )
+							if (E_OK == Ships[Move_iterator].MOVE() )
 							{
-								*Ships[Move_iterator].Speed--;
-								int p_x = *Ships[Move_iterator].x;
-								int p_y = *Ships[Move_iterator].y;
+								Ships[Move_iterator].Speed--;
+								int p_x = Ships[Move_iterator].x;
+								int p_y = Ships[Move_iterator].y;
 								if (MAP[p_y][p_x] != '.')
 								{
 									char Type;
-									int Colision_ID = COLISION_DETECTOR(p_x, p_y, *Mines, *Asteroids, *Ships, Move_ID, &Type);
+									int Colision_ID = COLISION_DETECTOR(p_x, p_y, Mines, Asteroids, Ships, Move_ID, &Type);
 									if (Type == 'M')
 									{
-										int HP_Mine = *Mines[Colision_ID].HP - *Ships[Move_iterator].HP;
-										int HP_Ship = *Ships[Move_iterator].HP - *Mines[Colision_ID].HP;
-										*Mines[Colision_ID].HP = HP_Mine;
-										*Ships[Move_iterator].HP = HP_Ship;
+										int HP_Mine = Mines[Colision_ID].HP - Ships[Move_iterator].HP;
+										int HP_Ship = Ships[Move_iterator].HP - Mines[Colision_ID].HP;
+										Mines[Colision_ID].HP = HP_Mine;
+										Ships[Move_iterator].HP = HP_Ship;
 									}
 									if (Type == 'A')
 									{
-										int HP_Asteroid = *Asteroids[Colision_ID].HP - *Ships[Move_iterator].HP;
-										int HP_Ship = *Ships[Move_iterator].HP - *Asteroids[Colision_ID].HP;
-										*Asteroids[Colision_ID].HP = HP_Asteroid;
-										*Ships[Move_iterator].HP = HP_Ship;
+										int HP_Asteroid = Asteroids[Colision_ID].HP - Ships[Move_iterator].HP;
+										int HP_Ship = Ships[Move_iterator].HP - Asteroids[Colision_ID].HP;
+										Asteroids[Colision_ID].HP = HP_Asteroid;
+										Ships[Move_iterator].HP = HP_Ship;
 									}
 									if (Type == 'S')
 									{
-										int HP_Ship_Col = *Ships[Colision_ID].HP - *Ships[Move_iterator].HP;
-										int HP_Ship_Mov = *Ships[Move_iterator].HP - *Ships[Colision_ID].HP;
-										*Ships[Colision_ID].HP = HP_Ship_Col;
-										*Ships[Move_iterator].HP = HP_Ship_Mov;
+										int HP_Ship_Col = Ships[Colision_ID].HP - Ships[Move_iterator].HP;
+										int HP_Ship_Mov = Ships[Move_iterator].HP - Ships[Colision_ID].HP;
+										Ships[Colision_ID].HP = HP_Ship_Col;
+										Ships[Move_iterator].HP = HP_Ship_Mov;
 									}
 									
 								}
@@ -511,20 +511,20 @@ void Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>* Mines, 
 					int Rotate_ID = std::stoi(split[1]);
 					char Rotate_Direction = split[2][0];
 					int Rotate_iterator = -1;
-					for (int i = 0; i < *Ships.size(); i++)
+					for (int i = 0; i < Ships.size(); i++)
 					{
-						if (Rotate_ID == *Ships[i].ID &&  *Ships[i].Player == Player)
+						if (Rotate_ID == Ships[i].ID &&  Ships[i].Player == Player)
 						{
 							Rotate_iterator = i;
 						}
 					}
 					if (Rotate_iterator != -1 )
 					{
-						if ( *Ships[Rotate_iterator].Speed > 0 )
+						if ( Ships[Rotate_iterator].Speed > 0 )
 						{
-								if (E_OK == *Ships[Rotate_iterator].ROTATE(Rotate_Direction) )
+								if (E_OK == Ships[Rotate_iterator].ROTATE(Rotate_Direction) )
 							{
-								*Ships[Rotate_iterator].Speed--;
+								Ships[Rotate_iterator].Speed--;
 							}
 						}
 						else
@@ -548,99 +548,99 @@ void Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>* Mines, 
 				{
 					int Shoot_ID = std::stoi(split[1]);
 					int Shoot_iterator = -1;
-					for (int i = 0; i < *Ships.size(); i++)
+					for (int i = 0; i < Ships.size(); i++)
 					{
-						if (Shoot_ID == *Ships[i].ID &&  *Ships[i].Player == Player)
+						if (Shoot_ID == Ships[i].ID &&  Ships[i].Player == Player)
 						{
 							Shoot_iterator = i;
 						}
 					}
 					if (Shoot_iterator != -1)
 					{
-						if ( *Ships[Shoot_iterator].Speed > 0)
+						if ( Ships[Shoot_iterator].Speed > 0)
 						{
-							*Ships[Shoot_iterator].Speed--;
-							for (int i = 0; i < *Ships[Shoot_iterator].Range; i++)
+							Ships[Shoot_iterator].Speed--;
+							for (int i = 0; i < Ships[Shoot_iterator].Range; i++)
 							{
-								int p_x = *Ships[Shoot_iterator].x;
-								int p_y = *Ships[Shoot_iterator].y;
-								if (*Ships[Shoot_iterator].Rotation == 1 && p_x < MAP_SIZE -i -1)
+								int p_x = Ships[Shoot_iterator].x;
+								int p_y = Ships[Shoot_iterator].y;
+								if (Ships[Shoot_iterator].Rotation == 1 && p_x < MAP_SIZE -i -1)
 								{
 									if (MAP[p_y][p_x +i +1] != '.')
 									{
 										char Type;
-										int Colision_ID = COLISION_DETECTOR(p_x +i +1, p_y, *Mines, *Asteroids, *Ships, Shoot_ID, &Type);
+										int Colision_ID = COLISION_DETECTOR(p_x +i +1, p_y, Mines, Asteroids, Ships, Shoot_ID, &Type);
 										if (Type == 'M')
 										{
-											*Mines[Colision_ID].HP -= *Ships[Shoot_iterator].Damage;
+											Mines[Colision_ID].HP -= Ships[Shoot_iterator].Damage;
 										}	
 										if (Type == 'A')
 										{
-											*Asteroids[Colision_ID].HP -= *Ships[Shoot_iterator].Damage;
+											Asteroids[Colision_ID].HP -= Ships[Shoot_iterator].Damage;
 										}
 										if (Type == 'S')
 										{
-											*Ships[Colision_ID].HP -= *Ships[Shoot_iterator].Damage;
+											Ships[Colision_ID].HP -= Ships[Shoot_iterator].Damage;
 										}
 									}
 								}
-								if (*Ships[Shoot_iterator].Rotation == 2 && p_x > i +1) 
+								if (Ships[Shoot_iterator].Rotation == 2 && p_x > i +1) 
 								{
 									if (MAP[p_y][p_x -i -1] != '.')
 									{
 										char Type;
-										int Colision_ID = COLISION_DETECTOR(p_x -i -1, p_y, *Mines, *Asteroids, *Ships, Shoot_ID, &Type);
+										int Colision_ID = COLISION_DETECTOR(p_x -i -1, p_y, Mines, Asteroids, Ships, Shoot_ID, &Type);
 										if (Type == 'M')
 										{
-											*Mines[Colision_ID].HP -= *Ships[Shoot_iterator].Damage;
+											Mines[Colision_ID].HP -= Ships[Shoot_iterator].Damage;
 										}	
 										if (Type == 'A')
 										{
-											*Asteroids[Colision_ID].HP -= *Ships[Shoot_iterator].Damage;
+											Asteroids[Colision_ID].HP -= Ships[Shoot_iterator].Damage;
 										}
 										if (Type == 'S')
 										{
-											*Ships[Colision_ID].HP -= *Ships[Shoot_iterator].Damage;
+											Ships[Colision_ID].HP -= Ships[Shoot_iterator].Damage;
 										}
 									}
 								}
-								if (*Ships[Shoot_iterator].Rotation == 3 && p_y < MAP_SIZE -i -1)
+								if (Ships[Shoot_iterator].Rotation == 3 && p_y < MAP_SIZE -i -1)
 								{
 									if (MAP[p_y +i +1][p_x] != '.')
 									{
 										char Type;
-										int Colision_ID = COLISION_DETECTOR(p_x, p_y +i +1, *Mines, *Asteroids, *Ships, Shoot_ID, &Type);
+										int Colision_ID = COLISION_DETECTOR(p_x, p_y +i +1, Mines, Asteroids, Ships, Shoot_ID, &Type);
 										if (Type == 'M')
 										{
-											*Mines[Colision_ID].HP -= *Ships[Shoot_iterator].Damage;
+											Mines[Colision_ID].HP -= Ships[Shoot_iterator].Damage;
 										}	
 										if (Type == 'A')
 										{
-											*Asteroids[Colision_ID].HP -= *Ships[Shoot_iterator].Damage;
+											Asteroids[Colision_ID].HP -= Ships[Shoot_iterator].Damage;
 										}
 										if (Type == 'S')
 										{
-											*Ships[Colision_ID].HP -= *Ships[Shoot_iterator].Damage;
+											Ships[Colision_ID].HP -= Ships[Shoot_iterator].Damage;
 										}
 									}
 								}
-								if (*Ships[Shoot_iterator].Rotation == 4 && p_y > i +1)
+								if (Ships[Shoot_iterator].Rotation == 4 && p_y > i +1)
 								{
 									if (MAP[p_y -i -1][p_x] != '.')
 									{
 										char Type;
-										int Colision_ID = COLISION_DETECTOR(p_x, p_y -i -1, *Mines, *Asteroids, *Ships, Shoot_ID, &Type);
+										int Colision_ID = COLISION_DETECTOR(p_x, p_y -i -1, Mines, Asteroids, Ships, Shoot_ID, &Type);
 										if (Type == 'M')
 										{
-											*Mines[Colision_ID].HP -= *Ships[Shoot_iterator].Damage;
+											Mines[Colision_ID].HP -= Ships[Shoot_iterator].Damage;
 										}	
 										if (Type == 'A')
 										{
-											*Asteroids[Colision_ID].HP -= *Ships[Shoot_iterator].Damage;
+											Asteroids[Colision_ID].HP -= Ships[Shoot_iterator].Damage;
 										}
 										if (Type == 'S')
 										{
-											*Ships[Colision_ID].HP -= *Ships[Shoot_iterator].Damage;
+											Ships[Colision_ID].HP -= Ships[Shoot_iterator].Damage;
 										}
 										std::cout << "Shoot " << Type << " ID " << Colision_ID << std::endl;
 									}
@@ -670,20 +670,20 @@ void Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>* Mines, 
 					int Workshop_y = std::stoi(split[2]);
 					if ( (Workshop_x >= 0 && Workshop_x < MAP_SIZE) && (Workshop_y >= 0 && Workshop_y < MAP_SIZE) ) 
 					{
-						if ( *Ships[Player -1].Storage >= 25 )
+						if ( Ships[Player -1].Storage >= 25 )
 						{
 							if (MAP[Workshop_y][Workshop_x] == 'A' && Workshop_Near_By(Workshop_x, Workshop_y, Player, MAP) )
 							{
 								int Workshop_iterator;
-								for (int i = 0; i < *Asteroids.size(); i++)
+								for (int i = 0; i < Asteroids.size(); i++)
 								{
-									if (Workshop_x == *Asteroids[i].x && Workshop_y == *Asteroids[i].y )
+									if (Workshop_x == Asteroids[i].x && Workshop_y == Asteroids[i].y )
 									{
 										Workshop_iterator = i;
 									}
 								}
-								*Asteroids[Workshop_iterator].Workshop = Player;
-								*Ships[Player -1].Storage -= 25;									
+								Asteroids[Workshop_iterator].Workshop = Player;
+								Ships[Player -1].Storage -= 25;									
 							}
 							else
 							{
@@ -711,61 +711,61 @@ void Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>* Mines, 
 				{
 					int Dig_ID = std::stoi(split[1]);
 					int Dig_iterator = -1;
-					for (int i = 0; i < *Ships.size(); i++)
+					for (int i = 0; i < Ships.size(); i++)
 					{
-						if (Dig_ID == *Ships[i].ID &&  *Ships[i].Player == Player)
+						if (Dig_ID == Ships[i].ID &&  Ships[i].Player == Player)
 						{
 							Dig_iterator = i;
 						}
 					}
 					if (Dig_iterator != -1 && (Dig_ID != 0 && Dig_ID != 1) )
 					{
-						if ( *Ships[Dig_iterator].Speed > 0)
+						if ( Ships[Dig_iterator].Speed > 0)
 						{
-							*Ships[Dig_iterator].Speed--;
-							int p_x = *Ships[Dig_iterator].x;
-							int p_y = *Ships[Dig_iterator].y;
-							if (*Ships[Dig_iterator].Rotation == 1 && p_x < MAP_SIZE -1)
+							Ships[Dig_iterator].Speed--;
+							int p_x = Ships[Dig_iterator].x;
+							int p_y = Ships[Dig_iterator].y;
+							if (Ships[Dig_iterator].Rotation == 1 && p_x < MAP_SIZE -1)
 							{
 								if (MAP[p_y][p_x +1] == 'M')
 								{
-									*Ships[Dig_iterator].Storage += 5;
-									if (*Ships[Dig_iterator].Storage > *Ships[Dig_iterator].MAX_Storage)
+									Ships[Dig_iterator].Storage += 5;
+									if (Ships[Dig_iterator].Storage > Ships[Dig_iterator].MAX_Storage)
 									{
-										*Ships[Dig_iterator].Storage = *Ships[Dig_iterator].MAX_Storage;
+										Ships[Dig_iterator].Storage = Ships[Dig_iterator].MAX_Storage;
 									}
 								}
 							}
-							if (*Ships[Dig_iterator].Rotation == 2 && p_x > 1) 
+							if (Ships[Dig_iterator].Rotation == 2 && p_x > 1) 
 							{
 								if (MAP[p_y][p_x -1] == 'M')
 								{
-									*Ships[Dig_iterator].Storage += 5;
-									if (*Ships[Dig_iterator].Storage > *Ships[Dig_iterator].MAX_Storage)
+									Ships[Dig_iterator].Storage += 5;
+									if (Ships[Dig_iterator].Storage > Ships[Dig_iterator].MAX_Storage)
 									{
-										*Ships[Dig_iterator].Storage = *Ships[Dig_iterator].MAX_Storage;
+										Ships[Dig_iterator].Storage = Ships[Dig_iterator].MAX_Storage;
 									}
 								}
 							}
-							if (*Ships[Dig_iterator].Rotation == 3 && p_y < MAP_SIZE -1)
+							if (Ships[Dig_iterator].Rotation == 3 && p_y < MAP_SIZE -1)
 							{
 								if (MAP[p_y +1][p_x] == 'M')
 								{
-									*Ships[Dig_iterator].Storage += 5;
-									if (*Ships[Dig_iterator].Storage > *Ships[Dig_iterator].MAX_Storage)
+									Ships[Dig_iterator].Storage += 5;
+									if (Ships[Dig_iterator].Storage > Ships[Dig_iterator].MAX_Storage)
 									{
-										*Ships[Dig_iterator].Storage = *Ships[Dig_iterator].MAX_Storage;
+										Ships[Dig_iterator].Storage = Ships[Dig_iterator].MAX_Storage;
 									}
 								}
 							}
-							if (*Ships[Dig_iterator].Rotation == 4 && p_y > i +1)
+							if (Ships[Dig_iterator].Rotation == 4 && p_y > i +1)
 							{
 								if (MAP[p_y -1][p_x] == 'M')
 								{
-									*Ships[Dig_iterator].Storage += 5;
-									if (*Ships[Dig_iterator].Storage > *Ships[Dig_iterator].MAX_Storage)
+									Ships[Dig_iterator].Storage += 5;
+									if (Ships[Dig_iterator].Storage > Ships[Dig_iterator].MAX_Storage)
 									{
-										*Ships[Dig_iterator].Storage = *Ships[Dig_iterator].MAX_Storage;
+										Ships[Dig_iterator].Storage = Ships[Dig_iterator].MAX_Storage;
 									}
 								}
 							}
