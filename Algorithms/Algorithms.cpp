@@ -3,19 +3,36 @@
 
 #include "Algorithms.h"
 
-#define MANUAL_TESTING
+//#define MANUAL_TESTING
 
 Return_Type Test_Alg_1 (Input_type Input, Output_type* Output)
 {
 		
 	Output_type Output_local;
-
+#ifndef MANUAL_TESTING
 	for (int i = 0; i < Input.No_Ships_IN; i++)
 	{
-		std::string OUT = "MOVE " +  std::to_string(Input.ID_IN[i]);
+		std::string OUT;
+/*
+
+*/
+		OUT = "WORKSHOP " + std::to_string(Input.X_IN[i]+1) + " " + std::to_string(Input.Y_IN[i]);
 		Output_local.Commands_OUT.push_back(OUT);
-		OUT = "ROTATE " +  std::to_string(Input.ID_IN[i]) + " R";
+		OUT = "WORKSHOP " + std::to_string(Input.X_IN[i]) + " " + std::to_string(Input.Y_IN[i]+1);
 		Output_local.Commands_OUT.push_back(OUT);
+		OUT = "WORKSHOP " + std::to_string(Input.X_IN[i]-1) + " " + std::to_string(Input.Y_IN[i]);
+		Output_local.Commands_OUT.push_back(OUT);
+		OUT = "WORKSHOP " + std::to_string(Input.X_IN[i]) + " " + std::to_string(Input.Y_IN[i]-1);
+		Output_local.Commands_OUT.push_back(OUT);
+		OUT = "WORKSHOP " + std::to_string(Input.X_IN[i]+1) + " " + std::to_string(Input.Y_IN[i]);
+		Output_local.Commands_OUT.push_back(OUT);
+		OUT = "WORKSHOP " + std::to_string(Input.X_IN[i]) + " " + std::to_string(Input.Y_IN[i]+1);
+		Output_local.Commands_OUT.push_back(OUT);
+		OUT = "WORKSHOP " + std::to_string(Input.X_IN[i]-1) + " " + std::to_string(Input.Y_IN[i]);
+		Output_local.Commands_OUT.push_back(OUT);
+		OUT = "WORKSHOP " + std::to_string(Input.X_IN[i]) + " " + std::to_string(Input.Y_IN[i]-1);
+		Output_local.Commands_OUT.push_back(OUT);
+
 		OUT = "BUILD " + std::to_string(Input.X_IN[i]+1) + " " + std::to_string(Input.Y_IN[i]) + " 1" + " 1";
 		Output_local.Commands_OUT.push_back(OUT);
 		OUT = "BUILD " + std::to_string(Input.X_IN[i]) + " " + std::to_string(Input.Y_IN[i]+1) + " 2" + " 1";
@@ -32,11 +49,25 @@ Return_Type Test_Alg_1 (Input_type Input, Output_type* Output)
 		Output_local.Commands_OUT.push_back(OUT);
 		OUT = "BUILD " + std::to_string(Input.X_IN[i]) + " " + std::to_string(Input.Y_IN[i]-1) + " 2" + " 1";
 		Output_local.Commands_OUT.push_back(OUT);
+
+		OUT = "MOVE " +  std::to_string(Input.ID_IN[i]);
+		Output_local.Commands_OUT.push_back(OUT);
+
+		if (rand()%2)
+		{
+			OUT = "ROTATE " +  std::to_string(Input.ID_IN[i]) + " L";
+			Output_local.Commands_OUT.push_back(OUT);
+		}
+		else
+		{
+			OUT = "ROTATE " +  std::to_string(Input.ID_IN[i]) + " R";
+			Output_local.Commands_OUT.push_back(OUT);
+		}
 	}
 
 	Output_local.Commands_OUT.push_back("END");
 
-#ifndef MANUAL_TESTING
+#else
 	char command[100];
 	std::cout << "Enter commands" << std::endl;
 	std::string end;

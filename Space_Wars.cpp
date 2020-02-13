@@ -386,6 +386,7 @@ int main()
 		std::cout << "PLAYER " << Player << std::endl << std::endl;
 		Perform_Actions(Output_Player_2, Mines, Asteroids, Ships, MAP, Player);
 
+		/*
 		for (int i = 0; i < Ships.size(); i++)
 		{
 			if (Ships[i].Player == 1)
@@ -405,6 +406,7 @@ int main()
 				}
 			}
 		}
+		*/
 	
 		int Income = 11 - No_Ships_Player_1;
 		Ships[0].Storage += Income;
@@ -428,7 +430,7 @@ int main()
 					Ships.erase(Ships.begin() + i);
 				}
 			}
-		Ships[0].Storage = 0;
+			Ships[0].Storage = 0;
 		}
 		if (Ships[1].Storage < 0)
 		{
@@ -439,7 +441,7 @@ int main()
 					Ships.erase(Ships.begin() + i);
 				}
 			}
-		Ships[1].Storage = 0;
+			Ships[1].Storage = 0;
 		}
 
 		std::cout << "Seed: " << seed << std::endl;

@@ -24,8 +24,9 @@ void Draw_HQ(int Player_Type, int i, int j, int Center, float Scale, float Rotat
 void Draw_Fighter(int Player_Type, int i, int j, int Center, float Scale, float Rotate);
 void Draw_Transport(int Player_Type, int i, int j, int Center, float Scale, float Rotate);
 void Draw_Build_Ship(int x, int y, int Type, int Rotation, int Player);
-void Draw_Ship_Rotation(int x, int y, int Type, int Player, char Rotate_Direction, int Rotation);
+void Draw_Ship_Rotation(int x, int y, int Type, int Player, int Old_Rotation, int New_Rotation);
 void Draw_Ship_Move(int x, int y, int Rotation, int Player, int Type, char Colision, int Other_Rotation);
+void Draw_Build_Workshop(int x, int y, int Player);
 void Destroy_Display(void);
 
 #endif

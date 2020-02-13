@@ -8,7 +8,7 @@
 
 #define PI 3.141592653589793238462643383279502884197169
 #define RADIANS 1.57079633 // 90 degrees
-#define TILE_SIZE 64.0
+#define TILE_SIZE 80.0
 #define IMAGE_SIZE 330.0
 
 float animation_speed = 0.1;
@@ -93,7 +93,7 @@ void Create_Display(int MAP_SIZE)
 	
 	al_init();
 	al_init_image_addon();
-	display = al_create_display(MAP_SIZE*TILE_SIZE, MAP_SIZE*TILE_SIZE);
+	display = al_create_display(MAP_SIZE*TILE_SIZE+TILE_SIZE*5, MAP_SIZE*TILE_SIZE);
 
 
 	Asteroid_1 = al_load_bitmap("Images/Asteroid_1.png");
@@ -183,6 +183,7 @@ void Draw_Whole_MAP(std::vector<std::vector<char> > MAP, std::vector<Ship_Class>
 			}
 		}
 	}
+	
 	al_flip_display();
 	al_rest(animation_speed*2);
 }
@@ -382,20 +383,20 @@ void Draw_Build_Ship(int x, int y, int Type, int Rotation, int Player)
 
 	for (int i = 0; i < 15; i++)
 	{
-		float Currect_Sacle = ((i*Scale)/14.0);
+		float Currect_Scale = ((i*Scale)/14.0);
 		//DRAW BLACK ON ANIMATED TILES
 		al_draw_scaled_rotated_bitmap(Black, Center, Center, Position_x, Position_y, Scale, Scale,  0, 0);
 		//DRAW SPACE ON ANIMATED TILES
 		Draw_Space(Graphical_Data_Matrix[y][x].Space_Data, x, y, Center, Scale, Graphical_Data_Matrix[y][x].Rotate_Data);
 
 		//DRAW SHIP ON ANIMATED TILES
-		al_draw_scaled_rotated_bitmap(Ship, Center, Center, Position_x, Position_y, Currect_Sacle, Currect_Sacle, Rotate, 0);
+		al_draw_scaled_rotated_bitmap(Ship, Center, Center, Position_x, Position_y, Currect_Scale, Currect_Scale, Rotate, 0);
 		al_flip_display();
 		al_rest(animation_speed);
 	}
 }
 
-void Draw_Ship_Rotation(int x, int y, int Type, int Player, int Old_Rotation, int New_Rotation)
+void Draw_Ship_Rotation(int x, int y, int Type, int Player, char Rotation, int Old_Rotation)
 {
 	
 	float Scale = TILE_SIZE/IMAGE_SIZE;
@@ -446,15 +447,15 @@ void Draw_Ship_Rotation(int x, int y, int Type, int Player, int Old_Rotation, in
 	}
 
 	if (Old_Rotation == 1)
-		Old_Rotate = RADIANS*1.0;
+		Old_Rotate = RADIANS*5.0;
 	if (Old_Rotation == 2)
-		Old_Rotate = RADIANS*3.0;
+		Old_Rotate = RADIANS*7.0;
 	if (Old_Rotation == 3)
-		Old_Rotate = RADIANS*2.0;
+		Old_Rotate = RADIANS*6.0;
 	if (Old_Rotation == 4)
-		Old_Rotate = RADIANS*0.0;
+		Old_Rotate = RADIANS*4.0;
 
-	if (New_Rotation == 1)
+	/*if (New_Rotation == 1)
 		New_Rotate = RADIANS*1.0;
 	if (New_Rotation == 2)
 		New_Rotate = RADIANS*3.0;
@@ -462,15 +463,15 @@ void Draw_Ship_Rotation(int x, int y, int Type, int Player, int Old_Rotation, in
 		New_Rotate = RADIANS*2.0;
 	if (New_Rotation == 4)
 		New_Rotate = RADIANS*0.0;
-
+*/
 
 	for (int i = 0; i < 15; i++)
 	{
 		float Rotate;
-		if (Old_Rotate > New_Rotate)
-	  	Rotate = New_Rotate + RADIANS*i/14.0;
+		if (Rotation == 'R')
+	  	Rotate = Old_Rotate + RADIANS*i/14.0;
 		else
-			Rotate = New_Rotate + RADIANS*i/14.0;
+			Rotate = Old_Rotate - RADIANS*i/14.0;
 			
 		//DRAW BLACK ON ANIMATED TILES
 		al_draw_scaled_rotated_bitmap(Black, Center, Center, Position_x, Position_y, Scale, Scale,  0, 0);
@@ -590,41 +591,58 @@ void Draw_Ship_Move(int x, int y, int Rotation, int Player, int Type, char Colis
 		if (Colision != '.')
 		{
 			if (Colision == 'A')
-			{
 				Draw_Asteroid(Graphical_Data_Matrix[y][x].Asteroid_Data, x, y, Center, Scale, Graphical_Data_Matrix[y][x].Rotate_Data);
-			}
 			if (Colision == 'M')
-			{
 				Draw_Mine(Graphical_Data_Matrix[y][x].Mine_Data, x, y, Center, Scale, Graphical_Data_Matrix[y][x].Rotate_Data);
-			}
 			if (Colision == 'H')
-			{
 				Draw_HQ(Player_1_Type, x, y, Center, Scale, Simple_Ship_Rotate(Other_Rotation));
-			}
 			if (Colision == 'h')
-			{
 				Draw_HQ(Player_2_Type, x, y, Center, Scale, Simple_Ship_Rotate(Other_Rotation));
-			}
 			if (Colision == 'F')
-			{
 				Draw_Fighter(Player_1_Type, x, y, Center, Scale, Simple_Ship_Rotate(Other_Rotation));
-			}
 			if (Colision == 'f')
-			{
 				Draw_Fighter(Player_2_Type, x, y, Center, Scale, Simple_Ship_Rotate(Other_Rotation));
-			}
 			if (Colision == 'T')
-			{
 				Draw_Transport(Player_1_Type, x, y, Center, Scale, Simple_Ship_Rotate(Other_Rotation));
-			}
 			if (Colision == 't')
-			{
 				Draw_Transport(Player_2_Type, x, y, Center, Scale, Simple_Ship_Rotate(Other_Rotation));
-			}
+			if (Colision == 'W')
+				Draw_Workshop(Player_1_Type, x, y, Center, Scale, Simple_Ship_Rotate(Other_Rotation));
+			if (Colision == 'w')
+				Draw_Workshop(Player_2_Type, x, y, Center, Scale, Simple_Ship_Rotate(Other_Rotation));
 		}
 
 		//DRAW SHIP ON ANIMATED TILES
 		al_draw_scaled_rotated_bitmap(Ship, Center, Center, Position_x, Position_y, Scale, Scale, Rotate, 0);
+		al_flip_display();
+		al_rest(animation_speed);
+	}
+}
+
+void Draw_Build_Workshop(int x, int y, int Player)
+{
+	float Scale = TILE_SIZE/IMAGE_SIZE;
+	float Center = IMAGE_SIZE/2;
+	int Player_Type;
+	float Position_x = (x*TILE_SIZE +TILE_SIZE/2);
+	float Position_y = (y*TILE_SIZE +TILE_SIZE/2);
+
+	if (Player == 1)
+		Player_Type = Player_1_Type;
+	if (Player == 2)
+		Player_Type = Player_2_Type;
+
+	for (int i = 0; i < 15; i++)
+	{
+		float Currect_Scale = ((i*Scale)/14.0);
+		//DRAW BLACK ON ANIMATED TILES
+		al_draw_scaled_rotated_bitmap(Black, Center, Center, Position_x, Position_y, Scale, Scale,  0, 0);
+		//DRAW SPACE ON ANIMATED TILES
+		Draw_Space(Graphical_Data_Matrix[y][x].Space_Data, x, y, Center, Scale, Graphical_Data_Matrix[y][x].Rotate_Data);
+
+		//DRAW SHIP ON ANIMATED TILES
+		Draw_Workshop(Player_Type, x, y, Center, Currect_Scale, Graphical_Data_Matrix[y][x].Rotate_Data);
+
 		al_flip_display();
 		al_rest(animation_speed);
 	}

@@ -3,6 +3,8 @@
 
 AC_PREREQ([2.69])
 AC_INIT([SPACE WARS], [0.5], [Mkruk96@gmail.com])
+AM_INIT_AUTOMAKE(pippo, 2.6)
+AC_OUTPUT(Makefile)
 AC_CONFIG_SRCDIR([Space_Classes.cpp])
 AC_CONFIG_HEADERS([config.h])
 
