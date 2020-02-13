@@ -7,15 +7,19 @@
 
 Return_Type Test_Alg_1 (Input_type Input, Output_type* Output)
 {
+	srand(time(NULL));
+
 		
 	Output_type Output_local;
 #ifndef MANUAL_TESTING
 	for (int i = 0; i < Input.No_Ships_IN; i++)
 	{
 		std::string OUT;
-/*
 
-*/
+		OUT = "SHOOT " + std::to_string(Input.ID_IN[i]);
+		Output_local.Commands_OUT.push_back(OUT);
+		
+
 		OUT = "WORKSHOP " + std::to_string(Input.X_IN[i]+1) + " " + std::to_string(Input.Y_IN[i]);
 		Output_local.Commands_OUT.push_back(OUT);
 		OUT = "WORKSHOP " + std::to_string(Input.X_IN[i]) + " " + std::to_string(Input.Y_IN[i]+1);

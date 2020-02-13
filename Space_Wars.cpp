@@ -226,17 +226,6 @@ int main()
 				MAP[Ships[i].y][Ships[i].x] = res;
 			}
 		}
-	
-		// Print map on console
-	
-		for (int y = 0; y < MAP_SIZE; y++)
-		{
-			for (int x = 0; x < MAP_SIZE; x++)
-			{
-				std::cout << MAP[y][x] << " ";
-			}
-		std::cout << std::endl;
-		}
 
 		Draw_Whole_MAP(MAP, Ships);
 		// MAP is ready, now let's call algorithms
@@ -342,17 +331,6 @@ int main()
 				}
 				MAP[Ships[i].y][Ships[i].x] = res;
 			}
-		}
-	
-		// Print map on console
-	
-		for (int y = 0; y < MAP_SIZE; y++)
-		{
-			for (int x = 0; x < MAP_SIZE; x++)
-			{
-				std::cout << MAP[y][x] << " ";
-			}
-		std::cout << std::endl;
 		}
 
 		Draw_Whole_MAP(MAP, Ships);

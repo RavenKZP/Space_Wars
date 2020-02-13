@@ -6,7 +6,7 @@
 #include <string>
 #include <cctype>
 
-int MAP_SIZE = 15;
+int MAP_SIZE = 10;
 
 #include "Algorithms/Algorithms.h"
 #include "Space_Functions.h"

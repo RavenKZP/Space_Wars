@@ -505,7 +505,7 @@ void Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, 
 										}
 										else if( Ships[Move_iterator].HP <= 0 )
 										{
-											MAP[p_y][p_x] = 'A';
+											MAP[p_y][p_x] = colision_object;
 										}
 										else if( Asteroids[Colision_ID].HP <= 0 )
 										{
@@ -658,6 +658,7 @@ void Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, 
 						if ( Ships[Shoot_iterator].Speed > 0 && Ships[Shoot_iterator].HP > 0)
 						{
 							Ships[Shoot_iterator].Speed--;
+							int flag = 0;
 							for (int i = 0; i < Ships[Shoot_iterator].Range; i++)
 							{
 								int p_x = Ships[Shoot_iterator].x;
@@ -666,85 +667,224 @@ void Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, 
 								{
 									if (MAP[p_y][p_x +i +1] != '.')
 									{
-										char Type;
+										flag = 1;
+										char Type, col_obj;
 										int Colision_ID = COLISION_DETECTOR(p_x +i +1, p_y, Mines, Asteroids, Ships, Shoot_ID, &Type);
 										if (Type == 'M')
 										{
 											Mines[Colision_ID].HP -= Ships[Shoot_iterator].Damage;
+											col_obj = 'M';
+											Draw_Laser(p_x, p_y, Ships[Shoot_iterator].Rotation, Player, Ships[Shoot_iterator].Type, col_obj, 0, i+1);
+											Draw_Explosion(Mines[Colision_ID].x, Mines[Colision_ID].y);
 										}	
 										if (Type == 'A')
 										{
 											Asteroids[Colision_ID].HP -= Ships[Shoot_iterator].Damage;
+											if (Asteroids[Colision_ID].Workshop == 0)
+												col_obj = 'A';
+											if (Asteroids[Colision_ID].Workshop == 1)
+												col_obj = 'W';
+											if (Asteroids[Colision_ID].Workshop == 2)
+												col_obj = 'w';
+											Draw_Laser(p_x, p_y, Ships[Shoot_iterator].Rotation, Player, Ships[Shoot_iterator].Type, col_obj, 0, i+1);
+											Draw_Explosion(Asteroids[Colision_ID].x, Asteroids[Colision_ID].y);
 										}
 										if (Type == 'S')
 										{
 											Ships[Colision_ID].HP -= Ships[Shoot_iterator].Damage;
+											if (Ships[Colision_ID].Player == 1)
+											{
+												if (Ships[Colision_ID].Type == 0)
+													col_obj = 'H';
+												if (Ships[Colision_ID].Type == 1)
+													col_obj = 'F';
+												if (Ships[Colision_ID].Type == 2)
+													col_obj = 'T';
+											}
+											if (Ships[Colision_ID].Player == 2)
+											{
+												if (Ships[Colision_ID].Type == 0)
+													col_obj = 'h';
+												if (Ships[Colision_ID].Type == 1)
+													col_obj = 'f';
+												if (Ships[Colision_ID].Type == 2)
+													col_obj = 't';
+											}
+											Draw_Laser(p_x, p_y, Ships[Shoot_iterator].Rotation, Player, Ships[Shoot_iterator].Type, col_obj, Ships[Colision_ID].Rotation, i+1);
+											Draw_Explosion(Ships[Colision_ID].x, Ships[Colision_ID].y);
 										}
+										Destroy_Ships(Mines, Asteroids, Ships);
+										break;
 									}
 								}
 								if (Ships[Shoot_iterator].Rotation == 2 && p_x > i +1) 
 								{
 									if (MAP[p_y][p_x -i -1] != '.')
 									{
-										char Type;
+										flag = 1;
+										char Type, col_obj;
 										int Colision_ID = COLISION_DETECTOR(p_x -i -1, p_y, Mines, Asteroids, Ships, Shoot_ID, &Type);
 										if (Type == 'M')
 										{
 											Mines[Colision_ID].HP -= Ships[Shoot_iterator].Damage;
+											col_obj = 'M';
+											Draw_Laser(p_x, p_y, Ships[Shoot_iterator].Rotation, Player, Ships[Shoot_iterator].Type, col_obj, 0, i+1);
+											Draw_Explosion(Mines[Colision_ID].x, Mines[Colision_ID].y);
 										}	
 										if (Type == 'A')
 										{
 											Asteroids[Colision_ID].HP -= Ships[Shoot_iterator].Damage;
+											if (Asteroids[Colision_ID].Workshop == 0)
+												col_obj = 'A';
+											if (Asteroids[Colision_ID].Workshop == 1)
+												col_obj = 'W';
+											if (Asteroids[Colision_ID].Workshop == 2)
+												col_obj = 'w';
+											Draw_Laser(p_x, p_y, Ships[Shoot_iterator].Rotation, Player, Ships[Shoot_iterator].Type, col_obj, 0, i+1);
+											Draw_Explosion(Asteroids[Colision_ID].x, Asteroids[Colision_ID].y);
 										}
 										if (Type == 'S')
 										{
 											Ships[Colision_ID].HP -= Ships[Shoot_iterator].Damage;
+											if (Ships[Colision_ID].Player == 1)
+											{
+												if (Ships[Colision_ID].Type == 0)
+													col_obj = 'H';
+												if (Ships[Colision_ID].Type == 1)
+													col_obj = 'F';
+												if (Ships[Colision_ID].Type == 2)
+													col_obj = 'T';
+											}
+											if (Ships[Colision_ID].Player == 2)
+											{
+												if (Ships[Colision_ID].Type == 0)
+													col_obj = 'h';
+												if (Ships[Colision_ID].Type == 1)
+													col_obj = 'f';
+												if (Ships[Colision_ID].Type == 2)
+													col_obj = 't';
+											}
+											Draw_Laser(p_x, p_y, Ships[Shoot_iterator].Rotation, Player, Ships[Shoot_iterator].Type, col_obj, Ships[Colision_ID].Rotation, i+1);
+											Draw_Explosion(Ships[Colision_ID].x, Ships[Colision_ID].y);
 										}
 										Destroy_Ships(Mines, Asteroids, Ships);
+										break;
 									}
 								}
 								if (Ships[Shoot_iterator].Rotation == 3 && p_y < MAP_SIZE -i -1)
 								{
 									if (MAP[p_y +i +1][p_x] != '.')
 									{
-										char Type;
+										flag = 1;
+										char Type, col_obj;
 										int Colision_ID = COLISION_DETECTOR(p_x, p_y +i +1, Mines, Asteroids, Ships, Shoot_ID, &Type);
 										if (Type == 'M')
 										{
 											Mines[Colision_ID].HP -= Ships[Shoot_iterator].Damage;
+											col_obj = 'M';
+											Draw_Laser(p_x, p_y, Ships[Shoot_iterator].Rotation, Player, Ships[Shoot_iterator].Type, col_obj, 0, i+1);
+											Draw_Explosion(Mines[Colision_ID].x, Mines[Colision_ID].y);
 										}	
 										if (Type == 'A')
 										{
 											Asteroids[Colision_ID].HP -= Ships[Shoot_iterator].Damage;
+											if (Asteroids[Colision_ID].Workshop == 0)
+												col_obj = 'A';
+											if (Asteroids[Colision_ID].Workshop == 1)
+												col_obj = 'W';
+											if (Asteroids[Colision_ID].Workshop == 2)
+												col_obj = 'w';
+											Draw_Laser(p_x, p_y, Ships[Shoot_iterator].Rotation, Player, Ships[Shoot_iterator].Type, col_obj, 0, i+1);
+											Draw_Explosion(Asteroids[Colision_ID].x, Asteroids[Colision_ID].y);
 										}
 										if (Type == 'S')
 										{
 											Ships[Colision_ID].HP -= Ships[Shoot_iterator].Damage;
+											if (Ships[Colision_ID].Player == 1)
+											{
+												if (Ships[Colision_ID].Type == 0)
+													col_obj = 'H';
+												if (Ships[Colision_ID].Type == 1)
+													col_obj = 'F';
+												if (Ships[Colision_ID].Type == 2)
+													col_obj = 'T';
+											}
+											if (Ships[Colision_ID].Player == 2)
+											{
+												if (Ships[Colision_ID].Type == 0)
+													col_obj = 'h';
+												if (Ships[Colision_ID].Type == 1)
+													col_obj = 'f';
+												if (Ships[Colision_ID].Type == 2)
+													col_obj = 't';
+											}
+											Draw_Laser(p_x, p_y, Ships[Shoot_iterator].Rotation, Player, Ships[Shoot_iterator].Type, col_obj, Ships[Colision_ID].Rotation, i+1);
+											Draw_Explosion(Ships[Colision_ID].x, Ships[Colision_ID].y);
 										}
+										Destroy_Ships(Mines, Asteroids, Ships);
+										break;
 									}
 								}
 								if (Ships[Shoot_iterator].Rotation == 4 && p_y > i +1)
 								{
 									if (MAP[p_y -i -1][p_x] != '.')
 									{
-										char Type;
+										flag = 1;
+										char Type, col_obj;
 										int Colision_ID = COLISION_DETECTOR(p_x, p_y -i -1, Mines, Asteroids, Ships, Shoot_ID, &Type);
 										if (Type == 'M')
 										{
 											Mines[Colision_ID].HP -= Ships[Shoot_iterator].Damage;
+											col_obj = 'M';
+											Draw_Laser(p_x, p_y, Ships[Shoot_iterator].Rotation, Player, Ships[Shoot_iterator].Type, col_obj, 0, i+1);
+											Draw_Explosion(Mines[Colision_ID].x, Mines[Colision_ID].y);
 										}	
 										if (Type == 'A')
 										{
 											Asteroids[Colision_ID].HP -= Ships[Shoot_iterator].Damage;
+											if (Asteroids[Colision_ID].Workshop == 0)
+												col_obj = 'A';
+											if (Asteroids[Colision_ID].Workshop == 1)
+												col_obj = 'W';
+											if (Asteroids[Colision_ID].Workshop == 2)
+												col_obj = 'w';
+											Draw_Laser(p_x, p_y, Ships[Shoot_iterator].Rotation, Player, Ships[Shoot_iterator].Type, col_obj, 0, i+1);
+											Draw_Explosion(Asteroids[Colision_ID].x, Asteroids[Colision_ID].y);
 										}
 										if (Type == 'S')
 										{
 											Ships[Colision_ID].HP -= Ships[Shoot_iterator].Damage;
+											if (Ships[Colision_ID].Player == 1)
+											{
+												if (Ships[Colision_ID].Type == 0)
+													col_obj = 'H';
+												if (Ships[Colision_ID].Type == 1)
+													col_obj = 'F';
+												if (Ships[Colision_ID].Type == 2)
+													col_obj = 'T';
+											}
+											if (Ships[Colision_ID].Player == 2)
+											{
+												if (Ships[Colision_ID].Type == 0)
+													col_obj = 'h';
+												if (Ships[Colision_ID].Type == 1)
+													col_obj = 'f';
+												if (Ships[Colision_ID].Type == 2)
+													col_obj = 't';
+											}
+											Draw_Laser(p_x, p_y, Ships[Shoot_iterator].Rotation, Player, Ships[Shoot_iterator].Type, col_obj, Ships[Colision_ID].Rotation, i+1);
+											Draw_Explosion(Ships[Colision_ID].x, Ships[Colision_ID].y);
 										}
-										std::cout << "Shoot " << Type << " ID " << Colision_ID << std::endl;
+										Destroy_Ships(Mines, Asteroids, Ships);
+										break;
 									}
 								}
 							}
+							if (flag == 0)
+							{
+								Draw_Laser(Ships[Shoot_iterator].x, Ships[Shoot_iterator].y, Ships[Shoot_iterator].Rotation, Player, Ships[Shoot_iterator].Type, '.', 0, Ships[Shoot_iterator].Range);
+							}
+							Draw_Whole_MAP(MAP, Ships);
 						}
 						else
 						{
