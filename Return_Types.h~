@@ -24,7 +24,7 @@ typedef struct Input
 
 typedef struct Output
 {
-	std::vector<std::vector<std::string> > Commands_OUT;
+	std::vector<std::string> Commands_OUT;
 
 } Output_type;
 

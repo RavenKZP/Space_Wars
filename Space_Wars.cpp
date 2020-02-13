@@ -12,6 +12,8 @@ int MAP_SIZE = 10;
 #include "Space_Functions.h"
 #include "Space_Graphic.h"
 
+void Destroy_Ships(std::vector<Mine_Class>& Mines, std::vector<Asteroid_Class>& Asteroids, std::vector<Ship_Class>& Ships);
+
 int main()
 {
 	int seed = time(NULL);
@@ -149,6 +151,12 @@ int main()
 	int game_end = MAP_SIZE*MAP_SIZE*5;
 	while(game_end > 0)
 	{
+		//reset spped for ships
+		for (int i = 0; i < Ships.size(); i++)
+		{
+			Ships[i].reset_speed();
+		}
+
 		//Reset MAP
 		for (int i = 0; i < MAP_SIZE; i++)
 		{
@@ -156,11 +164,6 @@ int main()
 			{
 				MAP[i][j] = '.';
 			}
-		}
-		//reset spped for ships
-		for (int i = 0; i < Ships.size(); i++)
-		{
-			Ships[i].reset_speed();
 		}
 
 		//placing Asteroids on map
@@ -236,34 +239,125 @@ int main()
 		std::cout << std::endl;
 		}
 
-		Draw_Bitmap(MAP, Ships);
+		Draw_Whole_MAP(MAP, Ships);
 		// MAP is ready, now let's call algorithms
 	
 		//Preparing input structure for Player 1;
 
 		int Player = 1;
+		int No_Ships_Player_1 = 0;
+		int No_Ships_Player_2 = 0;
 
 		Input_type Input_Player_1;
 		Output_type Output_Player_1;
 	
 		Input_Player_1.MAP_SIZE_IN = MAP_SIZE;
 		Input_Player_1.MAP_IN = MAP;
-		Input_Player_1.No_Ships_IN = Ships.size();
 		for (int i = 0; i < Ships.size(); i++)
 		{
-			Input_Player_1.ID_IN.push_back(Ships[i].ID);
-			Input_Player_1.Type_IN.push_back(Ships[i].Type);
-			Input_Player_1.Rotation_IN.push_back(Ships[i].Rotation);
-			Input_Player_1.HP_IN.push_back(Ships[i].HP);
-			Input_Player_1.Storage_IN.push_back(Ships[i].Storage);
+			if (Ships[i].Player == 1)
+			{
+				Input_Player_1.ID_IN.push_back(Ships[i].ID);
+				Input_Player_1.Type_IN.push_back(Ships[i].Type);
+				Input_Player_1.Rotation_IN.push_back(Ships[i].Rotation);
+				Input_Player_1.HP_IN.push_back(Ships[i].HP);
+				Input_Player_1.Storage_IN.push_back(Ships[i].Storage);
+				Input_Player_1.X_IN.push_back(Ships[i].x);
+				Input_Player_1.Y_IN.push_back(Ships[i].y);
+				No_Ships_Player_1++;
+			}
 		}
+		Input_Player_1.No_Ships_IN = No_Ships_Player_1;
 
 		Test_Alg_1(Input_Player_1, &Output_Player_1);
 
 		std::cout << "PLAYER " << Player << std::endl << std::endl;
 		Perform_Actions(Output_Player_1, Mines, Asteroids, Ships, MAP, Player);
+		Destroy_Ships(Mines, Asteroids, Ships);
 
+//Reset MAP
+		for (int i = 0; i < MAP_SIZE; i++)
+		{
+			for (int j = 0; j < MAP_SIZE; j++)
+			{
+				MAP[i][j] = '.';
+			}
+		}
 
+		//placing Asteroids on map
+		for (int i = 0; i <	Asteroids.size(); i++)
+		{
+			if (Asteroids[i].Workshop == 2)
+			{
+				MAP[Asteroids[i].y][Asteroids[i].x] = 'w';
+			}
+			else if (Asteroids[i].Workshop == 1)
+			{
+				MAP[Asteroids[i].y][Asteroids[i].x] = 'W';
+			}
+			else
+			{
+				MAP[Asteroids[i].y][Asteroids[i].x] = 'A';
+			}
+		}
+	
+		//placing Mines on map
+		for (int i = 0; i <	Mines.size(); i++)
+		{
+			MAP[Mines[i].y][Mines[i].x] = 'M';
+		}
+	
+		//Placing Ships on map
+	
+		for (int i = 0; i <	Ships.size(); i++)
+		{
+			char res;
+			if (Ships[i].Player == 1)
+			{
+				switch (Ships[i].Type)
+				{
+					case 0:
+						res = 'H';
+						break;
+					case 1:
+						res = 'F';
+						break;
+					case 2:
+						res = 'T';
+						break;
+				}
+				MAP[Ships[i].y][Ships[i].x] = res;
+			}
+			if (Ships[i].Player == 2)
+			{
+				switch (Ships[i].Type)
+				{
+					case 0:
+						res = 'h';
+						break;
+					case 1:
+						res = 'f';
+						break;
+					case 2:
+						res = 't';
+						break;
+				}
+				MAP[Ships[i].y][Ships[i].x] = res;
+			}
+		}
+	
+		// Print map on console
+	
+		for (int y = 0; y < MAP_SIZE; y++)
+		{
+			for (int x = 0; x < MAP_SIZE; x++)
+			{
+				std::cout << MAP[y][x] << " ";
+			}
+		std::cout << std::endl;
+		}
+
+		Draw_Whole_MAP(MAP, Ships);
 	//Preparing input structure for Player 2;
 
 		Player = 2;
@@ -273,21 +367,27 @@ int main()
 	
 		Input_Player_2.MAP_SIZE_IN = MAP_SIZE;
 		Input_Player_2.MAP_IN = MAP;
-		Input_Player_2.No_Ships_IN = Ships.size();
 		for (int i = 0; i < Ships.size(); i++)
 		{
-			Input_Player_2.ID_IN.push_back(Ships[i].ID);
-			Input_Player_2.Type_IN.push_back(Ships[i].Type);
-			Input_Player_2.Rotation_IN.push_back(Ships[i].Rotation);
-			Input_Player_2.HP_IN.push_back(Ships[i].HP);
-			Input_Player_2.Storage_IN.push_back(Ships[i].Storage);
+			if (Ships[i].Player == 2)
+			{
+				Input_Player_2.ID_IN.push_back(Ships[i].ID);
+				Input_Player_2.Type_IN.push_back(Ships[i].Type);
+				Input_Player_2.Rotation_IN.push_back(Ships[i].Rotation);
+				Input_Player_2.HP_IN.push_back(Ships[i].HP);
+				Input_Player_2.Storage_IN.push_back(Ships[i].Storage);
+				Input_Player_2.X_IN.push_back(Ships[i].x);
+				Input_Player_2.Y_IN.push_back(Ships[i].y);
+				No_Ships_Player_2++;
+			}
 		}
+		Input_Player_2.No_Ships_IN = No_Ships_Player_2;
 
 		Test_Alg_1(Input_Player_2, &Output_Player_2);
 
 		std::cout << "PLAYER " << Player << std::endl << std::endl;
 		Perform_Actions(Output_Player_2, Mines, Asteroids, Ships, MAP, Player);
-
+		Destroy_Ships(Mines, Asteroids, Ships);
 
 		for (int i = 0; i < Ships.size(); i++)
 		{
@@ -308,53 +408,92 @@ int main()
 				}
 			}
 		}
-		
+	
+		int Income = 11 - No_Ships_Player_1;
+		Ships[0].Storage += Income;
+		if (Ships[0].Storage > Ships[0].MAX_Storage)
+		{
+			Ships[0].Storage = Ships[0].MAX_Storage;
+		}
+		Income = 11 - No_Ships_Player_2;
+		Ships[1].Storage += Income;
+		if (Ships[1].Storage > Ships[1].MAX_Storage)
+		{
+			Ships[1].Storage = Ships[1].MAX_Storage;
+		}
 
-		
-		std::vector<int> it_to_del;
-		for (int i = 0; i < Mines.size(); i++)
+		if (Ships[0].Storage < 0)
 		{
-			std::cout << "Mine " << Mines[i].ID << " x " << Mines[i].x << " y " << Mines[i].y << " HP " << Mines[i].HP << std::endl;
-			if (Mines[i].HP <= 0)
+			for (int i = Ships.size() -1; i > 2; i--)
 			{
-				it_to_del.push_back(i);
+				if (Ships[i].Player == 1)
+				{
+					Ships.erase(Ships.begin() + i);
+				}
 			}
+		Ships[0].Storage = 0;
 		}
-		for (int i = 0; i < it_to_del.size(); i++)
+		if (Ships[1].Storage < 0)
 		{
-			Mines.erase(Mines.begin() + it_to_del[i]);
-		}
-		it_to_del.clear();
-		for (int i = 0; i < Asteroids.size(); i++)
-		{
-			std::cout << "Asteroid " << Asteroids[i].ID << " x " << Asteroids[i].x << " y " << Asteroids[i].y << " HP " << Asteroids[i].HP << " Workshop_Player " << Asteroids[i].Workshop << std::endl;
-			if (Asteroids[i].HP <= 0)
+			for (int i = Ships.size() -1; i > 2; i--)
 			{
-				it_to_del.push_back(i);
+				if (Ships[i].Player == 2)
+				{
+					Ships.erase(Ships.begin() + i);
+				}
 			}
+		Ships[1].Storage = 0;
 		}
-		for (int i = 0; i < it_to_del.size(); i++)
-		{
-			Asteroids.erase(Asteroids.begin() + it_to_del[i]);
-		}
-		it_to_del.clear();
-		for (int i = 0; i < Ships.size(); i++)
-		{
-			std::cout << "Ship " << Ships[i].ID << " x " << Ships[i].x << " y " << Ships[i].y << " HP " << Ships[i].HP << " Rotation " << Ships[i].Rotation << " Type " << Ships[i].Type << " Player " << Ships[i].Player << " Storage " << Ships[i].Storage << std::endl;
-			if (Ships[i].HP <= 0)
-			{
-				it_to_del.push_back(i);
-			}
-		}
-		for (int i = 0; i < it_to_del.size(); i++)
-		{
-			Ships.erase(Ships.begin() + it_to_del[i]);
-		}
-		it_to_del.clear();
 
 		std::cout << "Seed: " << seed << std::endl;
 		std::cout << "Turns Left: " << --game_end << std::endl;
 	}
 	Destroy_Display();
 	return E_OK;
+}
+
+void Destroy_Ships(std::vector<Mine_Class>& Mines, std::vector<Asteroid_Class>& Asteroids, std::vector<Ship_Class>& Ships)
+{
+	std::vector<int>  it_to_del;
+	for (int i = 0; i < Mines.size(); i++)
+	{
+		std::cout << "Mine " << Mines[i].ID << " x " << Mines[i].x << " y " << Mines[i].y << " HP " << Mines[i].HP << std::endl;
+		if (Mines[i].HP <= 0)
+		{
+			it_to_del.push_back(i);
+		}
+	}
+	for (int i = it_to_del.size() -1; i >= 0 ; i--)
+	{
+		Mines.erase(Mines.begin() + it_to_del[i]);
+	}
+	it_to_del.clear();
+
+	for (int i = 0; i < Asteroids.size(); i++)
+	{
+		std::cout << "Asteroid " << Asteroids[i].ID << " x " << Asteroids[i].x << " y " << Asteroids[i].y << " HP " << Asteroids[i].HP << " Workshop_Player " << Asteroids[i].Workshop << std::endl;
+		if (Asteroids[i].HP <= 0)
+		{
+			it_to_del.push_back(i);
+		}
+	}
+	for (int i = it_to_del.size() -1; i >= 0; i--)
+	{
+		Asteroids.erase(Asteroids.begin() + it_to_del[i]);
+	}
+	it_to_del.clear();
+
+	for (int i = 0; i < Ships.size(); i++)
+	{
+		std::cout << "Ship " << Ships[i].ID << " x " << Ships[i].x << " y " << Ships[i].y << " HP " << Ships[i].HP << " Rotation " << Ships[i].Rotation << " Type " << Ships[i].Type << " Player " << Ships[i].Player << " Storage " << Ships[i].Storage << std::endl;
+		if (Ships[i].HP <= 0)
+		{
+			it_to_del.push_back(i);
+		}
+	}
+	for (int i = it_to_del.size() -1; i >= 0; i--)
+	{
+		Ships.erase(Ships.begin() + it_to_del[i]);
+	}
+	it_to_del.clear();
 }

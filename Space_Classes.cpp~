@@ -40,7 +40,7 @@ Ship_Class::Ship_Class (int p_Type, int p_Player, int p_x, int p_y, int p_Rotati
 		Damage = 1;
 		MAX_Storage = 1000;
 		Storage = 50;
-		Speed = 2;
+		Speed = 0;
 		Range = 2;
 	}
 	if (Type == 1)
@@ -49,7 +49,7 @@ Ship_Class::Ship_Class (int p_Type, int p_Player, int p_x, int p_y, int p_Rotati
 		Damage = 2;
 		MAX_Storage = 5;
 		Storage = 0;
-		Speed = 3;
+		Speed = 0;
 		Range = 3;
 	}
 	else if (Type == 2)
@@ -58,7 +58,7 @@ Ship_Class::Ship_Class (int p_Type, int p_Player, int p_x, int p_y, int p_Rotati
 		Damage = 1;
 		MAX_Storage = 50;
 		Storage = 0;
-		Speed = 2;
+		Speed = 0;
 		Range = 2;
 	}
 }
