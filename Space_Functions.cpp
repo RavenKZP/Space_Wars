@@ -412,7 +412,7 @@ void Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, 
 									}
 								}
 								MAP[Build_y][Build_x] = res;
-								Draw_Whole_MAP(MAP, Ships);
+								Draw_Build_Ship(Build_x, Build_y, Build_Type, Build_Rotation, Player);
 							}
 							else
 							{
@@ -447,7 +447,7 @@ void Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, 
 							Move_iterator = i;
 						}
 					}
-					if (( Move_ID != 0 && Move_ID != 1) && Move_iterator != -1)
+					if (Move_iterator != -1)
 					{
 						if ( Ships[Move_iterator].Speed > 0 && Ships[Move_iterator].HP > 0)
 						{
@@ -565,6 +565,7 @@ void Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, 
 									}
 								Draw_Ship_Move(p_x, p_y, Ships[Move_iterator].Rotation, Player, Ships[Move_iterator].Type, colision_object, Colision_Rotation);
 								Draw_Explosion(p_x, p_y);
+								Destroy_Ships(Mines, Asteroids, Ships);
 								}
 								else
 								{
@@ -609,12 +610,13 @@ void Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, 
 					}
 					if (Rotate_iterator != -1 )
 					{
-						if ( Ships[Rotate_iterator].Speed > 0 )
+						if ( Ships[Rotate_iterator].Speed > 0 && Ships[Rotate_iterator].HP > 0 )
 						{
+							int old_rotation = Ships[Rotate_iterator].Rotation;
 							if (E_OK == Ships[Rotate_iterator].ROTATE(Rotate_Direction) )
 							{
 								Ships[Rotate_iterator].Speed--;
-								Draw_Ship_Rotation(Ships[Rotate_iterator].x,  Ships[Rotate_iterator].y, Rotate_Direction);
+								Draw_Ship_Rotation(Ships[Rotate_iterator].x, Ships[Rotate_iterator].y, Ships[Rotate_iterator].Type, Player, Ships[Rotate_iterator].Rotation, old_rotation);
 							}
 						}
 						else
@@ -647,7 +649,7 @@ void Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, 
 					}
 					if (Shoot_iterator != -1)
 					{
-						if ( Ships[Shoot_iterator].Speed > 0)
+						if ( Ships[Shoot_iterator].Speed > 0 && Ships[Shoot_iterator].HP > 0)
 						{
 							Ships[Shoot_iterator].Speed--;
 							for (int i = 0; i < Ships[Shoot_iterator].Range; i++)
@@ -692,6 +694,7 @@ void Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, 
 										{
 											Ships[Colision_ID].HP -= Ships[Shoot_iterator].Damage;
 										}
+										Destroy_Ships(Mines, Asteroids, Ships);
 									}
 								}
 								if (Ships[Shoot_iterator].Rotation == 3 && p_y < MAP_SIZE -i -1)
@@ -810,7 +813,7 @@ void Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, 
 					}
 					if (Dig_iterator != -1 && (Dig_ID != 0 && Dig_ID != 1) )
 					{
-						if ( Ships[Dig_iterator].Speed > 0)
+						if ( Ships[Dig_iterator].Speed > 0 && Ships[Dig_iterator].HP > 0 )
 						{
 							Ships[Dig_iterator].Speed--;
 							int p_x = Ships[Dig_iterator].x;
@@ -881,4 +884,50 @@ void Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, 
 			}
 		}
 	}
+}
+
+void Destroy_Ships(std::vector<Mine_Class>& Mines, std::vector<Asteroid_Class>& Asteroids, std::vector<Ship_Class>& Ships)
+{
+	std::vector<int>  it_to_del;
+	for (int i = 0; i < Mines.size(); i++)
+	{
+		std::cout << "Mine " << Mines[i].ID << " x " << Mines[i].x << " y " << Mines[i].y << " HP " << Mines[i].HP << std::endl;
+		if (Mines[i].HP <= 0)
+		{
+			it_to_del.push_back(i);
+		}
+	}
+	for (int i = it_to_del.size() -1; i >= 0 ; i--)
+	{
+		Mines.erase(Mines.begin() + it_to_del[i]);
+	}
+	it_to_del.clear();
+
+	for (int i = 0; i < Asteroids.size(); i++)
+	{
+		std::cout << "Asteroid " << Asteroids[i].ID << " x " << Asteroids[i].x << " y " << Asteroids[i].y << " HP " << Asteroids[i].HP << " Workshop_Player " << Asteroids[i].Workshop << std::endl;
+		if (Asteroids[i].HP <= 0)
+		{
+			it_to_del.push_back(i);
+		}
+	}
+	for (int i = it_to_del.size() -1; i >= 0; i--)
+	{
+		Asteroids.erase(Asteroids.begin() + it_to_del[i]);
+	}
+	it_to_del.clear();
+
+	for (int i = 0; i < Ships.size(); i++)
+	{
+		std::cout << "Ship " << Ships[i].ID << " x " << Ships[i].x << " y " << Ships[i].y << " HP " << Ships[i].HP << " Rotation " << Ships[i].Rotation << " Type " << Ships[i].Type << " Player " << Ships[i].Player << " Storage " << Ships[i].Storage << std::endl;
+		if (Ships[i].HP <= 0)
+		{
+			it_to_del.push_back(i);
+		}
+	}
+	for (int i = it_to_del.size() -1; i >= 0; i--)
+	{
+		Ships.erase(Ships.begin() + it_to_del[i]);
+	}
+	it_to_del.clear();
 }

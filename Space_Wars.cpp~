@@ -12,7 +12,6 @@ int MAP_SIZE = 10;
 #include "Space_Functions.h"
 #include "Space_Graphic.h"
 
-void Destroy_Ships(std::vector<Mine_Class>& Mines, std::vector<Asteroid_Class>& Asteroids, std::vector<Ship_Class>& Ships);
 
 int main()
 {
@@ -450,50 +449,4 @@ int main()
 	}
 	Destroy_Display();
 	return E_OK;
-}
-
-void Destroy_Ships(std::vector<Mine_Class>& Mines, std::vector<Asteroid_Class>& Asteroids, std::vector<Ship_Class>& Ships);
-{
-	std::vector<int>  it_to_del;
-	for (int i = 0; i < Mines.size(); i++)
-	{
-		std::cout << "Mine " << Mines[i].ID << " x " << Mines[i].x << " y " << Mines[i].y << " HP " << Mines[i].HP << std::endl;
-		if (Mines[i].HP <= 0)
-		{
-			it_to_del.push_back(i);
-		}
-	}
-	for (int i = it_to_del.size() -1; i >= 0 ; i--)
-	{
-		Mines.erase(Mines.begin() + it_to_del[i]);
-	}
-	it_to_del.clear();
-
-	for (int i = 0; i < Asteroids.size(); i++)
-	{
-		std::cout << "Asteroid " << Asteroids[i].ID << " x " << Asteroids[i].x << " y " << Asteroids[i].y << " HP " << Asteroids[i].HP << " Workshop_Player " << Asteroids[i].Workshop << std::endl;
-		if (Asteroids[i].HP <= 0)
-		{
-			it_to_del.push_back(i);
-		}
-	}
-	for (int i = it_to_del.size() -1; i >= 0; i--)
-	{
-		Asteroids.erase(Asteroids.begin() + it_to_del[i]);
-	}
-	it_to_del.clear();
-
-	for (int i = 0; i < Ships.size(); i++)
-	{
-		std::cout << "Ship " << Ships[i].ID << " x " << Ships[i].x << " y " << Ships[i].y << " HP " << Ships[i].HP << " Rotation " << Ships[i].Rotation << " Type " << Ships[i].Type << " Player " << Ships[i].Player << " Storage " << Ships[i].Storage << std::endl;
-		if (Ships[i].HP <= 0)
-		{
-			it_to_del.push_back(i);
-		}
-	}
-	for (int i = it_to_del.size() -1; i >= 0; i--)
-	{
-		Ships.erase(Ships.begin() + it_to_del[i]);
-	}
-	it_to_del.clear();
 }

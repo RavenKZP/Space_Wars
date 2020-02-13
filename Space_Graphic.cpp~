@@ -334,9 +334,154 @@ float Simple_Ship_Rotate(int Ship_Rotation)
 	return Return_value;
 }
 
-void Draw_Ship_Rotation(int x, int y, char Rotate_Direction)
+void Draw_Build_Ship(int x, int y, int Type, int Rotation, int Player)
+{
+	float Scale = TILE_SIZE/IMAGE_SIZE;
+	float Center = IMAGE_SIZE/2;
+	int Player_Type;
+	float Rotate;
+	float Position_x = (x*TILE_SIZE +TILE_SIZE/2);
+	float Position_y = (y*TILE_SIZE +TILE_SIZE/2);
+
+	if (Player == 1)
+		Player_Type = Player_1_Type;
+	if (Player == 2)
+		Player_Type = Player_2_Type;
+
+	if (Type == 1) //Fighter
+	{
+		if (Player_Type == 1)
+			Ship = Fighter_1;
+		if (Player_Type == 2)
+			Ship = Fighter_2;
+		if (Player_Type == 3)
+			Ship = Fighter_3;
+		if (Player_Type == 4)
+			Ship = Fighter_4;
+	}
+	if (Type == 2) //Transport
+	{
+		if (Player_Type == 1)
+			Ship = Transport_1;
+		if (Player_Type == 2)
+			Ship = Transport_2;
+		if (Player_Type == 3)
+			Ship = Transport_3;
+		if (Player_Type == 4)
+			Ship = Transport_4;
+	}
+
+	if (Rotation == 1)
+		Rotate = RADIANS*1.0;
+	if (Rotation == 2)
+		Rotate = RADIANS*3.0;
+	if (Rotation == 3)
+		Rotate = RADIANS*2.0;
+	if (Rotation == 4)
+		Rotate = RADIANS*0.0;
+
+	for (int i = 0; i < 15; i++)
+	{
+		float Currect_Sacle = ((i*Scale)/14.0);
+		//DRAW BLACK ON ANIMATED TILES
+		al_draw_scaled_rotated_bitmap(Black, Center, Center, Position_x, Position_y, Scale, Scale,  0, 0);
+		//DRAW SPACE ON ANIMATED TILES
+		Draw_Space(Graphical_Data_Matrix[y][x].Space_Data, x, y, Center, Scale, Graphical_Data_Matrix[y][x].Rotate_Data);
+
+		//DRAW SHIP ON ANIMATED TILES
+		al_draw_scaled_rotated_bitmap(Ship, Center, Center, Position_x, Position_y, Currect_Sacle, Currect_Sacle, Rotate, 0);
+		al_flip_display();
+		al_rest(animation_speed);
+	}
+}
+
+void Draw_Ship_Rotation(int x, int y, int Type, int Player, int Old_Rotation, int New_Rotation)
 {
 	
+	float Scale = TILE_SIZE/IMAGE_SIZE;
+	float Center = IMAGE_SIZE/2;
+	int Player_Type;
+	float New_Rotate, Old_Rotate;
+	float Position_x = (x*TILE_SIZE +TILE_SIZE/2);
+	float Position_y = (y*TILE_SIZE +TILE_SIZE/2);
+
+	if (Player == 1)
+		Player_Type = Player_1_Type;
+	if (Player == 2)
+		Player_Type = Player_2_Type;
+
+
+	if (Type == 0) //HQ
+	{
+		if (Player_Type == 1)
+			Ship = HQ_1;
+		if (Player_Type == 2)
+			Ship = HQ_2;
+		if (Player_Type == 3)
+			Ship = HQ_3;
+		if (Player_Type == 4)
+			Ship = HQ_4;
+	}
+	if (Type == 1) //Fighter
+	{
+		if (Player_Type == 1)
+			Ship = Fighter_1;
+		if (Player_Type == 2)
+			Ship = Fighter_2;
+		if (Player_Type == 3)
+			Ship = Fighter_3;
+		if (Player_Type == 4)
+			Ship = Fighter_4;
+	}
+	if (Type == 2) //Transport
+	{
+		if (Player_Type == 1)
+			Ship = Transport_1;
+		if (Player_Type == 2)
+			Ship = Transport_2;
+		if (Player_Type == 3)
+			Ship = Transport_3;
+		if (Player_Type == 4)
+			Ship = Transport_4;
+	}
+
+	if (Old_Rotation == 1)
+		Old_Rotate = RADIANS*1.0;
+	if (Old_Rotation == 2)
+		Old_Rotate = RADIANS*3.0;
+	if (Old_Rotation == 3)
+		Old_Rotate = RADIANS*2.0;
+	if (Old_Rotation == 4)
+		Old_Rotate = RADIANS*0.0;
+
+	if (New_Rotation == 1)
+		New_Rotate = RADIANS*1.0;
+	if (New_Rotation == 2)
+		New_Rotate = RADIANS*3.0;
+	if (New_Rotation == 3)
+		New_Rotate = RADIANS*2.0;
+	if (New_Rotation == 4)
+		New_Rotate = RADIANS*0.0;
+
+
+	for (int i = 0; i < 15; i++)
+	{
+		float Rotate;
+		if (Old_Rotate > New_Rotate)
+	  	Rotate = New_Rotate + RADIANS*i/14.0;
+		else
+			Rotate = New_Rotate + RADIANS*i/14.0;
+			
+		//DRAW BLACK ON ANIMATED TILES
+		al_draw_scaled_rotated_bitmap(Black, Center, Center, Position_x, Position_y, Scale, Scale,  0, 0);
+		//DRAW SPACE ON ANIMATED TILES
+		Draw_Space(Graphical_Data_Matrix[y][x].Space_Data, x, y, Center, Scale, Graphical_Data_Matrix[y][x].Rotate_Data);
+
+		//DRAW SHIP ON ANIMATED TILES
+		al_draw_scaled_rotated_bitmap(Ship, Center, Center, Position_x, Position_y, Scale, Scale, Rotate, 0);
+		al_flip_display();
+		al_rest(animation_speed);
+	}
 }
 
 void Draw_Ship_Move(int x, int y, int Rotation, int Player, int Type, char Colision, int Other_Rotation)
@@ -416,13 +561,13 @@ void Draw_Ship_Move(int x, int y, int Rotation, int Player, int Type, char Colis
 	for (int i = 0; i < 15; i++)
 	{
 		if (Rotation == 1)
-			Position_x = ((x-2)*TILE_SIZE +TILE_SIZE/2) + (TILE_SIZE + ((i*TILE_SIZE)/15.0));
+			Position_x = ((x-2)*TILE_SIZE +TILE_SIZE/2) + (TILE_SIZE + ((i*TILE_SIZE)/14.0));
 		if (Rotation == 2)
-			Position_x = ((x+2)*TILE_SIZE +TILE_SIZE/2) - (TILE_SIZE + ((i*TILE_SIZE)/15.0));
+			Position_x = ((x+2)*TILE_SIZE +TILE_SIZE/2) - (TILE_SIZE + ((i*TILE_SIZE)/14.0));
 		if (Rotation == 3)
-			Position_y = ((y-2)*TILE_SIZE +TILE_SIZE/2) + (TILE_SIZE + ((i*TILE_SIZE)/15.0));
+			Position_y = ((y-2)*TILE_SIZE +TILE_SIZE/2) + (TILE_SIZE + ((i*TILE_SIZE)/14.0));
 		if (Rotation == 4)
-			Position_y = ((y+2)*TILE_SIZE +TILE_SIZE/2) - (TILE_SIZE + ((i*TILE_SIZE)/15.0));
+			Position_y = ((y+2)*TILE_SIZE +TILE_SIZE/2) - (TILE_SIZE + ((i*TILE_SIZE)/14.0));
 
 		//DRAW BLACK ON ANIMATED TILES
 		al_draw_scaled_rotated_bitmap(Black, Center, Center, old_x, old_y, Scale, Scale,  0, 0);
@@ -470,7 +615,7 @@ void Draw_Ship_Move(int x, int y, int Rotation, int Player, int Type, char Colis
 		//DRAW SHIP ON ANIMATED TILES
 		al_draw_scaled_rotated_bitmap(Ship, Center, Center, Position_x, Position_y, Scale, Scale, Rotate, 0);
 		al_flip_display();
-		al_rest(5);
+		al_rest(animation_speed);
 	}
 }
 
