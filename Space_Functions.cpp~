@@ -461,7 +461,6 @@ void Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, 
 								int p_y = Ships[Move_iterator].y;
 
 								MAP[old_y][old_x] = '.';
-								Draw_Whole_MAP(MAP, Ships);
 								if (MAP[p_y][p_x] != '.')
 								{
 									char Type, colision_object;

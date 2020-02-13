@@ -571,6 +571,7 @@ void Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, 
 									MAP[p_y][p_x] = p_ship;
 									Draw_Ship_Move(p_x, p_y, Ships[Move_iterator].Rotation, Player, Ships[Move_iterator].Type, '.', 0);
 								}
+							Draw_Whole_MAP(MAP, Ships);
 							}
 							else
 							{

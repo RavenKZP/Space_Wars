@@ -16,13 +16,21 @@ Return_Type Test_Alg_1 (Input_type Input, Output_type* Output)
 		Output_local.Commands_OUT.push_back(OUT);
 		OUT = "ROTATE " +  std::to_string(Input.ID_IN[i]) + " R";
 		Output_local.Commands_OUT.push_back(OUT);
-		OUT = "BUILD " + std::to_string(Input.X_IN[i]+1) + " " + std::to_string(Input.Y_IN[i]) + " 1 " + " 1";
+		OUT = "BUILD " + std::to_string(Input.X_IN[i]+1) + " " + std::to_string(Input.Y_IN[i]) + " 1" + " 1";
 		Output_local.Commands_OUT.push_back(OUT);
-		OUT = "BUILD " + std::to_string(Input.X_IN[i]) + " " + std::to_string(Input.Y_IN[i]+1) + " 1 " + " 1";
+		OUT = "BUILD " + std::to_string(Input.X_IN[i]) + " " + std::to_string(Input.Y_IN[i]+1) + " 1" + " 1";
 		Output_local.Commands_OUT.push_back(OUT);
-		OUT = "BUILD " + std::to_string(Input.X_IN[i]-1) + " " + std::to_string(Input.Y_IN[i]) + " 1 " + " 1";
+		OUT = "BUILD " + std::to_string(Input.X_IN[i]-1) + " " + std::to_string(Input.Y_IN[i]) + " 1" + " 1";
 		Output_local.Commands_OUT.push_back(OUT);
 		OUT = "BUILD " + std::to_string(Input.X_IN[i]) + " " + std::to_string(Input.Y_IN[i]-1) + " 1" + " 1";
+		Output_local.Commands_OUT.push_back(OUT);
+		OUT = "BUILD " + std::to_string(Input.X_IN[i]+1) + " " + std::to_string(Input.Y_IN[i]) + " 2" + " 1";
+		Output_local.Commands_OUT.push_back(OUT);
+		OUT = "BUILD " + std::to_string(Input.X_IN[i]) + " " + std::to_string(Input.Y_IN[i]+1) + " 2" + " 1";
+		Output_local.Commands_OUT.push_back(OUT);
+		OUT = "BUILD " + std::to_string(Input.X_IN[i]-1) + " " + std::to_string(Input.Y_IN[i]) + " 2" + " 1";
+		Output_local.Commands_OUT.push_back(OUT);
+		OUT = "BUILD " + std::to_string(Input.X_IN[i]) + " " + std::to_string(Input.Y_IN[i]-1) + " 2" + " 1";
 		Output_local.Commands_OUT.push_back(OUT);
 	}
 

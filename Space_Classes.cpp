@@ -70,7 +70,7 @@ Return_Type Ship_Class::MOVE (void)
 	switch (Rotation)
 	{
 		case 1:
-			if (x < MAP_SIZE - 2)
+			if (x < MAP_SIZE - 1)
 			{
 				x++;
 				return_val = E_OK;
@@ -84,7 +84,7 @@ Return_Type Ship_Class::MOVE (void)
 				}			
 			break;
 		case 3:
-			if (y < MAP_SIZE - 2)
+			if (y < MAP_SIZE - 1)
 			{
 				y++;
 				return_val = E_OK;
