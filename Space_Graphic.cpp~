@@ -10,11 +10,11 @@
 
 #define PI 3.141592653589793238462643383279502884197169
 #define RADIANS 1.57079633 // 90 degrees
-#define TILE_SIZE 80.0
+#define TILE_SIZE 800.0/MAP_SIZE
 #define IMAGE_SIZE 330.0
-#define FONT_SIZE 25
+#define FONT_SIZE 18
 
-float animation_speed = 0.01;
+float animation_speed = 0.05;
 
 float Ship_Rotate(std::vector<Ship_Class> Ships, int y, int x);
 
@@ -100,10 +100,10 @@ void Create_Display()
 	al_init_image_addon();
 	al_init_font_addon();
 	al_init_ttf_addon();
-	display = al_create_display(MAP_SIZE*TILE_SIZE+TILE_SIZE*5, MAP_SIZE*TILE_SIZE);
+	display = al_create_display(MAP_SIZE*TILE_SIZE+TILE_SIZE*10, MAP_SIZE*TILE_SIZE);
 
 
-  font = al_load_ttf_font("Fonts/Year 2000.ttf", FONT_SIZE, 0 );
+  font = al_load_ttf_font("Fonts/Credit Valley.ttf", FONT_SIZE, 0 );
 
 
 	Asteroid_1 = al_load_bitmap("Images/Asteroid_1.png");
@@ -143,11 +143,27 @@ void Create_Display()
 
 void Display_Stats(std::vector<Mine_Class> Mines, std::vector<Asteroid_Class> Asteroids, std::vector<Ship_Class> Ships)
 {
+	float Scale = TILE_SIZE/IMAGE_SIZE;
+	float Center = IMAGE_SIZE/2;
+	for (int i = 0; i < 10; i++)
+	{
+		for (int j = 0; j < MAP_SIZE; j++)
+		{
+			int Position_x = i*TILE_SIZE + MAP_SIZE*TILE_SIZE + TILE_SIZE/2;
+			int Position_y = j*TILE_SIZE + TILE_SIZE/2;
+			al_draw_scaled_rotated_bitmap(Black, Center, Center, Position_x, Position_y, Scale, Scale,  0, 0);
+		}
+	}
 	int global_i = 0;
 	for (int i = 0; i < Mines.size(); i++)
 	{
 		std::string Mine_description;
-		Mine_description = "Mine x " + std::to_string(Mines[i].x) + " y " + std::to_string(Mines[i].y) + " ID " + std::to_string(Mines[i].ID) + " HP " +  std::to_string(Mines[i].HP);
+		std::string M_x = std::to_string(Mines[i].x);
+		std::string M_y = std::to_string(Mines[i].y);
+		std::string M_ID = std::to_string(Mines[i].ID);
+		std::string M_HP = std::to_string(Mines[i].HP);
+
+		Mine_description = "Mine x " + M_x + " y " + M_y + " ID " + M_ID + " HP " + M_HP;
 		char desc[Mine_description.size()];
 		for (int j = 0; j < sizeof(desc); j++) 
 		{ 
@@ -159,7 +175,13 @@ void Display_Stats(std::vector<Mine_Class> Mines, std::vector<Asteroid_Class> As
 	for (int i = 0; i < Asteroids.size(); i++)
 	{
 		std::string Asteroid_description;
-		Asteroid_description = "Asteroid x " + std::to_string(Asteroids[i].x) + " y " + std::to_string(Asteroids[i].y) + " ID " + std::to_string(Asteroids[i].ID) + " HP " +  std::to_string(Asteroids[i].HP) + " Workshop: " + std::to_string(Asteroids[i].Workshop);
+		std::string A_x = std::to_string(Asteroids[i].x);
+		std::string A_y = std::to_string(Asteroids[i].y);
+		std::string A_ID = std::to_string(Asteroids[i].ID);
+		std::string A_HP = std::to_string(Asteroids[i].HP);
+		std::string A_Workshop = std::to_string(Asteroids[i].Workshop);
+
+		Asteroid_description = "Asteroid x " + A_x + " y " + A_y + " ID " + A_ID + " HP " +  A_HP + " Workshop: " + A_Workshop;
 		char desc[Asteroid_description.size()];
 		for (int j = 0; j < sizeof(desc); j++) 
 		{ 
@@ -168,16 +190,41 @@ void Display_Stats(std::vector<Mine_Class> Mines, std::vector<Asteroid_Class> As
 		al_draw_text(font, al_map_rgb(255,255,255), MAP_SIZE*TILE_SIZE+TILE_SIZE*2.5, global_i*FONT_SIZE, ALLEGRO_ALIGN_CENTRE, desc);
 		global_i += 1;
 	}
+	global_i = 0;
 	for (int i = 0; i < Ships.size(); i++)
 	{
-		std::string Ship_description;
-		Ship_description = "Ship x " + std::to_string(Ships[i].x) + " y " + std::to_string(Ships[i].y) + " ID " + std::to_string(Ships[i].ID) + " HP " +  std::to_string(Ships[i].HP);
-		char desc[Ship_description.size()];
-		for (int j = 0; j < sizeof(desc); j++) 
+		std::string Ship_description_1;
+		std::string Ship_description_2;
+		std::string S_Type;
+		std::string S_x = std::to_string(Ships[i].x);
+		std::string S_y = std::to_string(Ships[i].y);
+		std::string S_ID = std::to_string(Ships[i].ID);
+		std::string S_HP = std::to_string(Ships[i].HP);
+		std::string S_Storage = std::to_string(Ships[i].Storage);
+		std::string S_Speed = std::to_string(Ships[i].Speed);
+		if ( Ships[i].Type == 0)
+			S_Type = "HQ";
+		if ( Ships[i].Type == 1)
+			S_Type = "Figher";
+		if ( Ships[i].Type == 2)
+			S_Type = "Transport";
+
+		Ship_description_1 = "Ship x " + S_x + " y " + S_y + " ID " + S_ID + " HP " + S_HP;
+		Ship_description_2 = "Type " + S_Type + " Storage " + S_Storage + " Moves left " + S_Speed;
+
+		char desc_1[Ship_description_1.size()];
+		char desc_2[Ship_description_2.size()];
+		for (int j = 0; j < sizeof(desc_1); j++) 
 		{ 
-    	desc[j] = Ship_description[j]; 
+    	desc_1[j] = Ship_description_1[j]; 
     } 
-		al_draw_text(font, al_map_rgb(255,255,255), MAP_SIZE*TILE_SIZE+TILE_SIZE*2.5, global_i*FONT_SIZE, ALLEGRO_ALIGN_CENTRE, desc);
+		al_draw_text(font, al_map_rgb(255,255,255), MAP_SIZE*TILE_SIZE+TILE_SIZE*7.5, global_i*FONT_SIZE, ALLEGRO_ALIGN_CENTRE, desc_1);
+		global_i += 1;
+		for (int j = 0; j < sizeof(desc_2); j++) 
+		{ 
+    	desc_2[j] = Ship_description_2[j]; 
+    } 
+		al_draw_text(font, al_map_rgb(255,255,255), MAP_SIZE*TILE_SIZE+TILE_SIZE*7.5, global_i*FONT_SIZE, ALLEGRO_ALIGN_CENTRE, desc_2);
 		global_i += 1;
 	}
 }

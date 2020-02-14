@@ -343,6 +343,7 @@ int COLISION_DETECTOR(int x, int y, std::vector<Mine_Class> Mines, std::vector<A
 		}
 	}
 	std::cout << "COLISION DETECTOR DETECT " << Type << " ID " << Ships[ret_val].ID << std::endl;
+	sleep(10);
 	*Obj_Type = Type;
 	return ret_val;
 
@@ -583,7 +584,7 @@ int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, s
 									MAP[p_y][p_x] = p_ship;
 									Draw_Ship_Move(p_x, p_y, Ships[Move_iterator].Rotation, Player, Ships[Move_iterator].Type, '.', 0);
 								}
-							Draw_Whole_MAP(MAP, Ships);
+							Draw_Whole_MAP(MAP, Mines, Asteroids, Ships);
 							}
 							else
 							{
@@ -889,7 +890,7 @@ int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, s
 							{
 								Draw_Laser(Ships[Shoot_iterator].x, Ships[Shoot_iterator].y, Ships[Shoot_iterator].Rotation, Player, Ships[Shoot_iterator].Type, '.', 0, Ships[Shoot_iterator].Range);
 							}
-							Draw_Whole_MAP(MAP, Ships);
+							Draw_Whole_MAP(MAP, Mines, Asteroids, Ships);
 						}
 						else
 						{

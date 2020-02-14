@@ -8,7 +8,7 @@
 #include <cctype>
 #include <thread>
 
-int MAP_SIZE = 10;
+int MAP_SIZE = 15;
 
 #include "Algorithms/Algorithms.h"
 #include "Space_Functions.h"
@@ -223,7 +223,7 @@ int main()
 			}
 		}
 
-		Draw_Whole_MAP(MAP, Ships);
+		Draw_Whole_MAP(MAP, Mines, Asteroids, Ships);
 		// MAP is ready, now let's call algorithms
 	
 		//Preparing input structure for Player;

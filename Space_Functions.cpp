@@ -343,6 +343,7 @@ int COLISION_DETECTOR(int x, int y, std::vector<Mine_Class> Mines, std::vector<A
 		}
 	}
 	std::cout << "COLISION DETECTOR DETECT " << Type << " ID " << Ships[ret_val].ID << std::endl;
+	//sleep(10);
 	*Obj_Type = Type;
 	return ret_val;
 
