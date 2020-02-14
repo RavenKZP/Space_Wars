@@ -1,11 +1,12 @@
 #include <stdio.h>
 #include <iostream>
+#include <unistd.h>
 
 #include "Algorithms.h"
 
-#define MANUAL_TESTING
+//#define MANUAL_TESTING
 
-Return_Type Test_Alg_1 (Input_type Input, Output_type* Output)
+void Test_Alg_1 (Input_type Input, Output_type &Output)
 {
 	srand(time(NULL));
 
@@ -83,6 +84,13 @@ Return_Type Test_Alg_1 (Input_type Input, Output_type* Output)
 	}
 #endif
 
-	*Output = Output_local;
-	return E_OK;
+	Output = Output_local;
 }
+
+
+void Test_Alg_2 (Input_type Input, Output_type &Output)
+{
+	usleep(200);
+}
+
+

@@ -3,6 +3,7 @@
 
 #include "../Return_Types.h"
 
-Return_Type Test_Alg_1 (Input_type Input, Output_type* Output);
+void Test_Alg_1 (Input_type Input, Output_type &Output);
+void Test_Alg_2 (Input_type Input, Output_type &Output);
 
 #endif

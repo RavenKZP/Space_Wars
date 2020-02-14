@@ -13,8 +13,9 @@ typedef struct Graphical_Data
 
 } Graphical_Data_type;
 
-void Create_Display(int in_MAP_SIZE);
-void Draw_Whole_MAP(std::vector<std::vector<char> > MAP, std::vector<Ship_Class> Ships);
+void Create_Display();
+void Display_Stats(std::vector<Mine_Class> Mines, std::vector<Asteroid_Class> Asteroids, std::vector<Ship_Class> Ships);
+void Draw_Whole_MAP(std::vector<std::vector<char> > MAP, std::vector<Mine_Class> Mines, std::vector<Asteroid_Class> Asteroids, std::vector<Ship_Class> Ships);
 void Draw_Explosion(int x, int y);
 void Draw_Laser(int x, int y, int Rotation, int Player, int Type, char Colision, int Other_Rotation, int Range);
 void Draw_Space(int Space_Type, int i, int j, int Center, float Scale, float Rotate);

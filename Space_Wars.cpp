@@ -1,10 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
+#include <unistd.h>
 #include <time.h>
 #include <errno.h>
 #include <string>
 #include <cctype>
+#include <thread>
 
 int MAP_SIZE = 10;
 
@@ -16,8 +18,6 @@ int MAP_SIZE = 10;
 int main()
 {
 	int seed = time(NULL);
-	//seed = 1580950395;
-	//std::cout << "seed " << seed << std::endl;
 	srand(seed);
 	//MAP
 	std::vector<std::vector<char> > MAP;
@@ -25,7 +25,6 @@ int main()
 	
 	int Number_of_Asteroids = MAP_SIZE/10 * (MAP_SIZE - rand()%(MAP_SIZE/2)); 			//for MAP_SIZE = 10 is from 5 to 10
 	int Number_of_Mines = MAP_SIZE/10 * (MAP_SIZE - rand()%(MAP_SIZE/2)); 					//for MAP_SIZE = 10 is from 5 to 10
-	//std::cout << "Number_of_Asteroids " << Number_of_Asteroids << std::endl << "Number_of_Mines " << Number_of_Mines << std::endl;
 
 	std::vector<int> A_coords;
 	std::vector<int>::iterator it_A;
@@ -44,7 +43,6 @@ int main()
 		}
 		else
 		{
-			//std::cout << "A_coords " << coords << std::endl;
 			A_coords.push_back(coords);
 		}
 	}
@@ -62,7 +60,6 @@ int main()
 		}
 		else
 		{
-			//std::cout << "M_coords " << coords << std::endl;
 			M_coords.push_back(coords);
 		}
 	}
@@ -108,9 +105,6 @@ int main()
 			{
 				Asteroid_Class Asteroid = Asteroid_Class(x,y);
 				Asteroids.push_back(Asteroid); 
-				//MAP[y][x] = 'A';
-				//std::cout << "y " << y << " x " << x <<std::endl;
-				//MAP[MAP_SIZE - y - 1][MAP_SIZE - x - 1] = 'A';
 				Asteroid_Class Asteroid_2 = Asteroid_Class(MAP_SIZE - x - 1,MAP_SIZE - y - 1);
 				Asteroids.push_back(Asteroid_2);
 				break;
@@ -129,16 +123,12 @@ int main()
 			{
 				y++;
 				x -= max_size;
-				//std::cout << x << std::endl; 
 				max_size--;
 			}
 			else
 			{
 				Mine_Class Mine = Mine_Class(x,y);
 				Mines.push_back(Mine);
-				//MAP[y][x] = 'M';
-				//std::cout << "y " << y << "x " << x <<std::endl;
-				//MAP[MAP_SIZE - y - 1][MAP_SIZE - x - 1] = 'M';
 				Mine_Class Mine_2 = Mine_Class(MAP_SIZE -x -1,MAP_SIZE -y -1);
 				Mines.push_back(Mine_2);
 				break;
@@ -146,10 +136,16 @@ int main()
 		}
 	}
 
-	Create_Display(MAP_SIZE);
+	Create_Display();
 	int game_end = MAP_SIZE*MAP_SIZE*5;
-	while(game_end > 0)
+	int Winner = 0;
+	int Player = 1;
+	int Other_Player = 2;
+	int Player_Alg[2] = {1,1};
+
+	while(game_end > 0 && Winner == 0)
 	{
+		int No_Ships_Player = 0;
 		//reset spped for ships
 		for (int i = 0; i < Ships.size(); i++)
 		{
@@ -227,142 +223,46 @@ int main()
 			}
 		}
 
-		Draw_Whole_MAP(MAP, Ships);
+		Draw_Whole_MAP(MAP, Mines, Asteroids, Ships);
 		// MAP is ready, now let's call algorithms
 	
-		//Preparing input structure for Player 1;
+		//Preparing input structure for Player;
 
-		int Player = 1;
-		int No_Ships_Player_1 = 0;
-		int No_Ships_Player_2 = 0;
-
-		Input_type Input_Player_1;
-		Output_type Output_Player_1;
+		Input_type Input_Player;
+		Output_type Output_Player;
 	
-		Input_Player_1.MAP_SIZE_IN = MAP_SIZE;
-		Input_Player_1.MAP_IN = MAP;
+		Input_Player.MAP_SIZE_IN = MAP_SIZE;
+		Input_Player.MAP_IN = MAP;
 		for (int i = 0; i < Ships.size(); i++)
 		{
-			if (Ships[i].Player == 1)
+			if (Ships[i].Player == Player)
 			{
-				Input_Player_1.ID_IN.push_back(Ships[i].ID);
-				Input_Player_1.Type_IN.push_back(Ships[i].Type);
-				Input_Player_1.Rotation_IN.push_back(Ships[i].Rotation);
-				Input_Player_1.HP_IN.push_back(Ships[i].HP);
-				Input_Player_1.Storage_IN.push_back(Ships[i].Storage);
-				Input_Player_1.X_IN.push_back(Ships[i].x);
-				Input_Player_1.Y_IN.push_back(Ships[i].y);
-				No_Ships_Player_1++;
+				Input_Player.ID_IN.push_back(Ships[i].ID);
+				Input_Player.Type_IN.push_back(Ships[i].Type);
+				Input_Player.Rotation_IN.push_back(Ships[i].Rotation);
+				Input_Player.HP_IN.push_back(Ships[i].HP);
+				Input_Player.Storage_IN.push_back(Ships[i].Storage);
+				Input_Player.X_IN.push_back(Ships[i].x);
+				Input_Player.Y_IN.push_back(Ships[i].y);
+				No_Ships_Player++;
 			}
 		}
-		Input_Player_1.No_Ships_IN = No_Ships_Player_1;
+		Input_Player.No_Ships_IN = No_Ships_Player;
+		std::thread thread_Player;
 
-		Test_Alg_1(Input_Player_1, &Output_Player_1);
+		if (Player_Alg[Player-1] == 1)
+			thread_Player = std::thread(Test_Alg_1, Input_Player, std::ref(Output_Player) );
+		if (Player_Alg[Player-1] == 2)
+			thread_Player = std::thread(Test_Alg_2, Input_Player, std::ref(Output_Player) );
 
-		std::cout << "PLAYER " << Player << std::endl << std::endl;
-		Perform_Actions(Output_Player_1, Mines, Asteroids, Ships, MAP, Player);
+		usleep(100);
 
-//Reset MAP
-		for (int i = 0; i < MAP_SIZE; i++)
-		{
-			for (int j = 0; j < MAP_SIZE; j++)
-			{
-				MAP[i][j] = '.';
-			}
-		}
+		if (!Output_Player.Commands_OUT.empty())
+			Winner = Perform_Actions(Output_Player, Mines, Asteroids, Ships, MAP, Player);
+		else
+			Winner = Other_Player;
 
-		//placing Asteroids on map
-		for (int i = 0; i <	Asteroids.size(); i++)
-		{
-			if (Asteroids[i].Workshop == 2)
-			{
-				MAP[Asteroids[i].y][Asteroids[i].x] = 'w';
-			}
-			else if (Asteroids[i].Workshop == 1)
-			{
-				MAP[Asteroids[i].y][Asteroids[i].x] = 'W';
-			}
-			else
-			{
-				MAP[Asteroids[i].y][Asteroids[i].x] = 'A';
-			}
-		}
-	
-		//placing Mines on map
-		for (int i = 0; i <	Mines.size(); i++)
-		{
-			MAP[Mines[i].y][Mines[i].x] = 'M';
-		}
-	
-		//Placing Ships on map
-	
-		for (int i = 0; i <	Ships.size(); i++)
-		{
-			char res;
-			if (Ships[i].Player == 1)
-			{
-				switch (Ships[i].Type)
-				{
-					case 0:
-						res = 'H';
-						break;
-					case 1:
-						res = 'F';
-						break;
-					case 2:
-						res = 'T';
-						break;
-				}
-				MAP[Ships[i].y][Ships[i].x] = res;
-			}
-			if (Ships[i].Player == 2)
-			{
-				switch (Ships[i].Type)
-				{
-					case 0:
-						res = 'h';
-						break;
-					case 1:
-						res = 'f';
-						break;
-					case 2:
-						res = 't';
-						break;
-				}
-				MAP[Ships[i].y][Ships[i].x] = res;
-			}
-		}
-
-		Draw_Whole_MAP(MAP, Ships);
-	//Preparing input structure for Player 2;
-
-		Player = 2;
-
-		Input_type Input_Player_2;
-		Output_type Output_Player_2;
-	
-		Input_Player_2.MAP_SIZE_IN = MAP_SIZE;
-		Input_Player_2.MAP_IN = MAP;
-		for (int i = 0; i < Ships.size(); i++)
-		{
-			if (Ships[i].Player == 2)
-			{
-				Input_Player_2.ID_IN.push_back(Ships[i].ID);
-				Input_Player_2.Type_IN.push_back(Ships[i].Type);
-				Input_Player_2.Rotation_IN.push_back(Ships[i].Rotation);
-				Input_Player_2.HP_IN.push_back(Ships[i].HP);
-				Input_Player_2.Storage_IN.push_back(Ships[i].Storage);
-				Input_Player_2.X_IN.push_back(Ships[i].x);
-				Input_Player_2.Y_IN.push_back(Ships[i].y);
-				No_Ships_Player_2++;
-			}
-		}
-		Input_Player_2.No_Ships_IN = No_Ships_Player_2;
-
-		Test_Alg_1(Input_Player_2, &Output_Player_2);
-
-		std::cout << "PLAYER " << Player << std::endl << std::endl;
-		Perform_Actions(Output_Player_2, Mines, Asteroids, Ships, MAP, Player);
+		thread_Player.detach();
 
 		/*
 		for (int i = 0; i < Ships.size(); i++)
@@ -386,20 +286,14 @@ int main()
 		}
 		*/
 	
-		int Income = 11 - No_Ships_Player_1;
-		Ships[0].Storage += Income;
-		if (Ships[0].Storage > Ships[0].MAX_Storage)
+		int Income = 11 - No_Ships_Player;
+		Ships[Player-1].Storage += Income;
+		if (Ships[Player-1].Storage > Ships[Player-1].MAX_Storage)
 		{
-			Ships[0].Storage = Ships[0].MAX_Storage;
-		}
-		Income = 11 - No_Ships_Player_2;
-		Ships[1].Storage += Income;
-		if (Ships[1].Storage > Ships[1].MAX_Storage)
-		{
-			Ships[1].Storage = Ships[1].MAX_Storage;
+			Ships[Player-1].Storage = Ships[Player-1].MAX_Storage;
 		}
 
-		if (Ships[0].Storage < 0)
+		if (Ships[Player-1].Storage < 0)
 		{
 			for (int i = Ships.size() -1; i > 2; i--)
 			{
@@ -408,23 +302,15 @@ int main()
 					Ships.erase(Ships.begin() + i);
 				}
 			}
-			Ships[0].Storage = 0;
+			Ships[Player-1].Storage = 0;
 		}
-		if (Ships[1].Storage < 0)
-		{
-			for (int i = Ships.size() -1; i > 2; i--)
-			{
-				if (Ships[i].Player == 2)
-				{
-					Ships.erase(Ships.begin() + i);
-				}
-			}
-			Ships[1].Storage = 0;
-		}
+
+		std::swap(Player, Other_Player);
 
 		std::cout << "Seed: " << seed << std::endl;
 		std::cout << "Turns Left: " << --game_end << std::endl;
 	}
+	std::cout << "WINNER IS: Player " << Winner << std::endl;
 	Destroy_Display();
 	return E_OK;
 }

@@ -3,6 +3,8 @@
 #include <vector>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_image.h>
+#include <allegro5/allegro_font.h>
+#include <allegro5/allegro_ttf.h>
 
 #include "Space_Graphic.h"
 
@@ -10,8 +12,9 @@
 #define RADIANS 1.57079633 // 90 degrees
 #define TILE_SIZE 80.0
 #define IMAGE_SIZE 330.0
+#define FONT_SIZE 15
 
-float animation_speed = 0.1;
+float animation_speed = 0.01;
 
 float Ship_Rotate(std::vector<Ship_Class> Ships, int y, int x);
 
@@ -58,10 +61,11 @@ ALLEGRO_BITMAP *Workshop_1 = NULL;
 ALLEGRO_BITMAP *Workshop_2 = NULL;
 ALLEGRO_BITMAP *Workshop_3 = NULL;
 ALLEGRO_BITMAP *Workshop_4 = NULL;
-
 ALLEGRO_BITMAP *Ship = NULL;
 
-void Create_Display(int in_MAP_SIZE)
+ALLEGRO_FONT *font = NULL;
+
+void Create_Display()
 {
 	seed = time(NULL);	
 	srand(seed);
@@ -72,10 +76,10 @@ void Create_Display(int in_MAP_SIZE)
 		Player_1_Type = rand()%4+1;
 	}
 
-	for(int j = 0; j < in_MAP_SIZE; j++)
+	for(int j = 0; j < MAP_SIZE; j++)
 	{
 		std::vector<Graphical_Data_type> temp;
-		for(int i = 0; i < in_MAP_SIZE; i++)
+		for(int i = 0; i < MAP_SIZE; i++)
 		{
 			float Rotate = rand();
 			int Space_Type = rand()%10 +1;
@@ -94,7 +98,12 @@ void Create_Display(int in_MAP_SIZE)
 	
 	al_init();
 	al_init_image_addon();
+	al_init_font_addon();
+	al_init_ttf_addon();
 	display = al_create_display(MAP_SIZE*TILE_SIZE+TILE_SIZE*5, MAP_SIZE*TILE_SIZE);
+
+
+  font = al_load_ttf_font("Fonts/Year 2000.ttf", FONT_SIZE, 0 );
 
 
 	Asteroid_1 = al_load_bitmap("Images/Asteroid_1.png");
@@ -132,7 +141,48 @@ void Create_Display(int in_MAP_SIZE)
 	Workshop_4 = al_load_bitmap("Images/Workshop_4.png");
 }
 
-void Draw_Whole_MAP(std::vector<std::vector<char> > MAP, std::vector<Ship_Class> Ships)
+void Display_Stats(std::vector<Mine_Class> Mines, std::vector<Asteroid_Class> Asteroids, std::vector<Ship_Class> Ships)
+{
+	int global_i = 0;
+	for (int i = 0; i < Mines.size(); i++)
+	{
+		std::string Mine_description;
+		Mine_description = "Mine x " + std::to_string(Mines[i].x) + " y " + std::to_string(Mines[i].y) + " ID " + std::to_string(Mines[i].ID) + " HP " +  std::to_string(Mines[i].HP);
+		char desc[Mine_description.size()];
+		for (int j = 0; j < sizeof(desc); j++) 
+		{ 
+    	desc[j] = Mine_description[j]; 
+    } 
+		al_draw_text(font, al_map_rgb(255,255,255), MAP_SIZE*TILE_SIZE+TILE_SIZE*2.5, global_i*FONT_SIZE, ALLEGRO_ALIGN_CENTRE, desc);
+		global_i += 1;
+	}
+	for (int i = 0; i < Asteroids.size(); i++)
+	{
+		std::string Asteroid_description;
+		Asteroid_description = "Asteroid x " + std::to_string(Asteroids[i].x) + " y " + std::to_string(Asteroids[i].y) + " ID " + std::to_string(Asteroids[i].ID) + " HP " +  std::to_string(Asteroids[i].HP) + " Workshop: " + std::to_string(Asteroids[i].Workshop);
+		char desc[Asteroid_description.size()];
+		for (int j = 0; j < sizeof(desc); j++) 
+		{ 
+    	desc[j] = Asteroid_description[j]; 
+    } 
+		al_draw_text(font, al_map_rgb(255,255,255), MAP_SIZE*TILE_SIZE+TILE_SIZE*2.5, global_i*FONT_SIZE, ALLEGRO_ALIGN_CENTRE, desc);
+		global_i += 1;
+	}
+	for (int i = 0; i < Ships.size(); i++)
+	{
+		std::string Ship_description;
+		Ship_description = "Ship x " + std::to_string(Ships[i].x) + " y " + std::to_string(Ships[i].y) + " ID " + std::to_string(Ships[i].ID) + " HP " +  std::to_string(Ships[i].HP);
+		char desc[Ship_description.size()];
+		for (int j = 0; j < sizeof(desc); j++) 
+		{ 
+    	desc[j] = Ship_description[j]; 
+    } 
+		al_draw_text(font, al_map_rgb(255,255,255), MAP_SIZE*TILE_SIZE+TILE_SIZE*2.5, global_i*FONT_SIZE, ALLEGRO_ALIGN_CENTRE, desc);
+		global_i += 1;
+	}
+}
+
+void Draw_Whole_MAP(std::vector<std::vector<char> > MAP, std::vector<Mine_Class> Mines, std::vector<Asteroid_Class> Asteroids, std::vector<Ship_Class> Ships)
 {
 	srand(seed);
 	float Scale = TILE_SIZE/IMAGE_SIZE;
@@ -140,6 +190,7 @@ void Draw_Whole_MAP(std::vector<std::vector<char> > MAP, std::vector<Ship_Class>
 	int MAP_SIZE = MAP[0].size();
 
 	al_clear_to_color(al_map_rgb(0,0,0));
+
 	for(int j = 0; j < MAP.size(); j++)
 	{
 		for(int i = 0; i < MAP.size(); i++)
@@ -184,7 +235,7 @@ void Draw_Whole_MAP(std::vector<std::vector<char> > MAP, std::vector<Ship_Class>
 			}
 		}
 	}
-	
+	Display_Stats(Mines, Asteroids, Ships);
 	al_flip_display();
 	al_rest(animation_speed*2);
 }
@@ -610,7 +661,7 @@ void Draw_Laser(int x, int y, int Rotation, int Player, int Type, char Colision,
 		Ship_Rotate = RADIANS*0.0;
 
 
-	for (int i = 0; i < (15*(Range)); i++)
+	for (int i = 0; i < (15.0*Range)-7; i++)
 	{
 		if (Rotation == 1)
 			Position_x = ((x-1)*TILE_SIZE +TILE_SIZE/2) + (TILE_SIZE + ((i*TILE_SIZE)/(14.0)));
@@ -685,7 +736,7 @@ void Draw_Laser(int x, int y, int Rotation, int Player, int Type, char Colision,
 
 		al_draw_scaled_rotated_bitmap(Ship, Center, Center, first_x, first_y, Scale, Scale, Ship_Rotate, 0);
 		al_flip_display();
-		al_rest(animation_speed/Range);
+		al_rest(animation_speed);
 	}
 }
 
@@ -869,7 +920,8 @@ void Draw_Build_Workshop(int x, int y, int Player)
 
 void Destroy_Display()
 {
-	al_destroy_display(display);
+/*
+	al_destroy_bitmap(Ship);
 
 	al_destroy_bitmap(Asteroid_1);
 	al_destroy_bitmap(Asteroid_2);
@@ -904,6 +956,7 @@ void Destroy_Display()
 	al_destroy_bitmap(Workshop_2);
 	al_destroy_bitmap(Workshop_3);
 	al_destroy_bitmap(Workshop_4);
+*/
+	al_destroy_display(display);
 
-	al_destroy_bitmap(Ship);
 }

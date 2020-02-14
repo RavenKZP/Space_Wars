@@ -349,13 +349,18 @@ int COLISION_DETECTOR(int x, int y, std::vector<Mine_Class> Mines, std::vector<A
 }
 
 
-void Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, std::vector<Asteroid_Class>& Asteroids, std::vector<Ship_Class>& Ships, std::vector<std::vector<char> >& MAP, int Player)
+int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, std::vector<Asteroid_Class>& Asteroids, std::vector<Ship_Class>& Ships, std::vector<std::vector<char> >& MAP, int Player)
 {
 	int MAP_SIZE = MAP[0].size();
+	int Winner = 0;
 	for (int i = 0; i < Output_Player.Commands_OUT.size(); i++)
 	{
+		if (Winner != 0)
+		{
+			break;
+		}
 		std::string message = Output_Player.Commands_OUT[i];
-		std::cout << Player << ": " << Ships[Player-1].Storage << std::endl;
+		//std::cout << Player << ": " << Ships[Player-1].Storage << std::endl;
 		std::cout << message << std::endl;
 		std::vector<std::string> split;
 		boost::split(split, message, boost::is_any_of(" ") );
@@ -571,7 +576,7 @@ void Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, 
 									}
 								Draw_Ship_Move(p_x, p_y, Ships[Move_iterator].Rotation, Player, Ships[Move_iterator].Type, colision_object, Colision_Rotation);
 								Draw_Explosion(p_x, p_y);
-								Destroy_Ships(Mines, Asteroids, Ships);
+								Winner = Destroy_Ships(Mines, Asteroids, Ships);
 								}
 								else
 								{
@@ -713,7 +718,7 @@ void Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, 
 											Draw_Laser(p_x, p_y, Ships[Shoot_iterator].Rotation, Player, Ships[Shoot_iterator].Type, col_obj, Ships[Colision_ID].Rotation, i+1);
 											Draw_Explosion(Ships[Colision_ID].x, Ships[Colision_ID].y);
 										}
-										Destroy_Ships(Mines, Asteroids, Ships);
+										Winner = Destroy_Ships(Mines, Asteroids, Ships);
 										break;
 									}
 								}
@@ -767,7 +772,7 @@ void Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, 
 											Draw_Laser(p_x, p_y, Ships[Shoot_iterator].Rotation, Player, Ships[Shoot_iterator].Type, col_obj, Ships[Colision_ID].Rotation, i+1);
 											Draw_Explosion(Ships[Colision_ID].x, Ships[Colision_ID].y);
 										}
-										Destroy_Ships(Mines, Asteroids, Ships);
+										Winner = Destroy_Ships(Mines, Asteroids, Ships);
 										break;
 									}
 								}
@@ -821,7 +826,7 @@ void Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, 
 											Draw_Laser(p_x, p_y, Ships[Shoot_iterator].Rotation, Player, Ships[Shoot_iterator].Type, col_obj, Ships[Colision_ID].Rotation, i+1);
 											Draw_Explosion(Ships[Colision_ID].x, Ships[Colision_ID].y);
 										}
-										Destroy_Ships(Mines, Asteroids, Ships);
+										Winner = Destroy_Ships(Mines, Asteroids, Ships);
 										break;
 									}
 								}
@@ -875,7 +880,7 @@ void Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, 
 											Draw_Laser(p_x, p_y, Ships[Shoot_iterator].Rotation, Player, Ships[Shoot_iterator].Type, col_obj, Ships[Colision_ID].Rotation, i+1);
 											Draw_Explosion(Ships[Colision_ID].x, Ships[Colision_ID].y);
 										}
-										Destroy_Ships(Mines, Asteroids, Ships);
+										Winner = Destroy_Ships(Mines, Asteroids, Ships);
 										break;
 									}
 								}
@@ -884,6 +889,7 @@ void Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, 
 							{
 								Draw_Laser(Ships[Shoot_iterator].x, Ships[Shoot_iterator].y, Ships[Shoot_iterator].Rotation, Player, Ships[Shoot_iterator].Type, '.', 0, Ships[Shoot_iterator].Range);
 							}
+							Draw_Whole_MAP(MAP, Ships);
 						}
 						else
 						{
@@ -1034,15 +1040,18 @@ void Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, 
 				break;
 			}
 		}
+		Display_Stats(Mines, Asteroids, Ships);
 	}
+	return Winner;
 }
 
-void Destroy_Ships(std::vector<Mine_Class>& Mines, std::vector<Asteroid_Class>& Asteroids, std::vector<Ship_Class>& Ships)
+int Destroy_Ships(std::vector<Mine_Class>& Mines, std::vector<Asteroid_Class>& Asteroids, std::vector<Ship_Class>& Ships)
 {
+	int Winner = 0;
 	std::vector<int>  it_to_del;
 	for (int i = 0; i < Mines.size(); i++)
 	{
-		//std::cout << "Mine " << Mines[i].ID << " x " << Mines[i].x << " y " << Mines[i].y << " HP " << Mines[i].HP << std::endl;
+		std::cout << "Mine " << Mines[i].ID << " x " << Mines[i].x << " y " << Mines[i].y << " HP " << Mines[i].HP << std::endl;
 		if (Mines[i].HP <= 0)
 		{
 			it_to_del.push_back(i);
@@ -1056,7 +1065,7 @@ void Destroy_Ships(std::vector<Mine_Class>& Mines, std::vector<Asteroid_Class>& 
 
 	for (int i = 0; i < Asteroids.size(); i++)
 	{
-		//std::cout << "Asteroid " << Asteroids[i].ID << " x " << Asteroids[i].x << " y " << Asteroids[i].y << " HP " << Asteroids[i].HP << " Workshop_Player " << Asteroids[i].Workshop << std::endl;
+		std::cout << "Asteroid " << Asteroids[i].ID << " x " << Asteroids[i].x << " y " << Asteroids[i].y << " HP " << Asteroids[i].HP << " Workshop_Player " << Asteroids[i].Workshop << std::endl;
 		if (Asteroids[i].HP <= 0)
 		{
 			it_to_del.push_back(i);
@@ -1070,10 +1079,18 @@ void Destroy_Ships(std::vector<Mine_Class>& Mines, std::vector<Asteroid_Class>& 
 
 	for (int i = 0; i < Ships.size(); i++)
 	{
-		//std::cout << "Ship " << Ships[i].ID << " x " << Ships[i].x << " y " << Ships[i].y << " HP " << Ships[i].HP << " Rotation " << Ships[i].Rotation << " Type " << Ships[i].Type << " Player " << Ships[i].Player << " Storage " << Ships[i].Storage << std::endl;
+		std::cout << "Ship " << Ships[i].ID << " x " << Ships[i].x << " y " << Ships[i].y << " HP " << Ships[i].HP << " Rotation " << Ships[i].Rotation << " Type " << Ships[i].Type << " Player " << Ships[i].Player << " Storage " << Ships[i].Storage << std::endl;
 		if (Ships[i].HP <= 0)
 		{
 			it_to_del.push_back(i);
+			if (Ships[i].Type == 0 && Ships[i].Player == 1 )
+			{
+				Winner = 2;
+			}
+			if (Ships[i].Type == 0 && Ships[i].Player == 2 )
+			{
+				Winner = 1;
+			}
 		}
 	}
 	for (int i = it_to_del.size() -1; i >= 0; i--)
@@ -1081,4 +1098,5 @@ void Destroy_Ships(std::vector<Mine_Class>& Mines, std::vector<Asteroid_Class>& 
 		Ships.erase(Ships.begin() + it_to_del[i]);
 	}
 	it_to_del.clear();
+	return Winner;
 }

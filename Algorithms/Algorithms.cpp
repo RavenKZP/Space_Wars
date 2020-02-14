@@ -1,11 +1,12 @@
 #include <stdio.h>
 #include <iostream>
+#include <unistd.h>
 
 #include "Algorithms.h"
 
 //#define MANUAL_TESTING
 
-Return_Type Test_Alg_1 (Input_type Input, Output_type* Output)
+void Test_Alg_1 (Input_type Input, Output_type &Output)
 {
 	srand(time(NULL));
 
@@ -54,8 +55,11 @@ Return_Type Test_Alg_1 (Input_type Input, Output_type* Output)
 		OUT = "BUILD " + std::to_string(Input.X_IN[i]) + " " + std::to_string(Input.Y_IN[i]-1) + " 2" + " 1";
 		Output_local.Commands_OUT.push_back(OUT);
 
-		OUT = "MOVE " +  std::to_string(Input.ID_IN[i]);
-		Output_local.Commands_OUT.push_back(OUT);
+		if (Input.Type_IN[i] != 0)
+		{
+			OUT = "MOVE " +  std::to_string(Input.ID_IN[i]);
+			Output_local.Commands_OUT.push_back(OUT);
+		}
 
 		if (rand()%2)
 		{
@@ -83,6 +87,13 @@ Return_Type Test_Alg_1 (Input_type Input, Output_type* Output)
 	}
 #endif
 
-	*Output = Output_local;
-	return E_OK;
+	Output = Output_local;
 }
+
+
+void Test_Alg_2 (Input_type Input, Output_type &Output)
+{
+	usleep(200);
+}
+
+
