@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
+#include <fstream>
 #include <unistd.h>
 #include <time.h>
 #include <errno.h>
@@ -17,6 +18,9 @@ int MAP_SIZE = 10;
 
 int main()
 {
+	std::ofstream MAP_LOG;
+	MAP_LOG.open("logs/MAP_LOG.log");
+	Space_Functions_Open();
 	int seed = time(NULL);
 	srand(seed);
 	//MAP
@@ -143,6 +147,8 @@ int main()
 	int Other_Player = 2;
 	int Player_Alg[2] = {1,1};
 
+	MAP_LOG << seed << std::endl;
+
 	while(game_end > 0 && Winner == 0)
 	{
 		int No_Ships_Player = 0;
@@ -225,6 +231,16 @@ int main()
 
 		Draw_Whole_MAP(MAP, Mines, Asteroids, Ships);
 		// MAP is ready, now let's call algorithms
+		MAP_LOG <<"Turn: " << MAP_SIZE*MAP_SIZE*5 - game_end << std::endl;
+		for (int i = 0; i < MAP.size(); i++)
+		{
+			for (int j = 0; j < MAP[i].size(); j++)
+			{
+				MAP_LOG << MAP[j][i];
+			}
+		MAP_LOG << std::endl;
+		}
+		MAP_LOG << std::endl;
 	
 		//Preparing input structure for Player;
 
@@ -233,6 +249,7 @@ int main()
 	
 		Input_Player.MAP_SIZE_IN = MAP_SIZE;
 		Input_Player.MAP_IN = MAP;
+		Input_Player.PLAYER_IN = Player;
 		for (int i = 0; i < Ships.size(); i++)
 		{
 			if (Ships[i].Player == Player)
@@ -255,7 +272,7 @@ int main()
 		if (Player_Alg[Player-1] == 2)
 			thread_Player = std::thread(Test_Alg_2, Input_Player, std::ref(Output_Player) );
 
-		usleep(100);
+		usleep(500);
 
 		if (!Output_Player.Commands_OUT.empty())
 			Winner = Perform_Actions(Output_Player, Mines, Asteroids, Ships, MAP, Player);
@@ -264,12 +281,11 @@ int main()
 
 		thread_Player.detach();
 
-		/*
-		for (int i = 0; i < Ships.size(); i++)
+		for (int i = 2; i < Ships.size(); i++)
 		{
 			if (Ships[i].Player == 1)
 			{
-				if ( (Ships[i].x == 0 && Ships[i].y == 1) || (Ships[i].x == 1 && Ships[i].y == 0) )
+				if ( (Ships[i].x +1 == Ships[0].x && Ships[i].y == Ships[0].y) || (Ships[i].x == Ships[0].x -1 && Ships[i].y == Ships[0].y) || (Ships[i].x == Ships[0].x && Ships[i].y +1 == Ships[0].y) || (Ships[i].x == Ships[0].x && Ships[i].y -1 == Ships[0].y))
 				{
 					Ships[0].Storage += Ships[i].Storage;
 					Ships[i].Storage = 0;
@@ -277,14 +293,13 @@ int main()
 			}
 			if (Player == 2)
 			{
-				if ( (Ships[i].x == MAP_SIZE -1 && Ships[i].y == MAP_SIZE -2) || (Ships[i].x == MAP_SIZE -2 && Ships[i].y == MAP_SIZE -1) )
+				if ( (Ships[i].x +1 == Ships[1].x && Ships[i].y == Ships[1].y) || (Ships[i].x == Ships[1].x -1 && Ships[i].y == Ships[1].y) || (Ships[i].x == Ships[1].x && Ships[i].y +1 == Ships[1].y) || (Ships[i].x == Ships[1].x && Ships[i].y -1 == Ships[1].y))
 				{
 					Ships[1].Storage += Ships[i].Storage;
 					Ships[i].Storage = 0;
 				}
 			}
 		}
-		*/
 	
 		int Income = 11 - No_Ships_Player;
 		Ships[Player-1].Storage += Income;
@@ -310,7 +325,16 @@ int main()
 		std::cout << "Seed: " << seed << std::endl;
 		std::cout << "Turns Left: " << --game_end << std::endl;
 	}
+	if (Winner == 0)
+		if (Ships[0].Storage > Ships[1].Storage)
+			Winner = 1;
+		else
+			Winner = 2;
+
 	std::cout << "WINNER IS: Player " << Winner << std::endl;
-	Destroy_Display();
+	Display_Winner(Winner);
+	MAP_LOG.close();
+	Destroy_Display();	
+	Space_Functions_Close();
 	return E_OK;
 }

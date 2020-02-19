@@ -64,6 +64,7 @@ ALLEGRO_BITMAP *Workshop_4 = NULL;
 ALLEGRO_BITMAP *Ship = NULL;
 
 ALLEGRO_FONT *font = NULL;
+ALLEGRO_FONT *Winner_font = NULL;
 
 void Create_Display()
 {
@@ -104,6 +105,7 @@ void Create_Display()
 
 
   font = al_load_ttf_font("Fonts/Credit Valley.ttf", FONT_SIZE, 0 );
+	Winner_font = al_load_ttf_font("Fonts/Credit Valley.ttf", MAP_SIZE*5, 0 );
 
 
 	Asteroid_1 = al_load_bitmap("Images/Asteroid_1.png");
@@ -186,8 +188,13 @@ void Display_Stats(std::vector<Mine_Class> Mines, std::vector<Asteroid_Class> As
 		for (int j = 0; j < sizeof(desc); j++) 
 		{ 
     	desc[j] = Asteroid_description[j]; 
-    } 
-		al_draw_text(font, al_map_rgb(255,255,255), MAP_SIZE*TILE_SIZE+TILE_SIZE*2.5, global_i*FONT_SIZE, ALLEGRO_ALIGN_CENTRE, desc);
+    }
+		if (A_Workshop == "0")
+			al_draw_text(font, al_map_rgb(255,255,255), MAP_SIZE*TILE_SIZE+TILE_SIZE*2.5, global_i*FONT_SIZE, ALLEGRO_ALIGN_CENTRE, desc);
+		if (A_Workshop == "1")
+			al_draw_text(font, al_map_rgb(0,255,0), MAP_SIZE*TILE_SIZE+TILE_SIZE*2.5, global_i*FONT_SIZE, ALLEGRO_ALIGN_CENTRE, desc);
+		if (A_Workshop == "2")
+			al_draw_text(font, al_map_rgb(255,0,0), MAP_SIZE*TILE_SIZE+TILE_SIZE*2.5, global_i*FONT_SIZE, ALLEGRO_ALIGN_CENTRE, desc);
 		global_i += 1;
 	}
 	global_i = 0;
@@ -217,16 +224,51 @@ void Display_Stats(std::vector<Mine_Class> Mines, std::vector<Asteroid_Class> As
 		for (int j = 0; j < sizeof(desc_1); j++) 
 		{ 
     	desc_1[j] = Ship_description_1[j]; 
-    } 
-		al_draw_text(font, al_map_rgb(255,255,255), MAP_SIZE*TILE_SIZE+TILE_SIZE*7.5, global_i*FONT_SIZE, ALLEGRO_ALIGN_CENTRE, desc_1);
+    }
+		if (Ships[i].Player == 1)
+			al_draw_text(font, al_map_rgb(0,255,0), MAP_SIZE*TILE_SIZE+TILE_SIZE*7.5, global_i*FONT_SIZE, ALLEGRO_ALIGN_CENTRE, desc_1);
+		if (Ships[i].Player == 2)
+			al_draw_text(font, al_map_rgb(255,0,0), MAP_SIZE*TILE_SIZE+TILE_SIZE*7.5, global_i*FONT_SIZE, ALLEGRO_ALIGN_CENTRE, desc_1);
 		global_i += 1;
 		for (int j = 0; j < sizeof(desc_2); j++) 
 		{ 
     	desc_2[j] = Ship_description_2[j]; 
-    } 
-		al_draw_text(font, al_map_rgb(255,255,255), MAP_SIZE*TILE_SIZE+TILE_SIZE*7.5, global_i*FONT_SIZE, ALLEGRO_ALIGN_CENTRE, desc_2);
+    }
+		if (Ships[i].Player == 1)
+			al_draw_text(font, al_map_rgb(0,255,0), MAP_SIZE*TILE_SIZE+TILE_SIZE*7.5, global_i*FONT_SIZE, ALLEGRO_ALIGN_CENTRE, desc_2);
+		if (Ships[i].Player == 2)
+			al_draw_text(font, al_map_rgb(255,0,0), MAP_SIZE*TILE_SIZE+TILE_SIZE*7.5, global_i*FONT_SIZE, ALLEGRO_ALIGN_CENTRE, desc_2);
 		global_i += 1;
 	}
+}
+
+void Display_Winner(int Player)
+{
+	al_clear_to_color(al_map_rgb(0,0,0));
+	srand(seed);
+	float Scale = TILE_SIZE/IMAGE_SIZE;
+	float Center = IMAGE_SIZE/2;
+	char Winner[20] = "WINNER IS PLAYER: ";
+	char WIN;
+	if (Player == 1)
+		Winner[18] = '1';
+	else
+		Winner[18] = '2';
+	for(int j = 0; j < MAP_SIZE; j++)
+	{
+		for(int i = 0; i < MAP_SIZE; i++)
+		{
+			float Rotate = Graphical_Data_Matrix[j][i].Rotate_Data;
+			int Space_Type = Graphical_Data_Matrix[j][i].Space_Data;
+			Draw_Space(Space_Type, i, j, Center, Scale, Rotate);
+		}
+	}
+	if (Player == 1)
+		al_draw_text(Winner_font, al_map_rgb(0,255,0), (MAP_SIZE*TILE_SIZE+TILE_SIZE*10)/2, MAP_SIZE*TILE_SIZE/2, ALLEGRO_ALIGN_CENTRE, Winner);
+	if (Player == 2)
+		al_draw_text(Winner_font, al_map_rgb(255,0,0), (MAP_SIZE*TILE_SIZE+TILE_SIZE*10)/2, MAP_SIZE*TILE_SIZE/2, ALLEGRO_ALIGN_CENTRE, Winner);
+	al_flip_display();
+	al_rest(animation_speed*10);
 }
 
 void Draw_Whole_MAP(std::vector<std::vector<char> > MAP, std::vector<Mine_Class> Mines, std::vector<Asteroid_Class> Asteroids, std::vector<Ship_Class> Ships)
@@ -234,7 +276,6 @@ void Draw_Whole_MAP(std::vector<std::vector<char> > MAP, std::vector<Mine_Class>
 	srand(seed);
 	float Scale = TILE_SIZE/IMAGE_SIZE;
 	float Center = IMAGE_SIZE/2;
-	int MAP_SIZE = MAP[0].size();
 
 	al_clear_to_color(al_map_rgb(0,0,0));
 

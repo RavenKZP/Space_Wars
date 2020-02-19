@@ -11,6 +11,7 @@ typedef int Return_Type;
 
 typedef struct Input
 {
+	int PLAYER_IN;
 	int MAP_SIZE_IN;
 	std::vector<std::vector<char> > MAP_IN;
 	int No_Ships_IN;

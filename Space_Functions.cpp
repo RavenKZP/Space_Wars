@@ -1,8 +1,27 @@
 #include <iostream>
+#include <fstream>
 #include <boost/algorithm/string.hpp>
 
 #include "Space_Functions.h"
 #include "Space_Graphic.h"
+
+std::ofstream COLISION_DETECTOR_LOG;
+std::ofstream ACTIONS_LOG;
+std::ofstream ERROR_ACTIONS_LOG;
+
+void Space_Functions_Open()
+{
+	COLISION_DETECTOR_LOG.open("logs/COLISION_DETECTOR_LOG.log");
+	ACTIONS_LOG.open("logs/ACTIONS_LOG.log");
+	ERROR_ACTIONS_LOG.open("logs/ERROR_ACTIONS_LOG.log");
+}
+
+void Space_Functions_Close()
+{
+	COLISION_DETECTOR_LOG.close();
+	ACTIONS_LOG.close();
+	ERROR_ACTIONS_LOG.close();
+}
 
 int count_digits(const std::string& s)
 {
@@ -322,28 +341,33 @@ int COLISION_DETECTOR(int x, int y, std::vector<Mine_Class> Mines, std::vector<A
 		{
 			Type = 'M';
 			ret_val = i;
+			break;
 		}
 	}
-
+	if (ret_val == -1)
 	for (int i = 0; i < Asteroids.size(); i++)
 	{
 		if (x == Asteroids[i].x && y == Asteroids[i].y)
 		{
 			Type = 'A';
 			ret_val = i;
+			break;
 		}
 	}
 
+	if (ret_val == -1)
 	for (int i = 0; i < Ships.size(); i++)
 	{
 		if (x == Ships[i].x && y == Ships[i].y && Ships[i].ID != Ship_ID)
 		{
 			Type = 'S';
 			ret_val = i;
+			break;
 		}
 	}
-	std::cout << "COLISION DETECTOR DETECT " << Type << " ID " << Ships[ret_val].ID << std::endl;
-	//sleep(10);
+	COLISION_DETECTOR_LOG << "INPUT: x " << x << " y " << y << " Ship_ID " << Ship_ID << std::endl;
+	COLISION_DETECTOR_LOG << "DETECT " << Type << " ID " << ret_val << std::endl;
+	COLISION_DETECTOR_LOG << std::endl;
 	*Obj_Type = Type;
 	return ret_val;
 
@@ -352,6 +376,8 @@ int COLISION_DETECTOR(int x, int y, std::vector<Mine_Class> Mines, std::vector<A
 
 int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, std::vector<Asteroid_Class>& Asteroids, std::vector<Ship_Class>& Ships, std::vector<std::vector<char> >& MAP, int Player)
 {
+	ACTIONS_LOG << std::endl;
+	ACTIONS_LOG << "Player" << Player << std::endl;
 	int MAP_SIZE = MAP[0].size();
 	int Winner = 0;
 	for (int i = 0; i < Output_Player.Commands_OUT.size(); i++)
@@ -362,7 +388,7 @@ int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, s
 		}
 		std::string message = Output_Player.Commands_OUT[i];
 		//std::cout << Player << ": " << Ships[Player-1].Storage << std::endl;
-		std::cout << message << std::endl;
+		ACTIONS_LOG << message << std::endl;
 		std::vector<std::string> split;
 		boost::split(split, message, boost::is_any_of(" ") );
 		if (split.size() > 0)
@@ -423,22 +449,34 @@ int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, s
 							}
 							else
 							{
-								std::cout << "YOU CAN BUILD NEW SHIP OLNY NEAR BY HQ OR WORKSHOP ON EMPTY SPACE" << std::endl;
+								ERROR_ACTIONS_LOG << std::endl;
+								ERROR_ACTIONS_LOG << "Player" << Player << std::endl;
+								ERROR_ACTIONS_LOG << message << std::endl;
+								ERROR_ACTIONS_LOG << "YOU CAN BUILD NEW SHIP OLNY NEAR BY HQ OR WORKSHOP ON EMPTY SPACE" << std::endl;
 							}
 						}
 						else
 						{
-							std::cout << "NOT ENOUGHT MATERIALS TO BUILD NEW SHIP" << std::endl;
+							ERROR_ACTIONS_LOG << std::endl;
+							ERROR_ACTIONS_LOG << "Player" << Player << std::endl;
+							ERROR_ACTIONS_LOG << message << std::endl;
+							ERROR_ACTIONS_LOG << "NOT ENOUGHT MATERIALS TO BUILD NEW SHIP" << std::endl;
 						}
 					}
 					else
 					{
-						std::cout << "BUILD COORDINATES, SHIP TYPE OR ROTATION ARE INCORRECT" << std::endl;
+						ERROR_ACTIONS_LOG << std::endl;
+						ERROR_ACTIONS_LOG << "Player" << Player << std::endl;
+						ERROR_ACTIONS_LOG << message << std::endl;
+						ERROR_ACTIONS_LOG << "BUILD COORDINATES, SHIP TYPE OR ROTATION ARE INCORRECT" << std::endl;
 					}
 				}
 				else
 				{
-					std::cout << "WRONG BUILD COMMAND" << std::endl;
+					ERROR_ACTIONS_LOG << std::endl;
+					ERROR_ACTIONS_LOG << "Player" << Player << std::endl;
+					ERROR_ACTIONS_LOG << message << std::endl;
+					ERROR_ACTIONS_LOG << "WRONG BUILD COMMAND" << std::endl;
 				}
 			}
 			if (split[0] == "MOVE")
@@ -588,22 +626,34 @@ int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, s
 							}
 							else
 							{
-								std::cout << "THIS SHIP CAN'T MOVE AT THIS DIRECTION" << std::endl;
+								ERROR_ACTIONS_LOG << std::endl;
+								ERROR_ACTIONS_LOG << "Player" << Player << std::endl;
+								ERROR_ACTIONS_LOG << message << std::endl;
+								ERROR_ACTIONS_LOG << "THIS SHIP CAN'T MOVE AT THIS DIRECTION" << std::endl;
 							}
 						}
 						else
 						{
-							std::cout << "THIS SHIP HAVE NO POWER TO PERFORM ANY ACTION THIS TURN" << std::endl;
+							ERROR_ACTIONS_LOG << std::endl;
+							ERROR_ACTIONS_LOG << "Player" << Player << std::endl;
+							ERROR_ACTIONS_LOG << message << std::endl;
+							ACTIONS_LOG << "THIS SHIP HAVE NO POWER TO PERFORM ANY ACTION THIS TURN" << std::endl;
 						}
 					}
 					else
 					{
-						std::cout << "INAVLID SHIP ID" << std::endl;
+						ERROR_ACTIONS_LOG << std::endl;
+						ERROR_ACTIONS_LOG << "Player" << Player << std::endl;
+						ERROR_ACTIONS_LOG << message << std::endl;
+						ERROR_ACTIONS_LOG << "INAVLID SHIP ID" << std::endl;
 					}
 				}
 					else
 				{
-					std::cout << "WRONG MOVE COMMAND" << std::endl;
+					ERROR_ACTIONS_LOG << std::endl;
+					ERROR_ACTIONS_LOG << "Player" << Player << std::endl;
+					ERROR_ACTIONS_LOG << message << std::endl;
+					ERROR_ACTIONS_LOG << "WRONG MOVE COMMAND" << std::endl;
 				}
 			}
 			if (split[0] == "ROTATE")
@@ -633,17 +683,26 @@ int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, s
 						}
 						else
 						{
-							std::cout << "THIS SHIP HAVE NO POWER TO PERFORM ANY ACTION THIS TURN" << std::endl;
+							ERROR_ACTIONS_LOG << std::endl;
+							ERROR_ACTIONS_LOG << "Player" << Player << std::endl;
+							ERROR_ACTIONS_LOG << message << std::endl;
+							ERROR_ACTIONS_LOG << "THIS SHIP HAVE NO POWER TO PERFORM ANY ACTION THIS TURN" << std::endl;
 						}
 					}
 					else
 					{
-						std::cout << "INAVLID SHIP ID" << std::endl;
+						ERROR_ACTIONS_LOG << std::endl;
+						ERROR_ACTIONS_LOG << "Player" << Player << std::endl;
+						ERROR_ACTIONS_LOG << message << std::endl;
+						ERROR_ACTIONS_LOG << "INAVLID SHIP ID" << std::endl;
 					}
 				}
 				else
 				{
-					std::cout << "WRONG ROTATE COMMAND" << std::endl;
+					ERROR_ACTIONS_LOG << std::endl;
+					ERROR_ACTIONS_LOG << "Player" << Player << std::endl;
+					ERROR_ACTIONS_LOG << message << std::endl;
+					ERROR_ACTIONS_LOG << "WRONG ROTATE COMMAND" << std::endl;
 				}
 			}
 			if (split[0] == "SHOOT")
@@ -894,17 +953,26 @@ int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, s
 						}
 						else
 						{
-							std::cout << "THIS SHIP HAVE NO POWER TO PERFORM ANY ACTION THIS TURN" << std::endl;
+							ERROR_ACTIONS_LOG << std::endl;
+							ERROR_ACTIONS_LOG << "Player" << Player << std::endl;
+							ERROR_ACTIONS_LOG << message << std::endl;
+							ERROR_ACTIONS_LOG << "THIS SHIP HAVE NO POWER TO PERFORM ANY ACTION THIS TURN" << std::endl;
 						}
 					}
 					else
 					{
-						std::cout << "INAVLID SHIP ID" << std::endl;
+						ERROR_ACTIONS_LOG << std::endl;
+						ERROR_ACTIONS_LOG << "Player" << Player << std::endl;
+						ERROR_ACTIONS_LOG << message << std::endl;
+						ERROR_ACTIONS_LOG << "INAVLID SHIP ID" << std::endl;
 					}
 				}
 				else
 				{
-					std::cout << "WRONG SHOOT COMMAND" << std::endl;
+					ERROR_ACTIONS_LOG << std::endl;
+					ERROR_ACTIONS_LOG << "Player" << Player << std::endl;
+					ERROR_ACTIONS_LOG << message << std::endl;
+					ERROR_ACTIONS_LOG << "WRONG SHOOT COMMAND" << std::endl;
 				}
 			}
 			if (split[0] == "WORKSHOP")
@@ -938,22 +1006,34 @@ int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, s
 							}
 							else
 							{
-								std::cout << "YOU CAN BUILD NEW WORKSHOP OLNY NEAR BY HQ, ANOTHER WORKSHOP OR ONE OF YOURS SHIPS ON ASTEROID" << std::endl;
+								ERROR_ACTIONS_LOG << std::endl;
+								ERROR_ACTIONS_LOG << "Player" << Player << std::endl;
+								ERROR_ACTIONS_LOG << message << std::endl;
+								ERROR_ACTIONS_LOG << "YOU CAN BUILD NEW WORKSHOP OLNY NEAR BY HQ, ANOTHER WORKSHOP OR ONE OF YOURS SHIPS ON ASTEROID" << std::endl;
 							}
 						}
 						else
 						{
-							std::cout << "NOT ENOUGHT MATERIALS TO BUILD NEW WORKSHOP" << std::endl;
+							ERROR_ACTIONS_LOG << std::endl;
+							ERROR_ACTIONS_LOG << "Player" << Player << std::endl;
+							ERROR_ACTIONS_LOG << message << std::endl;
+							ERROR_ACTIONS_LOG << "NOT ENOUGHT MATERIALS TO BUILD NEW WORKSHOP" << std::endl;
 						}
 					}
 					else
 					{
-						std::cout << "BUILD COORDINATES ARE INCORRECT" << std::endl;
+						ERROR_ACTIONS_LOG << std::endl;
+						ERROR_ACTIONS_LOG << "Player" << Player << std::endl;
+						ERROR_ACTIONS_LOG << message << std::endl;
+						ERROR_ACTIONS_LOG << "BUILD COORDINATES ARE INCORRECT" << std::endl;
 					}
 				}
 				else
 				{
-					std::cout << "WRONG WORKSHOP COMMAND" << std::endl;
+					ERROR_ACTIONS_LOG << std::endl;
+					ERROR_ACTIONS_LOG << "Player" << Player << std::endl;
+					ERROR_ACTIONS_LOG << message << std::endl;
+					ERROR_ACTIONS_LOG << "WRONG WORKSHOP COMMAND" << std::endl;
 				}
 			}
 			if (split[0] == "DIG")
@@ -969,7 +1049,7 @@ int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, s
 							Dig_iterator = i;
 						}
 					}
-					if (Dig_iterator != -1 && (Dig_ID != 0 && Dig_ID != 1) )
+					if (Dig_iterator != -1)
 					{
 						if ( Ships[Dig_iterator].Speed > 0 && Ships[Dig_iterator].HP > 0 )
 						{
@@ -980,7 +1060,16 @@ int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, s
 							{
 								if (MAP[p_y][p_x +1] == 'M')
 								{
+									int Mine_iterator;
+									for (int i = 0; i < Mines.size(); i++)
+									{
+										if (p_x +1 == Mines[i].x && p_y == Mines[i].y)
+										{
+											Mine_iterator = i;
+										}
+									}
 									Ships[Dig_iterator].Storage += 5;
+									Mines[Mine_iterator].HP--;
 									if (Ships[Dig_iterator].Storage > Ships[Dig_iterator].MAX_Storage)
 									{
 										Ships[Dig_iterator].Storage = Ships[Dig_iterator].MAX_Storage;
@@ -991,7 +1080,16 @@ int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, s
 							{
 								if (MAP[p_y][p_x -1] == 'M')
 								{
+									int Mine_iterator;
+									for (int i = 0; i < Mines.size(); i++)
+									{
+										if (p_x -1 == Mines[i].x && p_y == Mines[i].y)
+										{
+											Mine_iterator = i;
+										}
+									}
 									Ships[Dig_iterator].Storage += 5;
+									Mines[Mine_iterator].HP--;
 									if (Ships[Dig_iterator].Storage > Ships[Dig_iterator].MAX_Storage)
 									{
 										Ships[Dig_iterator].Storage = Ships[Dig_iterator].MAX_Storage;
@@ -1002,7 +1100,16 @@ int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, s
 							{
 								if (MAP[p_y +1][p_x] == 'M')
 								{
+									int Mine_iterator;
+									for (int i = 0; i < Mines.size(); i++)
+									{
+										if (p_x == Mines[i].x && p_y +1 == Mines[i].y)
+										{
+											Mine_iterator = i;
+										}
+									}
 									Ships[Dig_iterator].Storage += 5;
+									Mines[Mine_iterator].HP--;
 									if (Ships[Dig_iterator].Storage > Ships[Dig_iterator].MAX_Storage)
 									{
 										Ships[Dig_iterator].Storage = Ships[Dig_iterator].MAX_Storage;
@@ -1013,27 +1120,46 @@ int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, s
 							{
 								if (MAP[p_y -1][p_x] == 'M')
 								{
+									int Mine_iterator;
+									for (int i = 0; i < Mines.size(); i++)
+									{
+										if (p_x == Mines[i].x && p_y -1 == Mines[i].y)
+										{
+											Mine_iterator = i;
+										}
+									}
 									Ships[Dig_iterator].Storage += 5;
+									Mines[Mine_iterator].HP--;
 									if (Ships[Dig_iterator].Storage > Ships[Dig_iterator].MAX_Storage)
 									{
 										Ships[Dig_iterator].Storage = Ships[Dig_iterator].MAX_Storage;
 									}
 								}
 							}
+							Winner = Destroy_Ships(Mines, Asteroids, Ships);
 						}
 						else
 						{
-							std::cout << "THIS SHIP HAVE NO POWER TO PERFORM ANY ACTION THIS TURN" << std::endl;
+							ERROR_ACTIONS_LOG << std::endl;
+							ERROR_ACTIONS_LOG << "Player" << Player << std::endl;
+							ERROR_ACTIONS_LOG << message << std::endl;
+							ERROR_ACTIONS_LOG << "THIS SHIP HAVE NO POWER TO PERFORM ANY ACTION THIS TURN" << std::endl;
 						}
 					}
 					else
 					{
-						std::cout << "INAVLID SHIP ID" << std::endl;
+						ERROR_ACTIONS_LOG << std::endl;
+						ERROR_ACTIONS_LOG << "Player" << Player << std::endl;
+						ERROR_ACTIONS_LOG << message << std::endl;
+						ERROR_ACTIONS_LOG << "INAVLID SHIP ID" << std::endl;
 					}
 				}
 				else
 				{
-					std::cout << "WRONG DIG COMMAND" << std::endl;
+					ERROR_ACTIONS_LOG << std::endl;
+					ERROR_ACTIONS_LOG << "Player" << Player << std::endl;
+					ERROR_ACTIONS_LOG << message << std::endl;
+					ERROR_ACTIONS_LOG << "WRONG DIG COMMAND" << std::endl;
 				}
 			}
 			if (split[0] == "END")

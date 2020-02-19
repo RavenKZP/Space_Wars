@@ -5,6 +5,8 @@
 #include "Return_Types.h"
 #include "Space_Classes.h"
 
+void Space_Functions_Open(void);
+void Space_Functions_Close(void);
 int count_digits(const std::string& s);
 int Build_Near_By(int y, int x, int Player, std::vector<std::vector<char> > MAP);
 int Workshop_Near_By(int y, int x, int Player, std::vector<std::vector<char> > MAP);

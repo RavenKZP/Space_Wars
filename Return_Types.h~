@@ -15,6 +15,8 @@ typedef struct Input
 	std::vector<std::vector<char> > MAP_IN;
 	int No_Ships_IN;
 	std::vector<int> ID_IN;
+	std::vector<int> X_IN;
+	std::vector<int> Y_IN;
 	std::vector<int> Type_IN;
 	std::vector<int> Rotation_IN;
 	std::vector<int> HP_IN;

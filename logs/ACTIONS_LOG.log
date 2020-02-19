@@ -1,0 +1,2515 @@
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+DIG 0
+END
+
+Player2
+MOVE 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+WORKSHOP 9 0
+ROTATE 1 L
+END
+
+Player1
+MOVE 0
+WORKSHOP 0 9
+ROTATE 0 R
+END
+
+Player2
+MOVE 1
+WORKSHOP 7 1
+ROTATE 1 L
+END
+
+Player1
+ROTATE 0 R
+MOVE 0
+END
+
+Player2
+MOVE 1
+WORKSHOP 7 2
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+ROTATE 0 L
+END
+
+Player2
+ROTATE 1 L
+MOVE 1
+END
+
+Player1
+ROTATE 0 L
+MOVE 0
+END
+
+Player2
+ROTATE 1 R
+ROTATE 1 R
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+WORKSHOP 4 9
+ROTATE 1 R
+WORKSHOP 4 9
+DIG 1
+END
+
+Player1
+MOVE 0
+ROTATE 0 L
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+MOVE 0
+WORKSHOP 2 8
+ROTATE 0 R
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+MOVE 0
+WORKSHOP 2 9
+ROTATE 0 L
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+ROTATE 0 R
+ROTATE 0 L
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+ROTATE 0 L
+MOVE 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+MOVE 0
+WORKSHOP 2 7
+MOVE 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+ROTATE 0 R
+MOVE 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+WORKSHOP 5 0
+ROTATE 0 R
+WORKSHOP 5 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+MOVE 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+MOVE 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+DIG 1
+DIG 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+MOVE 1
+WORKSHOP 4 5
+WORKSHOP 5 4
+ROTATE 1 L
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+ROTATE 1 L
+MOVE 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+MOVE 1
+ROTATE 1 R
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+ROTATE 1 L
+ROTATE 1 R
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+ROTATE 1 R
+MOVE 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+MOVE 1
+ROTATE 1 L
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+ROTATE 1 L
+MOVE 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+DIG 0
+DIG 0
+END
+
+Player2
+MOVE 1
+ROTATE 1 L
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+ROTATE 0 R
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+WORKSHOP 3 5
+MOVE 0
+END
+
+Player2
+ROTATE 1 R
+ROTATE 1 R
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+ROTATE 0 L
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+ROTATE 1 R
+MOVE 1
+END
+
+Player1
+MOVE 0
+ROTATE 0 R
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+ROTATE 0 R
+MOVE 0
+END
+
+Player2
+MOVE 1
+ROTATE 1 R
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+WORKSHOP 6 4
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+ROTATE 1 R
+MOVE 1
+END
+
+Player1
+MOVE 0
+ROTATE 0 R
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+ROTATE 1 R
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+ROTATE 0 R
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+ROTATE 1 L
+ROTATE 1 R
+END
+
+Player1
+MOVE 0
+ROTATE 0 R
+END
+
+Player2
+ROTATE 1 L
+ROTATE 1 L
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+ROTATE 0 L
+MOVE 0
+END
+
+Player2
+ROTATE 1 R
+ROTATE 1 R
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+ROTATE 0 L
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+ROTATE 0 R
+END
+
+Player2
+ROTATE 1 L
+ROTATE 1 L
+END
+
+Player1
+MOVE 0
+ROTATE 0 L
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+ROTATE 0 L
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+ROTATE 1 L
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+ROTATE 0 R
+MOVE 0
+END
+
+Player2
+MOVE 1
+ROTATE 1 L
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+ROTATE 1 L
+END
+
+Player1
+ROTATE 0 L
+ROTATE 0 R
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+ROTATE 0 L
+ROTATE 0 L
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+ROTATE 0 R
+ROTATE 0 L
+END
+
+Player2
+ROTATE 1 L
+MOVE 1
+END
+
+Player1
+ROTATE 0 R
+ROTATE 0 R
+END
+
+Player2
+ROTATE 1 L
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+ROTATE 0 R
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+ROTATE 1 L
+END
+
+Player1
+MOVE 0
+ROTATE 0 L
+END
+
+Player2
+MOVE 1
+ROTATE 1 L
+END
+
+Player1
+ROTATE 0 L
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+ROTATE 0 L
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+ROTATE 1 R
+MOVE 1
+END
+
+Player1
+ROTATE 0 R
+ROTATE 0 L
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+ROTATE 0 R
+ROTATE 0 L
+END
+
+Player2
+ROTATE 1 R
+MOVE 1
+END
+
+Player1
+ROTATE 0 R
+ROTATE 0 L
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+ROTATE 0 R
+ROTATE 0 L
+END
+
+Player2
+MOVE 1
+ROTATE 1 L
+END
+
+Player1
+ROTATE 0 L
+MOVE 0
+END
+
+Player2
+ROTATE 1 R
+ROTATE 1 R
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+ROTATE 1 L
+MOVE 1
+END
+
+Player1
+MOVE 0
+ROTATE 0 R
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+ROTATE 0 L
+ROTATE 0 L
+END
+
+Player2
+MOVE 1
+ROTATE 1 L
+END
+
+Player1
+MOVE 0
+ROTATE 0 R
+END
+
+Player2
+MOVE 1
+ROTATE 1 L
+END
+
+Player1
+MOVE 0
+ROTATE 0 R
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+ROTATE 0 L
+ROTATE 0 R
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+ROTATE 0 L
+ROTATE 0 L
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+ROTATE 0 L
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+ROTATE 1 L
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+ROTATE 1 R
+ROTATE 1 R
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+ROTATE 0 R
+MOVE 0
+END
+
+Player2
+ROTATE 1 R
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+ROTATE 0 L
+ROTATE 0 R
+END
+
+Player2
+MOVE 1
+ROTATE 1 L
+END
+
+Player1
+ROTATE 0 R
+MOVE 0
+END
+
+Player2
+ROTATE 1 R
+ROTATE 1 R
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+ROTATE 0 L
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+ROTATE 0 R
+ROTATE 0 L
+END
+
+Player2
+ROTATE 1 R
+MOVE 1
+END
+
+Player1
+ROTATE 0 R
+ROTATE 0 L
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+ROTATE 0 R
+ROTATE 0 L
+END
+
+Player2
+MOVE 1
+ROTATE 1 R
+END
+
+Player1
+ROTATE 0 R
+ROTATE 0 L
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+ROTATE 0 R
+ROTATE 0 R
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+ROTATE 1 R
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+ROTATE 0 L
+MOVE 0
+END
+
+Player2
+MOVE 1
+ROTATE 1 L
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+ROTATE 1 R
+ROTATE 1 L
+END
+
+Player1
+MOVE 0
+ROTATE 0 L
+END
+
+Player2
+ROTATE 1 R
+ROTATE 1 L
+END
+
+Player1
+MOVE 0
+ROTATE 0 R
+END
+
+Player2
+ROTATE 1 L
+MOVE 1
+END
+
+Player1
+MOVE 0
+ROTATE 0 R
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+ROTATE 0 R
+MOVE 0
+END
+
+Player2
+MOVE 1
+ROTATE 1 L
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+ROTATE 1 L
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+ROTATE 0 R
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+ROTATE 0 R
+MOVE 0
+END
+
+Player2
+MOVE 1
+ROTATE 1 R
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+ROTATE 1 R
+MOVE 1
+END
+
+Player1
+MOVE 0
+ROTATE 0 R
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+ROTATE 0 L
+MOVE 0
+END
+
+Player2
+MOVE 1
+ROTATE 1 R
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+ROTATE 0 L
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+ROTATE 0 R
+END
+
+Player2
+ROTATE 1 L
+ROTATE 1 R
+END
+
+Player1
+MOVE 0
+ROTATE 0 R
+END
+
+Player2
+ROTATE 1 L
+ROTATE 1 L
+END
+
+Player1
+ROTATE 0 L
+ROTATE 0 L
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+ROTATE 0 L
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+ROTATE 1 L
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+ROTATE 0 L
+MOVE 0
+END
+
+Player2
+MOVE 1
+ROTATE 1 R
+END
+
+Player1
+ROTATE 0 R
+ROTATE 0 R
+END
+
+Player2
+ROTATE 1 R
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+ROTATE 0 L
+ROTATE 0 R
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+ROTATE 0 R
+MOVE 0
+END
+
+Player2
+MOVE 1
+ROTATE 1 R
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+ROTATE 0 L
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+ROTATE 0 R
+ROTATE 0 R
+END
+
+Player2
+ROTATE 1 R
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+ROTATE 1 L
+END
+
+Player1
+ROTATE 0 R
+MOVE 0
+END
+
+Player2
+ROTATE 1 L
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+ROTATE 0 L
+END
+
+Player2
+MOVE 1
+ROTATE 1 R
+END
+
+Player1
+ROTATE 0 L
+MOVE 0
+END
+
+Player2
+ROTATE 1 L
+ROTATE 1 R
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+ROTATE 1 L
+ROTATE 1 R
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+ROTATE 1 L
+ROTATE 1 L
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+ROTATE 0 L
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+ROTATE 0 L
+END
+
+Player2
+ROTATE 1 R
+ROTATE 1 R
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+ROTATE 1 R
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+ROTATE 0 L
+MOVE 0
+END
+
+Player2
+MOVE 1
+ROTATE 1 R
+END
+
+Player1
+ROTATE 0 L
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+ROTATE 1 L
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+ROTATE 0 L
+END
+
+Player2
+MOVE 1
+ROTATE 1 R
+END
+
+Player1
+MOVE 0
+ROTATE 0 R
+END
+
+Player2
+ROTATE 1 R
+MOVE 1
+END
+
+Player1
+MOVE 0
+ROTATE 0 R
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+ROTATE 0 L
+ROTATE 0 L
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+ROTATE 0 L
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+ROTATE 1 R
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+ROTATE 1 R
+MOVE 1
+END
+
+Player1
+ROTATE 0 L
+MOVE 0
+END
+
+Player2
+MOVE 1
+MOVE 1
+END
+
+Player1
+ROTATE 0 L
+MOVE 0
+END
+
+Player2
+MOVE 1
+ROTATE 1 L
+END
+
+Player1
+MOVE 0
+MOVE 0
+END
+
+Player2
+ROTATE 1 L
+MOVE 1
+END
