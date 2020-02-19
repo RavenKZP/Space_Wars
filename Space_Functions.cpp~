@@ -365,7 +365,7 @@ int COLISION_DETECTOR(int x, int y, std::vector<Mine_Class> Mines, std::vector<A
 			break;
 		}
 	}
-	COLISION_DETECTOR_LOG << "INPUT: x " << x << " y " << y << " Ship_ID " << Ship_ID << std::endl;
+	COLISION_DETECTOR_LOG << "INPUT: x " << x << " y " << y << " Ship_ID " << std::endl;
 	COLISION_DETECTOR_LOG << "DETECT " << Type << " ID " << ret_val << std::endl;
 	COLISION_DETECTOR_LOG << std::endl;
 	*Obj_Type = Type;
@@ -741,6 +741,8 @@ int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, s
 											col_obj = 'M';
 											Draw_Laser(p_x, p_y, Ships[Shoot_iterator].Rotation, Player, Ships[Shoot_iterator].Type, col_obj, 0, i+1);
 											Draw_Explosion(Mines[Colision_ID].x, Mines[Colision_ID].y);
+											if (Mines[Colision_ID].HP <= 0)
+												MAP[Mines[Colision_ID].y][Mines[Colision_ID].x] = '.';
 										}	
 										if (Type == 'A')
 										{
@@ -753,6 +755,8 @@ int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, s
 												col_obj = 'w';
 											Draw_Laser(p_x, p_y, Ships[Shoot_iterator].Rotation, Player, Ships[Shoot_iterator].Type, col_obj, 0, i+1);
 											Draw_Explosion(Asteroids[Colision_ID].x, Asteroids[Colision_ID].y);
+											if (Asteroids[Colision_ID].HP <= 0)
+												MAP[Asteroids[Colision_ID].y][Asteroids[Colision_ID].x] = '.';
 										}
 										if (Type == 'S')
 										{
@@ -777,6 +781,8 @@ int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, s
 											}
 											Draw_Laser(p_x, p_y, Ships[Shoot_iterator].Rotation, Player, Ships[Shoot_iterator].Type, col_obj, Ships[Colision_ID].Rotation, i+1);
 											Draw_Explosion(Ships[Colision_ID].x, Ships[Colision_ID].y);
+											if (Ships[Colision_ID].HP <= 0)
+												MAP[Ships[Colision_ID].y][Ships[Colision_ID].x] = '.';
 										}
 										Winner = Destroy_Ships(Mines, Asteroids, Ships);
 										break;
@@ -795,6 +801,8 @@ int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, s
 											col_obj = 'M';
 											Draw_Laser(p_x, p_y, Ships[Shoot_iterator].Rotation, Player, Ships[Shoot_iterator].Type, col_obj, 0, i+1);
 											Draw_Explosion(Mines[Colision_ID].x, Mines[Colision_ID].y);
+											if (Mines[Colision_ID].HP <= 0)
+												MAP[Mines[Colision_ID].y][Mines[Colision_ID].x] = '.';
 										}	
 										if (Type == 'A')
 										{
@@ -807,6 +815,8 @@ int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, s
 												col_obj = 'w';
 											Draw_Laser(p_x, p_y, Ships[Shoot_iterator].Rotation, Player, Ships[Shoot_iterator].Type, col_obj, 0, i+1);
 											Draw_Explosion(Asteroids[Colision_ID].x, Asteroids[Colision_ID].y);
+											if (Asteroids[Colision_ID].HP <= 0)
+												MAP[Asteroids[Colision_ID].y][Asteroids[Colision_ID].x] = '.';
 										}
 										if (Type == 'S')
 										{
@@ -831,6 +841,8 @@ int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, s
 											}
 											Draw_Laser(p_x, p_y, Ships[Shoot_iterator].Rotation, Player, Ships[Shoot_iterator].Type, col_obj, Ships[Colision_ID].Rotation, i+1);
 											Draw_Explosion(Ships[Colision_ID].x, Ships[Colision_ID].y);
+											if (Ships[Colision_ID].HP <= 0)
+												MAP[Ships[Colision_ID].y][Ships[Colision_ID].x] = '.';
 										}
 										Winner = Destroy_Ships(Mines, Asteroids, Ships);
 										break;
@@ -849,6 +861,8 @@ int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, s
 											col_obj = 'M';
 											Draw_Laser(p_x, p_y, Ships[Shoot_iterator].Rotation, Player, Ships[Shoot_iterator].Type, col_obj, 0, i+1);
 											Draw_Explosion(Mines[Colision_ID].x, Mines[Colision_ID].y);
+											if (Mines[Colision_ID].HP <= 0)
+												MAP[Mines[Colision_ID].y][Mines[Colision_ID].x] = '.';
 										}	
 										if (Type == 'A')
 										{
@@ -861,6 +875,8 @@ int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, s
 												col_obj = 'w';
 											Draw_Laser(p_x, p_y, Ships[Shoot_iterator].Rotation, Player, Ships[Shoot_iterator].Type, col_obj, 0, i+1);
 											Draw_Explosion(Asteroids[Colision_ID].x, Asteroids[Colision_ID].y);
+											if (Asteroids[Colision_ID].HP <= 0)
+												MAP[Asteroids[Colision_ID].y][Asteroids[Colision_ID].x] = '.';
 										}
 										if (Type == 'S')
 										{
@@ -885,6 +901,8 @@ int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, s
 											}
 											Draw_Laser(p_x, p_y, Ships[Shoot_iterator].Rotation, Player, Ships[Shoot_iterator].Type, col_obj, Ships[Colision_ID].Rotation, i+1);
 											Draw_Explosion(Ships[Colision_ID].x, Ships[Colision_ID].y);
+											if (Ships[Colision_ID].HP <= 0)
+												MAP[Ships[Colision_ID].y][Ships[Colision_ID].x] = '.';
 										}
 										Winner = Destroy_Ships(Mines, Asteroids, Ships);
 										break;
@@ -903,6 +921,8 @@ int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, s
 											col_obj = 'M';
 											Draw_Laser(p_x, p_y, Ships[Shoot_iterator].Rotation, Player, Ships[Shoot_iterator].Type, col_obj, 0, i+1);
 											Draw_Explosion(Mines[Colision_ID].x, Mines[Colision_ID].y);
+											if (Mines[Colision_ID].HP <= 0)
+												MAP[Mines[Colision_ID].y][Mines[Colision_ID].x] = '.';
 										}	
 										if (Type == 'A')
 										{
@@ -915,6 +935,8 @@ int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, s
 												col_obj = 'w';
 											Draw_Laser(p_x, p_y, Ships[Shoot_iterator].Rotation, Player, Ships[Shoot_iterator].Type, col_obj, 0, i+1);
 											Draw_Explosion(Asteroids[Colision_ID].x, Asteroids[Colision_ID].y);
+											if (Asteroids[Colision_ID].HP <= 0)
+												MAP[Asteroids[Colision_ID].y][Asteroids[Colision_ID].x] = '.';
 										}
 										if (Type == 'S')
 										{
@@ -939,6 +961,8 @@ int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, s
 											}
 											Draw_Laser(p_x, p_y, Ships[Shoot_iterator].Rotation, Player, Ships[Shoot_iterator].Type, col_obj, Ships[Colision_ID].Rotation, i+1);
 											Draw_Explosion(Ships[Colision_ID].x, Ships[Colision_ID].y);
+											if (Ships[Colision_ID].HP <= 0)
+												MAP[Ships[Colision_ID].y][Ships[Colision_ID].x] = '.';
 										}
 										Winner = Destroy_Ships(Mines, Asteroids, Ships);
 										break;
@@ -1156,6 +1180,8 @@ int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, s
 									Draw_Dig(p_x, p_y, Ships[Dig_iterator].Rotation, Player, Ships[Dig_iterator].Type, '.');
 								}
 							}
+							if (Mines[Mine_iterator].HP <= 0)
+								MAP[Mines[Mine_iterator].y][Mines[Mine_iterator].x] = '.';
 							Winner = Destroy_Ships(Mines, Asteroids, Ships);
 						}
 						else

@@ -14,7 +14,7 @@
 #define IMAGE_SIZE 330.0
 #define FONT_SIZE 180/MAP_SIZE
 
-float animation_speed = 0.01;
+float animation_speed = 0.0;
 
 float Ship_Rotate(std::vector<Ship_Class> Ships, int y, int x);
 
@@ -276,7 +276,7 @@ void Display_Winner(int Player)
 	if (Player == 2)
 		al_draw_text(Winner_font, al_map_rgb(255,0,0), (MAP_SIZE*TILE_SIZE+TILE_SIZE*10)/2, MAP_SIZE*TILE_SIZE/2, ALLEGRO_ALIGN_CENTRE, Winner);
 	al_flip_display();
-	al_rest(animation_speed*10);
+	al_rest(animation_speed*100);
 }
 
 void Draw_Whole_MAP(std::vector<std::vector<char> > MAP, std::vector<Mine_Class> Mines, std::vector<Asteroid_Class> Asteroids, std::vector<Ship_Class> Ships)
@@ -718,51 +718,7 @@ void Draw_Dig(int x, int y, int Rotation, int Player, int Type, char Mine)
 	if (Rotation == 4)
 		Ship_Rotate = RADIANS*0.0;
 
-
-	for (int i = 0; i < (15.0*Range)-5; i++)
-	{
-		if (Rotation == 1)
-			Position_x = ((x-1)*TILE_SIZE +TILE_SIZE/2) + (TILE_SIZE + ((i*TILE_SIZE)/(14.0)));
-		if (Rotation == 2)
-			Position_x = ((x+1)*TILE_SIZE +TILE_SIZE/2) - (TILE_SIZE + ((i*TILE_SIZE)/(14.0)));
-		if (Rotation == 3)
-			Position_y = ((y-1)*TILE_SIZE +TILE_SIZE/2) + (TILE_SIZE + ((i*TILE_SIZE)/(14.0)));
-		if (Rotation == 4)
-			Position_y = ((y+1)*TILE_SIZE +TILE_SIZE/2) - (TILE_SIZE + ((i*TILE_SIZE)/(14.0)));
-
-		//DRAW BLACK ON ANIMATED TILES
-		al_draw_scaled_rotated_bitmap(Black, Center, Center, first_x, first_y, Scale, Scale,  0, 0);
-		if (Range >= 1)
-			al_draw_scaled_rotated_bitmap(Black, Center, Center, secound_x, secound_y, Scale, Scale,  0, 0);
-
-		//DRAW SPACE ON ANIMATED TILES
-
-		Draw_Space(Graphical_Data_Matrix[y][x].Space_Data, x, y, Center, Scale, Graphical_Data_Matrix[y][x].Rotate_Data);
-		if (Range >= 1)
-			Draw_Space(Graphical_Data_Matrix[y_1][x_1].Space_Data, x_1, y_1, Center, Scale, Graphical_Data_Matrix[y_1][x_1].Rotate_Data);
-
-		//DRAW MINES AND ASTEROIDS ON ANIMATED TILES
-		if (Mine != '.')
-		{
-			Draw_Mine(Graphical_Data_Matrix[y_1][x_1].Mine_Data, x_1, y_1, Center, Scale, Graphical_Data_Matrix[y_1][x_1].Rotate_Data);
-		}
-		
-		//DRAW Laser ON ANIMATED TILES
-		if (Player_Type == 1)
-			al_draw_scaled_rotated_bitmap(Dig_1, Center, Center, Position_x, Position_y, Scale, Scale, Rotate, 0);
-		if (Player_Type == 2)
-			al_draw_scaled_rotated_bitmap(Dig_2, Center, Center, Position_x, Position_y, Scale, Scale, Rotate, 0);
-		if (Player_Type == 3)
-			al_draw_scaled_rotated_bitmap(Dig_3, Center, Center, Position_x, Position_y, Scale, Scale, Rotate, 0);
-		if (Player_Type == 4)
-			al_draw_scaled_rotated_bitmap(Dig_4, Center, Center, Position_x, Position_y, Scale, Scale, Rotate, 0);
-
-		al_draw_scaled_rotated_bitmap(Ship, Center, Center, first_x, first_y, Scale, Scale, Ship_Rotate, 0);
-		al_flip_display();
-		al_rest(animation_speed);
-	}
-
-	for (int i = (15.0*Range)-5; i > 0; i--)
+	for (int i = (15.0*Range); i > 0; i--)
 	{
 		if (Rotation == 1)
 			Position_x = ((x-1)*TILE_SIZE +TILE_SIZE/2) + (TILE_SIZE + ((i*TILE_SIZE)/(14.0)));
