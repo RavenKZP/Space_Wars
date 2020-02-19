@@ -333,6 +333,7 @@ int main()
 
 	std::cout << "WINNER IS: Player " << Winner << std::endl;
 	Display_Winner(Winner);
+	MAP_LOG.close();
 	Destroy_Display();	
 	Space_Functions_Close();
 	return E_OK;

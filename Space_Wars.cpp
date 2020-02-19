@@ -302,22 +302,12 @@ int main()
 		}
 	
 		int Income = 11 - No_Ships_Player;
-		Ships[Player-1].Storage += Income;
+		if (Income > 0)
+			Ships[Player-1].Storage += Income;
+
 		if (Ships[Player-1].Storage > Ships[Player-1].MAX_Storage)
 		{
 			Ships[Player-1].Storage = Ships[Player-1].MAX_Storage;
-		}
-
-		if (Ships[Player-1].Storage < 0)
-		{
-			for (int i = Ships.size() -1; i > 2; i--)
-			{
-				if (Ships[i].Player == 1)
-				{
-					Ships.erase(Ships.begin() + i);
-				}
-			}
-			Ships[Player-1].Storage = 0;
 		}
 
 		std::swap(Player, Other_Player);

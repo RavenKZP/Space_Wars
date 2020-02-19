@@ -14,6 +14,7 @@ void Test_Alg_1 (Input_type Input, Output_type &Output)
 #ifndef MANUAL_TESTING
 	int Player = Input.PLAYER_IN;
 	std::vector<std::vector<char> > MAP = Input.MAP_IN;
+	std::string OUT;
 	int My_Ships = Input.No_Ships_IN;
 
 	char Enemy_1;
@@ -33,8 +34,8 @@ void Test_Alg_1 (Input_type Input, Output_type &Output)
 		Enemy_4 = 'w';
 		MyShip_1 = 'H';
 		MyShip_2 = 'F';
-		MyShip_1 = 'T';
-		MyShip_2 = 'W';
+		MyShip_3 = 'T';
+		MyShip_4 = 'W';
 	}
 	else
 	{
@@ -44,13 +45,12 @@ void Test_Alg_1 (Input_type Input, Output_type &Output)
 		Enemy_4 = 'W';
 		MyShip_1 = 'h';
 		MyShip_2 = 'f';
-		MyShip_1 = 't';
-		MyShip_2 = 'w';
+		MyShip_3 = 't';
+		MyShip_4 = 'w';
 	}
 
-	for (int i = 0; i < My_Ships; i++)
+	for (int i = My_Ships -1; i > -1; i--)
 	{
-		std::string OUT;
 		int ship_Type = Input.Type_IN[i];
 		char type;
 		if (ship_Type == 0)
@@ -63,6 +63,9 @@ void Test_Alg_1 (Input_type Input, Output_type &Output)
 		int ship_x = Input.X_IN[i];
 		int ship_y = Input.Y_IN[i];
 		int ship_rotation = Input.Rotation_IN[i];
+		int ship_storage = Input.Storage_IN[i];
+		int MAX_Storage = 0;
+		int Range = 1;
 
 		for (int i = 0; i < MAP.size(); i++)
 			for (int j = 0; j <MAP[i].size(); j++)
@@ -71,28 +74,28 @@ void Test_Alg_1 (Input_type Input, Output_type &Output)
 
 		int moves = 0;
 		if (ship_Type == 0)
-			moves = 2;
-		if (ship_Type == 1)
-			moves = 3;
-		if (ship_Type == 2)
-			moves = 2;
-
-		//Build Fighters everywere!!!
-		for (int i = 0; i < MAP.size(); i++)
 		{
-			for (int j = 0; j <MAP[i].size(); j++)
-			{
-				if (MAP[j][i] == MyShip_1 || MAP[j][i] == MyShip_4)
-				{
-					
-				}
-			}
+			moves = 2;
+			MAX_Storage = 10000;
+			Range = 2;
+		}
+		if (ship_Type == 1)
+		{
+			moves = 3;
+			MAX_Storage = 5;
+			Range = 3;
+		}
+		if (ship_Type == 2)
+		{
+			moves = 2;
+			MAX_Storage = 50;
+			Range = 2;
 		}
 
 		while(moves != 0)
 		{
 
-		//BUILD WORKSHOP IF CAN
+		//BUILD WORKSHOP IF YOU CAN
 		if (Input.Storage_IN[0] > 25)
 		{
 			if (ship_y > 0 && ship_y < MAP.size()-1 && ship_x > 0 && ship_x < MAP.size()-1 )
@@ -101,21 +104,29 @@ void Test_Alg_1 (Input_type Input, Output_type &Output)
 				{
 					OUT = "WORKSHOP " + std::to_string(ship_x+1) + " " + std::to_string(ship_y);
 					Output_local.Commands_OUT.push_back(OUT);
+					MAP[ship_y][ship_x+1] == MyShip_4;
+					Input.Storage_IN[0] -= 25;
 				}
 				if (MAP[ship_y][ship_x-1] == 'A')
 				{
 					OUT = "WORKSHOP " + std::to_string(ship_x-1) + " " + std::to_string(ship_y);
 					Output_local.Commands_OUT.push_back(OUT);
+					MAP[ship_y][ship_x-1] == MyShip_4;
+					Input.Storage_IN[0] -= 25;
 				}
 				if (MAP[ship_y+1][ship_x] == 'A')
 				{
 					OUT = "WORKSHOP " + std::to_string(ship_x) + " " + std::to_string(ship_y+1);
 					Output_local.Commands_OUT.push_back(OUT);
+					MAP[ship_y+1][ship_x] == MyShip_4;
+					Input.Storage_IN[0] -= 25;
 				}
 				if (MAP[ship_y-1][ship_x] == 'A')
 				{
 					OUT = "WORKSHOP " + std::to_string(ship_x) + " " + std::to_string(ship_y-1);
 					Output_local.Commands_OUT.push_back(OUT);
+					MAP[ship_y-1][ship_x] == MyShip_4;
+					Input.Storage_IN[0] -= 25;
 				}
 			}
 			if (ship_y == 0 && ship_x == 0)
@@ -124,11 +135,15 @@ void Test_Alg_1 (Input_type Input, Output_type &Output)
 				{
 					OUT = "WORKSHOP " + std::to_string(ship_x+1) + " " + std::to_string(ship_y);
 					Output_local.Commands_OUT.push_back(OUT);
+					MAP[ship_y][ship_x+1] == MyShip_4;
+					Input.Storage_IN[0] -= 25;
 				}
 				if (MAP[ship_y+1][ship_x] == 'A')
 				{
 					OUT = "WORKSHOP " + std::to_string(ship_x) + " " + std::to_string(ship_y+1);
 					Output_local.Commands_OUT.push_back(OUT);
+					MAP[ship_y+1][ship_x] == MyShip_4;
+					Input.Storage_IN[0] -= 25;
 				}
 			}
 			if (ship_y == MAP.size()-1 && ship_x == MAP.size()-1)
@@ -137,11 +152,15 @@ void Test_Alg_1 (Input_type Input, Output_type &Output)
 				{
 					OUT = "WORKSHOP " + std::to_string(ship_x-1) + " " + std::to_string(ship_y);
 					Output_local.Commands_OUT.push_back(OUT);
+					MAP[ship_y][ship_x-1] == MyShip_4;
+					Input.Storage_IN[0] -= 25;
 				}
 				if (MAP[ship_y-1][ship_x] == 'A')
 				{
 					OUT = "WORKSHOP " + std::to_string(ship_x) + " " + std::to_string(ship_y-1);
 					Output_local.Commands_OUT.push_back(OUT);
+					MAP[ship_y-1][ship_x] == MyShip_4;
+					Input.Storage_IN[0] -= 25;
 				}
 			}
 			if (ship_y == 0 && ship_x == MAP.size()-1)
@@ -150,11 +169,15 @@ void Test_Alg_1 (Input_type Input, Output_type &Output)
 				{
 					OUT = "WORKSHOP " + std::to_string(ship_x-1) + " " + std::to_string(ship_y);
 					Output_local.Commands_OUT.push_back(OUT);
+					MAP[ship_y][ship_x-1] == MyShip_4;
+					Input.Storage_IN[0] -= 25;
 				}
 				if (MAP[ship_y+1][ship_x] == 'A')
 				{
 					OUT = "WORKSHOP " + std::to_string(ship_x) + " " + std::to_string(ship_y+1);
 					Output_local.Commands_OUT.push_back(OUT);
+					MAP[ship_y+1][ship_x] == MyShip_4;
+					Input.Storage_IN[0] -= 25;
 				}
 			}
 			if (ship_y == MAP.size()-1 && ship_x == 0)
@@ -163,11 +186,15 @@ void Test_Alg_1 (Input_type Input, Output_type &Output)
 				{
 					OUT = "WORKSHOP " + std::to_string(ship_x+1) + " " + std::to_string(ship_y);
 					Output_local.Commands_OUT.push_back(OUT);
+					MAP[ship_y][ship_x+1] == MyShip_4;
+					Input.Storage_IN[0] -= 25;
 				}
 				if (MAP[ship_y-1][ship_x] == 'A')
 				{
 					OUT = "WORKSHOP " + std::to_string(ship_x) + " " + std::to_string(ship_y-1);
 					Output_local.Commands_OUT.push_back(OUT);
+					MAP[ship_y-1][ship_x] == MyShip_4;
+					Input.Storage_IN[0] -= 25;
 				}
 			}
 			if (ship_y < MAP.size()-1 && ship_y > 0 && ship_x == 0)
@@ -176,16 +203,22 @@ void Test_Alg_1 (Input_type Input, Output_type &Output)
 				{
 					OUT = "WORKSHOP " + std::to_string(ship_x+1) + " " + std::to_string(ship_y);
 					Output_local.Commands_OUT.push_back(OUT);
+					MAP[ship_y][ship_x+1] == MyShip_4;
+					Input.Storage_IN[0] -= 25;
 				}
 				if (MAP[ship_y+1][ship_x] == 'A')
 				{
 					OUT = "WORKSHOP " + std::to_string(ship_x) + " " + std::to_string(ship_y+1);
 					Output_local.Commands_OUT.push_back(OUT);
+					MAP[ship_y+1][ship_x] == MyShip_4;
+					Input.Storage_IN[0] -= 25;
 				}
 				if (MAP[ship_y-1][ship_x] == 'A')
 				{
 					OUT = "WORKSHOP " + std::to_string(ship_x) + " " + std::to_string(ship_y-1);
 					Output_local.Commands_OUT.push_back(OUT);
+					MAP[ship_y-1][ship_x] == MyShip_4;
+					Input.Storage_IN[0] -= 25;
 				}
 			}
 			if (ship_y < MAP.size()-1 && ship_y > 0 && ship_x == MAP.size()-1)
@@ -194,16 +227,22 @@ void Test_Alg_1 (Input_type Input, Output_type &Output)
 				{
 					OUT = "WORKSHOP " + std::to_string(ship_x-1) + " " + std::to_string(ship_y);
 					Output_local.Commands_OUT.push_back(OUT);
+					MAP[ship_y][ship_x-1] == MyShip_4;
+					Input.Storage_IN[0] -= 25;
 				}
 				if (MAP[ship_y+1][ship_x] == 'A')
 				{
 					OUT = "WORKSHOP " + std::to_string(ship_x) + " " + std::to_string(ship_y+1);
 					Output_local.Commands_OUT.push_back(OUT);
+					MAP[ship_y+1][ship_x] == MyShip_4;
+					Input.Storage_IN[0] -= 25;
 				}
 				if (MAP[ship_y-1][ship_x] == 'A')
 				{
 					OUT = "WORKSHOP " + std::to_string(ship_x) + " " + std::to_string(ship_y-1);
 					Output_local.Commands_OUT.push_back(OUT);
+					MAP[ship_y-1][ship_x] == MyShip_4;
+					Input.Storage_IN[0] -= 25;
 				}
 			}
 			if (ship_x < MAP.size()-1 && ship_x > 0 && ship_y == 0)
@@ -212,16 +251,22 @@ void Test_Alg_1 (Input_type Input, Output_type &Output)
 				{
 					OUT = "WORKSHOP " + std::to_string(ship_x+1) + " " + std::to_string(ship_y);
 					Output_local.Commands_OUT.push_back(OUT);
+					MAP[ship_y][ship_x+1] == MyShip_4;
+					Input.Storage_IN[0] -= 25;
 				}
 				if (MAP[ship_y][ship_x-1] == 'A')
 				{
 					OUT = "WORKSHOP " + std::to_string(ship_x-1) + " " + std::to_string(ship_y);
 					Output_local.Commands_OUT.push_back(OUT);
+					MAP[ship_y][ship_x-1] == MyShip_4;
+					Input.Storage_IN[0] -= 25;
 				}
 				if (MAP[ship_y+1][ship_x] == 'A')
 				{
 					OUT = "WORKSHOP " + std::to_string(ship_x) + " " + std::to_string(ship_y+1);
 					Output_local.Commands_OUT.push_back(OUT);
+					MAP[ship_y+1][ship_x] == MyShip_4;
+					Input.Storage_IN[0] -= 25;
 				}
 			}
 			if (ship_x < MAP.size()-1 && ship_x > 0 && ship_y == MAP.size()-1)
@@ -230,69 +275,30 @@ void Test_Alg_1 (Input_type Input, Output_type &Output)
 				{
 					OUT = "WORKSHOP " + std::to_string(ship_x+1) + " " + std::to_string(ship_y);
 					Output_local.Commands_OUT.push_back(OUT);
+					MAP[ship_y][ship_x+1] == MyShip_4;
+					Input.Storage_IN[0] -= 25;
 				}
 				if (MAP[ship_y][ship_x-1] == 'A')
 				{
 					OUT = "WORKSHOP " + std::to_string(ship_x-1) + " " + std::to_string(ship_y);
 					Output_local.Commands_OUT.push_back(OUT);
+					MAP[ship_y][ship_x-1] == MyShip_4;
+					Input.Storage_IN[0] -= 25;
 				}
 				if (MAP[ship_y-1][ship_x] == 'A')
 				{
 					OUT = "WORKSHOP " + std::to_string(ship_x) + " " + std::to_string(ship_y-1);
 					Output_local.Commands_OUT.push_back(OUT);
+					MAP[ship_y-1][ship_x] == MyShip_4;
+					Input.Storage_IN[0] -= 25;
 				}
 			}
 		}
 
 		int move_performed = 0;
 
-		//SHOOT IF ENEMY
-		switch (ship_rotation)
-		{
-			case 1:
-				if(ship_x < MAP.size()-1)
-					if(MAP[ship_y][ship_x+1] == 'E')
-					{
-						OUT = "SHOOT " +  std::to_string(Input.ID_IN[i]);
-						Output_local.Commands_OUT.push_back(OUT);
-						moves--;
-						move_performed = 1;
-					}
-				break;
-			case 2:
-				if(ship_x > 0)
-					if(MAP[ship_y][ship_x-1] == 'E')
-					{
-						OUT = "SHOOT " +  std::to_string(Input.ID_IN[i]);
-						Output_local.Commands_OUT.push_back(OUT);
-						moves--;
-						move_performed = 1;
-					}
-				break;
-			case 3:
-				if(ship_y < MAP.size()-1)
-					if(MAP[ship_y+1][ship_x] == 'E')
-					{
-						OUT = "SHOOT " +  std::to_string(Input.ID_IN[i]);
-						Output_local.Commands_OUT.push_back(OUT);
-						moves--;
-						move_performed = 1;
-					}
-				break;
-			case 4:
-				if(ship_y > 0)
-					if(MAP[ship_y-1][ship_x] == 'E')
-					{
-						OUT = "SHOOT " +  std::to_string(Input.ID_IN[i]);
-						Output_local.Commands_OUT.push_back(OUT);
-						moves--;
-						move_performed = 1;
-					}
-				break;				
-		}
-
-		//ONLY HQ DIG IF MINE
-		if (move_performed == 0 && ship_Type == 0)
+		//DIG IF THERE IS MINE
+		if (move_performed == 0 && ship_storage < MAX_Storage)
 		switch (ship_rotation)
 		{
 			case 1:
@@ -303,6 +309,7 @@ void Test_Alg_1 (Input_type Input, Output_type &Output)
 						Output_local.Commands_OUT.push_back(OUT);
 						moves--;
 						move_performed = 1;
+						ship_storage+=5;
 					}
 				break;
 			case 2:
@@ -313,6 +320,7 @@ void Test_Alg_1 (Input_type Input, Output_type &Output)
 						Output_local.Commands_OUT.push_back(OUT);
 						moves--;
 						move_performed = 1;
+						ship_storage+=5;
 					}
 				break;
 			case 3:
@@ -323,6 +331,7 @@ void Test_Alg_1 (Input_type Input, Output_type &Output)
 						Output_local.Commands_OUT.push_back(OUT);
 						moves--;
 						move_performed = 1;
+						ship_storage+=5;
 					}
 				break;
 			case 4:
@@ -333,11 +342,145 @@ void Test_Alg_1 (Input_type Input, Output_type &Output)
 						Output_local.Commands_OUT.push_back(OUT);
 						moves--;
 						move_performed = 1;
+						ship_storage+=5;
 					}
 				break;				
 		}
 
-		//MOVE IF EMPTY
+		//SHOOT IF YOU SEE ENEMY
+		switch (ship_rotation)
+		{
+			case 1:
+				if(ship_x < MAP.size()-1)
+				{
+					if(MAP[ship_y][ship_x+1] == 'E')
+					{
+						OUT = "SHOOT " +  std::to_string(Input.ID_IN[i]);
+						Output_local.Commands_OUT.push_back(OUT);
+						moves--;
+						move_performed = 1;
+					}
+				}
+				if(ship_x+1 < MAP.size()-1 && Range > 1)
+				{
+					if(MAP[ship_y][ship_x+2] == 'E' && MAP[ship_y][ship_x+1] == '.')
+					{
+						OUT = "SHOOT " +  std::to_string(Input.ID_IN[i]);
+						Output_local.Commands_OUT.push_back(OUT);
+						moves--;
+						move_performed = 1;
+					}
+				}
+				if(ship_x+2 < MAP.size()-1 && Range > 2)
+				{
+					if(MAP[ship_y][ship_x+3] == 'E' && MAP[ship_y][ship_x+2] == '.' && MAP[ship_y][ship_x+1] == '.')
+					{
+						OUT = "SHOOT " +  std::to_string(Input.ID_IN[i]);
+						Output_local.Commands_OUT.push_back(OUT);
+						moves--;
+						move_performed = 1;
+					}
+				}
+				break;
+			case 2:
+				if(ship_x > 0)
+				{
+					if(MAP[ship_y][ship_x-1] == 'E')
+					{
+						OUT = "SHOOT " +  std::to_string(Input.ID_IN[i]);
+						Output_local.Commands_OUT.push_back(OUT);
+						moves--;
+						move_performed = 1;
+					}
+				}
+				if(ship_x-1 > 0 && Range > 1)
+				{
+					if(MAP[ship_y][ship_x-2] == 'E' && MAP[ship_y][ship_x-1] == '.')
+					{
+						OUT = "SHOOT " +  std::to_string(Input.ID_IN[i]);
+						Output_local.Commands_OUT.push_back(OUT);
+						moves--;
+						move_performed = 1;
+					}
+				}
+				if(ship_x-2 > 0 && Range > 2)
+				{
+					if(MAP[ship_y][ship_x-3] == 'E' && MAP[ship_y][ship_x-2] == '.' && MAP[ship_y][ship_x-1] == '.')
+					{
+						OUT = "SHOOT " +  std::to_string(Input.ID_IN[i]);
+						Output_local.Commands_OUT.push_back(OUT);
+						moves--;
+						move_performed = 1;
+					}
+				}
+				break;
+			case 3:
+				if(ship_y < MAP.size()-1)
+				{
+					if(MAP[ship_y+1][ship_x] == 'E')
+					{
+						OUT = "SHOOT " +  std::to_string(Input.ID_IN[i]);
+						Output_local.Commands_OUT.push_back(OUT);
+						moves--;
+						move_performed = 1;
+					}
+				}
+				if(ship_y+1 < MAP.size()-1 && Range > 1)
+				{
+					if(MAP[ship_y+2][ship_x] == 'E' && MAP[ship_y+1][ship_x] == '.')
+					{
+						OUT = "SHOOT " +  std::to_string(Input.ID_IN[i]);
+						Output_local.Commands_OUT.push_back(OUT);
+						moves--;
+						move_performed = 1;
+					}
+				}
+				if(ship_y+2 < MAP.size()-1 && Range > 2)
+				{
+					if(MAP[ship_y+3][ship_x] == 'E' && MAP[ship_y+2][ship_x] == '.' && MAP[ship_y+1][ship_x] == '.')
+					{
+						OUT = "SHOOT " +  std::to_string(Input.ID_IN[i]);
+						Output_local.Commands_OUT.push_back(OUT);
+						moves--;
+						move_performed = 1;
+					}
+				}
+				break;
+			case 4:
+				if(ship_y > 0)
+				{
+					if(MAP[ship_y-1][ship_x] == 'E')
+					{
+						OUT = "SHOOT " +  std::to_string(Input.ID_IN[i]);
+						Output_local.Commands_OUT.push_back(OUT);
+						moves--;
+						move_performed = 1;
+					}
+				}
+				if(ship_y-1 > 0 && Range > 1)
+				{
+					if(MAP[ship_y-2][ship_x] == 'E' && MAP[ship_y-1][ship_x] == '.')
+					{
+						OUT = "SHOOT " +  std::to_string(Input.ID_IN[i]);
+						Output_local.Commands_OUT.push_back(OUT);
+						moves--;
+						move_performed = 1;
+					}
+				}
+				if(ship_y-2 > 0 && Range > 2)
+				{
+					if(MAP[ship_y-3][ship_x] == 'E' && MAP[ship_y-2][ship_x] == '.' && MAP[ship_y-1][ship_x] == '.')
+					{
+						OUT = "SHOOT " +  std::to_string(Input.ID_IN[i]);
+						Output_local.Commands_OUT.push_back(OUT);
+						moves--;
+						move_performed = 1;
+					}
+				}
+				break;				
+		}
+
+		//MOVE IF YOU CAN
 		if (move_performed == 0)
 		switch (ship_rotation)
 		{
@@ -432,6 +575,196 @@ void Test_Alg_1 (Input_type Input, Output_type &Output)
 		}
 
 	}
+//Build Ships everywere!!!
+		for (int i = 0; i < MAP.size(); i++)
+		{
+			for (int j = 0; j < MAP[i].size(); j++)
+			{
+				int Build_type;
+				if (Input.Storage_IN[0] < 20)
+					Build_type = 1;
+				else
+					Build_type = rand()%2+1;
+				if (MAP[i][j] == MyShip_1 || MAP[i][j] == MyShip_4)
+				{
+					if (i > 0 && i < MAP.size()-1 && j > 0 && j < MAP.size()-1 )
+					{
+						if (MAP[i][j+1] == '.')
+						{
+							OUT = "BUILD " + std::to_string(j+1) + " " + std::to_string(i) + " " + std::to_string(Build_type) + " "  + std::to_string(rand()%4+1);
+							Output_local.Commands_OUT.push_back(OUT);
+							Input.Storage_IN[0] -= 10;
+						}
+						if (MAP[i][j-1] == '.')
+						{
+							OUT = "BUILD " + std::to_string(j-1) + " " + std::to_string(i) + " " + std::to_string(Build_type) + " "  + std::to_string(rand()%4+1);
+							Output_local.Commands_OUT.push_back(OUT);
+							Input.Storage_IN[0] -= 10;
+						}
+						if (MAP[i+1][j] == '.')
+						{
+							OUT = "BUILD " + std::to_string(j) + " " + std::to_string(i+1) + " " + std::to_string(Build_type) + " "  + std::to_string(rand()%4+1);
+							Output_local.Commands_OUT.push_back(OUT);
+							Input.Storage_IN[0] -= 10;
+						}
+						if (MAP[i-1][j] == '.')
+						{
+							OUT = "BUILD " + std::to_string(j) + " " + std::to_string(i-1) + " " + std::to_string(Build_type) + " "  + std::to_string(rand()%4+1);
+							Output_local.Commands_OUT.push_back(OUT);
+							Input.Storage_IN[0] -= 10;
+						}
+					}
+					if (i == 0 && j == 0)
+					{
+						if (MAP[i][j+1] == '.')
+						{
+							OUT = "BUILD " + std::to_string(j+1) + " " + std::to_string(i) + " " + std::to_string(Build_type) + " "  + std::to_string(rand()%4+1);
+							Output_local.Commands_OUT.push_back(OUT);
+							Input.Storage_IN[0] -= 10;
+						}
+						if (MAP[i+1][j] == '.')
+						{
+							OUT = "BUILD " + std::to_string(j) + " " + std::to_string(i+1) + " " + std::to_string(Build_type) + " "  + std::to_string(rand()%4+1);
+							Output_local.Commands_OUT.push_back(OUT);
+							Input.Storage_IN[0] -= 10;
+						}
+					}
+					if (i == MAP.size()-1 && j == MAP.size()-1)
+					{
+						if (MAP[i][j-1] == '.')
+						{
+							OUT = "BUILD " + std::to_string(j-1) + " " + std::to_string(i) + " " + std::to_string(Build_type) + " "  + std::to_string(rand()%4+1);
+							Output_local.Commands_OUT.push_back(OUT);
+							Input.Storage_IN[0] -= 10;
+						}
+						if (MAP[i-1][j] == '.')
+						{
+							OUT = "BUILD " + std::to_string(j) + " " + std::to_string(i-1) + " " + std::to_string(Build_type) + " "  + std::to_string(rand()%4+1);
+							Output_local.Commands_OUT.push_back(OUT);
+							Input.Storage_IN[0] -= 10;
+						}
+					}
+					if (i == 0 && j == MAP.size()-1)
+					{
+						if (MAP[i][j-1] == '.')
+						{
+							OUT = "BUILD " + std::to_string(j-1) + " " + std::to_string(i) + " " + std::to_string(Build_type) + " "  + std::to_string(rand()%4+1);
+							Output_local.Commands_OUT.push_back(OUT);
+							Input.Storage_IN[0] -= 10;
+						}
+						if (MAP[i+1][j] == '.')
+						{
+							OUT = "BUILD " + std::to_string(j) + " " + std::to_string(i+1) + " " + std::to_string(Build_type) + " "  + std::to_string(rand()%4+1);
+							Output_local.Commands_OUT.push_back(OUT);
+							Input.Storage_IN[0] -= 10;
+						}
+					}
+					if (i == MAP.size()-1 && j == 0)
+					{
+						if (MAP[i][j+1] == '.')
+						{
+							OUT = "BUILD " + std::to_string(j+1) + " " + std::to_string(i) + " " + std::to_string(Build_type) + " "  + std::to_string(rand()%4+1);
+							Output_local.Commands_OUT.push_back(OUT);
+							Input.Storage_IN[0] -= 10;
+						}
+						if (MAP[i-1][j] == '.')
+						{
+							OUT = "BUILD " + std::to_string(j) + " " + std::to_string(i-1) + " " + std::to_string(Build_type) + " "  + std::to_string(rand()%4+1);
+							Output_local.Commands_OUT.push_back(OUT);
+							Input.Storage_IN[0] -= 10;
+						}
+					}
+					if (i < MAP.size()-1 && i > 0 && j == 0)
+					{
+						if (MAP[i][j+1] == '.')
+						{
+							OUT = "BUILD " + std::to_string(j+1) + " " + std::to_string(i) + " " + std::to_string(Build_type) + " "  + std::to_string(rand()%4+1);
+							Output_local.Commands_OUT.push_back(OUT);
+							Input.Storage_IN[0] -= 10;
+						}
+						if (MAP[i+1][j] == '.')
+						{
+							OUT = "BUILD " + std::to_string(j) + " " + std::to_string(i+1) + " " + std::to_string(Build_type) + " "  + std::to_string(rand()%4+1);
+							Output_local.Commands_OUT.push_back(OUT);
+							Input.Storage_IN[0] -= 10;
+						}
+						if (MAP[i-1][j] == '.')
+						{
+							OUT = "BUILD " + std::to_string(j) + " " + std::to_string(i-1) + " " + std::to_string(Build_type) + " "  + std::to_string(rand()%4+1);
+							Output_local.Commands_OUT.push_back(OUT);
+							Input.Storage_IN[0] -= 10;
+						}
+					}
+					if (i < MAP.size()-1 && i > 0 && j == MAP.size()-1)
+					{
+						if (MAP[i][j-1] == '.')
+						{
+							OUT = "BUILD " + std::to_string(j-1) + " " + std::to_string(i) + " " + std::to_string(Build_type) + " "  + std::to_string(rand()%4+1);
+							Output_local.Commands_OUT.push_back(OUT);
+							Input.Storage_IN[0] -= 10;
+						}
+						if (MAP[i+1][j] == '.')
+						{
+							OUT = "BUILD " + std::to_string(j) + " " + std::to_string(i+1) + " " + std::to_string(Build_type) + " "  + std::to_string(rand()%4+1);
+							Output_local.Commands_OUT.push_back(OUT);
+							Input.Storage_IN[0] -= 10;
+						}
+						if (MAP[i-1][j] == '.')
+						{
+							OUT = "BUILD " + std::to_string(j) + " " + std::to_string(i-1) + " " + std::to_string(Build_type) + " "  + std::to_string(rand()%4+1);
+							Output_local.Commands_OUT.push_back(OUT);
+							Input.Storage_IN[0] -= 10;
+						}
+					}
+					if (j < MAP.size()-1 && j > 0 && i == 0)
+					{
+						if (MAP[i][j+1] == '.')
+						{
+							OUT = "BUILD " + std::to_string(j+1) + " " + std::to_string(i) + " " + std::to_string(Build_type) + " "  + std::to_string(rand()%4+1);
+							Output_local.Commands_OUT.push_back(OUT);
+							Input.Storage_IN[0] -= 10;
+						}
+						if (MAP[i][j-1] == '.')
+						{
+							OUT = "BUILD " + std::to_string(j-1) + " " + std::to_string(i) + " " + std::to_string(Build_type) + " "  + std::to_string(rand()%4+1);
+							Output_local.Commands_OUT.push_back(OUT);
+							Input.Storage_IN[0] -= 10;
+						}
+						if (MAP[i+1][j] == '.')
+						{
+							OUT = "BUILD " + std::to_string(j) + " " + std::to_string(i+1) + " " + std::to_string(Build_type) + " "  + std::to_string(rand()%4+1);
+							Output_local.Commands_OUT.push_back(OUT);
+							Input.Storage_IN[0] -= 10;
+						}
+					}
+					if (j < MAP.size()-1 && j > 0 && i == MAP.size()-1)
+					{
+						if (MAP[i][j+1] == '.')
+						{
+							OUT = "BUILD " + std::to_string(j+1) + " " + std::to_string(i) + " " + std::to_string(Build_type) + " "  + std::to_string(rand()%4+1);
+							Output_local.Commands_OUT.push_back(OUT);
+							Input.Storage_IN[0] -= 10;
+						}
+						if (MAP[i][j-1] == '.')
+						{
+							OUT = "BUILD " + std::to_string(j-1) + " " + std::to_string(i) + " " + std::to_string(Build_type) + " "  + std::to_string(rand()%4+1);
+							Output_local.Commands_OUT.push_back(OUT);
+							Input.Storage_IN[0] -= 10;
+						}
+						if (MAP[i-1][j] == '.')
+						{
+							OUT = "BUILD " + std::to_string(j) + " " + std::to_string(i-1) + " " + std::to_string(Build_type) + " "  + std::to_string(rand()%4+1);
+							Output_local.Commands_OUT.push_back(OUT);
+							Input.Storage_IN[0] -= 10;
+						}
+					}
+				}
+				if (Input.Storage_IN[0] < 10)
+					break;
+			}
+			if (Input.Storage_IN[0] < 10)
+				break;
+		}
 
 	Output_local.Commands_OUT.push_back("END");
 

@@ -19,6 +19,7 @@ void Display_Winner(int Player);
 void Draw_Whole_MAP(std::vector<std::vector<char> > MAP, std::vector<Mine_Class> Mines, std::vector<Asteroid_Class> Asteroids, std::vector<Ship_Class> Ships);
 void Draw_Explosion(int x, int y);
 void Draw_Laser(int x, int y, int Rotation, int Player, int Type, char Colision, int Other_Rotation, int Range);
+void Draw_Dig(int x, int y, int Rotation, int Player, int Type, char Mine);
 void Draw_Space(int Space_Type, int i, int j, int Center, float Scale, float Rotate);
 void Draw_Mine(int Mine_Type, int i, int j, int Center, float Scale, float Rotate);
 void Draw_Asteroid(int Asteroid_Type, int i, int j, int Center, float Scale, float Rotate);

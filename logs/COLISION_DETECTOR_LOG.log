@@ -1,0 +1,2343 @@
+INPUT: x 2 y 6 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 2 y 6 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 2 y 6 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT A ID 8
+
+INPUT: x 2 y 5 Ship_ID 
+DETECT S ID 47
+
+INPUT: x 2 y 5 Ship_ID 
+DETECT S ID 47
+
+INPUT: x 2 y 5 Ship_ID 
+DETECT S ID 47
+
+INPUT: x 3 y 4 Ship_ID 
+DETECT S ID 47
+
+INPUT: x 3 y 4 Ship_ID 
+DETECT S ID 47
+
+INPUT: x 3 y 4 Ship_ID 
+DETECT S ID 47
+
+INPUT: x 2 y 5 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 2 y 5 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 2 y 5 Ship_ID 
+DETECT S ID 48
+
+INPUT: x 2 y 5 Ship_ID 
+DETECT S ID 48
+
+INPUT: x 2 y 5 Ship_ID 
+DETECT S ID 48
+
+INPUT: x 3 y 4 Ship_ID 
+DETECT S ID 48
+
+INPUT: x 3 y 4 Ship_ID 
+DETECT S ID 48
+
+INPUT: x 3 y 4 Ship_ID 
+DETECT S ID 48
+
+INPUT: x 2 y 5 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 2 y 5 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 2 y 6 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 2 y 6 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 2 y 6 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT A ID 8
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT A ID 8
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT A ID 8
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT A ID 8
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT A ID 8
+
+INPUT: x 2 y 5 Ship_ID 
+DETECT S ID 51
+
+INPUT: x 2 y 5 Ship_ID 
+DETECT S ID 51
+
+INPUT: x 2 y 5 Ship_ID 
+DETECT S ID 51
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT A ID 8
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT A ID 8
+
+INPUT: x 2 y 5 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 2 y 5 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 2 y 6 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 2 y 6 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 2 y 6 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT A ID 8
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT A ID 8
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT A ID 8
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT A ID 8
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT A ID 8
+
+INPUT: x 2 y 5 Ship_ID 
+DETECT S ID 52
+
+INPUT: x 2 y 5 Ship_ID 
+DETECT S ID 52
+
+INPUT: x 2 y 5 Ship_ID 
+DETECT S ID 52
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT A ID 8
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT A ID 8
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT A ID 8
+
+INPUT: x 2 y 5 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 2 y 5 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 2 y 6 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 2 y 6 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 2 y 6 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT A ID 8
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT A ID 8
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT A ID 8
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT A ID 8
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT A ID 8
+
+INPUT: x 2 y 6 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 2 y 6 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 2 y 6 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT A ID 8
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT A ID 8
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT A ID 8
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT A ID 8
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT A ID 8
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 2 y 6 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 2 y 6 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 2 y 6 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT A ID 8
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT A ID 8
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT A ID 8
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT A ID 8
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 2 y 6 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 2 y 6 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 2 y 6 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 3 y 8 Ship_ID 
+DETECT S ID 52
+
+INPUT: x 3 y 8 Ship_ID 
+DETECT S ID 52
+
+INPUT: x 6 y 2 Ship_ID 
+DETECT S ID 26
+
+INPUT: x 6 y 2 Ship_ID 
+DETECT S ID 26
+
+INPUT: x 6 y 2 Ship_ID 
+DETECT S ID 26
+
+INPUT: x 5 y 5 Ship_ID 
+DETECT S ID 52
+
+INPUT: x 5 y 5 Ship_ID 
+DETECT S ID 52
+
+INPUT: x 5 y 5 Ship_ID 
+DETECT S ID 52
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 3 y 7 Ship_ID 
+DETECT S ID 29
+
+INPUT: x 3 y 7 Ship_ID 
+DETECT S ID 29
+
+INPUT: x 3 y 7 Ship_ID 
+DETECT S ID 29
+
+INPUT: x 6 y 0 Ship_ID 
+DETECT S ID 2
+
+INPUT: x 6 y 0 Ship_ID 
+DETECT S ID 2
+
+INPUT: x 6 y 0 Ship_ID 
+DETECT S ID 2
+
+INPUT: x 5 y 5 Ship_ID 
+DETECT S ID 55
+
+INPUT: x 5 y 5 Ship_ID 
+DETECT S ID 55
+
+INPUT: x 5 y 5 Ship_ID 
+DETECT S ID 55
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT S ID 14
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT S ID 14
+
+INPUT: x 6 y 3 Ship_ID 
+DETECT S ID 53
+
+INPUT: x 6 y 3 Ship_ID 
+DETECT S ID 53
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 3 y 8 Ship_ID 
+DETECT S ID 49
+
+INPUT: x 3 y 8 Ship_ID 
+DETECT S ID 49
+
+INPUT: x 3 y 8 Ship_ID 
+DETECT S ID 49
+
+INPUT: x 6 y 2 Ship_ID 
+DETECT S ID 11
+
+INPUT: x 6 y 2 Ship_ID 
+DETECT S ID 11
+
+INPUT: x 6 y 2 Ship_ID 
+DETECT S ID 11
+
+INPUT: x 6 y 3 Ship_ID 
+DETECT S ID 51
+
+INPUT: x 6 y 3 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 6 y 3 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 6 y 3 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 6 y 3 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 3 y 7 Ship_ID 
+DETECT S ID 53
+
+INPUT: x 3 y 7 Ship_ID 
+DETECT S ID 53
+
+INPUT: x 3 y 7 Ship_ID 
+DETECT S ID 53
+
+INPUT: x 2 y 6 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 2 y 6 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 8
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 8
+
+INPUT: x 3 y 9 Ship_ID 
+DETECT S ID 39
+
+INPUT: x 3 y 9 Ship_ID 
+DETECT S ID 39
+
+INPUT: x 5 y 5 Ship_ID 
+DETECT S ID 55
+
+INPUT: x 5 y 5 Ship_ID 
+DETECT S ID 55
+
+INPUT: x 3 y 6 Ship_ID 
+DETECT S ID 13
+
+INPUT: x 3 y 6 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 5 y 5 Ship_ID 
+DETECT S ID 54
+
+INPUT: x 5 y 5 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 3 y 6 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 3 y 6 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 3 y 6 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 2 y 6 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 2 y 6 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 2 y 6 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 6 y 4 Ship_ID 
+DETECT A ID 6
+
+INPUT: x 6 y 4 Ship_ID 
+DETECT A ID 6
+
+INPUT: x 6 y 4 Ship_ID 
+DETECT A ID 6
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 5 y 5 Ship_ID 
+DETECT S ID 54
+
+INPUT: x 5 y 5 Ship_ID 
+DETECT S ID 54
+
+INPUT: x 5 y 5 Ship_ID 
+DETECT S ID 54
+
+INPUT: x 5 y 5 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 5 y 5 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 6 y 4 Ship_ID 
+DETECT A ID 6
+
+INPUT: x 6 y 4 Ship_ID 
+DETECT A ID 6
+
+INPUT: x 6 y 4 Ship_ID 
+DETECT A ID 6
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 3 y 6 Ship_ID 
+DETECT S ID 12
+
+INPUT: x 3 y 6 Ship_ID 
+DETECT S ID 12
+
+INPUT: x 3 y 6 Ship_ID 
+DETECT S ID 12
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 5
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 5
+
+INPUT: x 6 y 4 Ship_ID 
+DETECT A ID 6
+
+INPUT: x 6 y 4 Ship_ID 
+DETECT A ID 6
+
+INPUT: x 6 y 4 Ship_ID 
+DETECT A ID 6
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 3 y 8 Ship_ID 
+DETECT S ID 14
+
+INPUT: x 3 y 8 Ship_ID 
+DETECT S ID 14
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 5
+
+INPUT: x 6 y 4 Ship_ID 
+DETECT A ID 6
+
+INPUT: x 6 y 4 Ship_ID 
+DETECT A ID 6
+
+INPUT: x 6 y 4 Ship_ID 
+DETECT A ID 6
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 3 y 9 Ship_ID 
+DETECT S ID 14
+
+INPUT: x 3 y 9 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 3 y 6 Ship_ID 
+DETECT S ID 15
+
+INPUT: x 3 y 6 Ship_ID 
+DETECT S ID 15
+
+INPUT: x 3 y 6 Ship_ID 
+DETECT S ID 15
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 5
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 5
+
+INPUT: x 6 y 4 Ship_ID 
+DETECT A ID 6
+
+INPUT: x 6 y 4 Ship_ID 
+DETECT A ID 6
+
+INPUT: x 6 y 4 Ship_ID 
+DETECT A ID 6
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 5
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 5
+
+INPUT: x 6 y 4 Ship_ID 
+DETECT A ID 6
+
+INPUT: x 6 y 4 Ship_ID 
+DETECT A ID 6
+
+INPUT: x 6 y 4 Ship_ID 
+DETECT A ID 6
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 3 y 7 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 5
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 5
+
+INPUT: x 6 y 4 Ship_ID 
+DETECT A ID 6
+
+INPUT: x 6 y 4 Ship_ID 
+DETECT A ID 6
+
+INPUT: x 6 y 4 Ship_ID 
+DETECT A ID 6
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT A ID 7
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 3 y 6 Ship_ID 
+DETECT S ID 46
+
+INPUT: x 3 y 6 Ship_ID 
+DETECT S ID 46
+
+INPUT: x 3 y 6 Ship_ID 
+DETECT S ID 46
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 5
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 5
+
+INPUT: x 3 y 4 Ship_ID 
+DETECT S ID 13
+
+INPUT: x 6 y 4 Ship_ID 
+DETECT A ID 6
+
+INPUT: x 6 y 4 Ship_ID 
+DETECT A ID 6
+
+INPUT: x 6 y 4 Ship_ID 
+DETECT A ID 6
+
+INPUT: x 4 y 7 Ship_ID 
+DETECT S ID 11
+
+INPUT: x 4 y 7 Ship_ID 
+DETECT S ID 11
+
+INPUT: x 4 y 7 Ship_ID 
+DETECT S ID 11
+
+INPUT: x 3 y 6 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 3 y 6 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 3 y 6 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 5 y 5 Ship_ID 
+DETECT S ID 16
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 5
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 5
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT S ID 3
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT S ID 3
+
+INPUT: x 2 y 7 Ship_ID 
+DETECT A ID 1
+
+INPUT: x 6 y 4 Ship_ID 
+DETECT A ID 6
+
+INPUT: x 6 y 4 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 6 y 4 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 5 y 5 Ship_ID 
+DETECT S ID 16
+
+INPUT: x 5 y 5 Ship_ID 
+DETECT S ID 16
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 5
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 5
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 5
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 5
+
+INPUT: x 4 y 7 Ship_ID 
+DETECT S ID 15
+
+INPUT: x 4 y 7 Ship_ID 
+DETECT S ID 15
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT S ID 3
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT S ID 3
+
+INPUT: x 2 y 6 Ship_ID 
+DETECT S ID 56
+
+INPUT: x 2 y 6 Ship_ID 
+DETECT S ID 56
+
+INPUT: x 2 y 6 Ship_ID 
+DETECT S ID 56
+
+INPUT: x 6 y 7 Ship_ID 
+DETECT S ID 4
+
+INPUT: x 6 y 7 Ship_ID 
+DETECT S ID 4
+
+INPUT: x 4 y 9 Ship_ID 
+DETECT S ID 43
+
+INPUT: x 4 y 9 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 4 y 9 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 7 y 3 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 7 y 3 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 5 y 5 Ship_ID 
+DETECT S ID 16
+
+INPUT: x 5 y 5 Ship_ID 
+DETECT S ID 16
+
+INPUT: x 6 y 4 Ship_ID 
+DETECT S ID 23
+
+INPUT: x 6 y 4 Ship_ID 
+DETECT S ID 23
+
+INPUT: x 6 y 4 Ship_ID 
+DETECT S ID 23
+
+INPUT: x 4 y 7 Ship_ID 
+DETECT S ID 15
+
+INPUT: x 4 y 7 Ship_ID 
+DETECT S ID 15
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 5
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 5
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT S ID 3
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT S ID 3
+
+INPUT: x 2 y 7 Ship_ID 
+DETECT A ID 1
+
+INPUT: x 2 y 7 Ship_ID 
+DETECT A ID 1
+
+INPUT: x 2 y 7 Ship_ID 
+DETECT A ID 1
+
+INPUT: x 6 y 3 Ship_ID 
+DETECT S ID 56
+
+INPUT: x 6 y 3 Ship_ID 
+DETECT S ID 56
+
+INPUT: x 6 y 3 Ship_ID 
+DETECT S ID 56
+
+INPUT: x 4 y 6 Ship_ID 
+DETECT S ID 32
+
+INPUT: x 4 y 6 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 5 y 5 Ship_ID 
+DETECT S ID 15
+
+INPUT: x 5 y 5 Ship_ID 
+DETECT S ID 15
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 5
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 5
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 5
+
+INPUT: x 6 y 2 Ship_ID 
+DETECT S ID 42
+
+INPUT: x 6 y 2 Ship_ID 
+DETECT S ID 42
+
+INPUT: x 4 y 4 Ship_ID 
+DETECT S ID 12
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 5
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 5
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT S ID 3
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT S ID 3
+
+INPUT: x 6 y 5 Ship_ID 
+DETECT S ID 22
+
+INPUT: x 6 y 5 Ship_ID 
+DETECT S ID 22
+
+INPUT: x 2 y 7 Ship_ID 
+DETECT A ID 1
+
+INPUT: x 2 y 7 Ship_ID 
+DETECT A ID 1
+
+INPUT: x 2 y 7 Ship_ID 
+DETECT A ID 1
+
+INPUT: x 7 y 3 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 7 y 3 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 7 y 3 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 4 y 6 Ship_ID 
+DETECT S ID 16
+
+INPUT: x 4 y 6 Ship_ID 
+DETECT S ID 16
+
+INPUT: x 4 y 6 Ship_ID 
+DETECT S ID 16
+
+INPUT: x 5 y 5 Ship_ID 
+DETECT S ID 15
+
+INPUT: x 5 y 5 Ship_ID 
+DETECT S ID 15
+
+INPUT: x 6 y 4 Ship_ID 
+DETECT S ID 55
+
+INPUT: x 6 y 4 Ship_ID 
+DETECT S ID 55
+
+INPUT: x 6 y 4 Ship_ID 
+DETECT S ID 55
+
+INPUT: x 6 y 4 Ship_ID 
+DETECT S ID 55
+
+INPUT: x 6 y 4 Ship_ID 
+DETECT S ID 55
+
+INPUT: x 6 y 4 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 5
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 5
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT S ID 3
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT S ID 3
+
+INPUT: x 3 y 6 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 3 y 6 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 3 y 6 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 6 y 5 Ship_ID 
+DETECT S ID 20
+
+INPUT: x 6 y 5 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 6 y 5 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 2 y 7 Ship_ID 
+DETECT A ID 1
+
+INPUT: x 2 y 7 Ship_ID 
+DETECT A ID 1
+
+INPUT: x 2 y 7 Ship_ID 
+DETECT A ID 1
+
+INPUT: x 7 y 3 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 7 y 3 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 7 y 3 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 6 y 4 Ship_ID 
+DETECT S ID 53
+
+INPUT: x 6 y 4 Ship_ID 
+DETECT S ID 53
+
+INPUT: x 6 y 4 Ship_ID 
+DETECT S ID 53
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 5
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 5
+
+INPUT: x 3 y 4 Ship_ID 
+DETECT S ID 43
+
+INPUT: x 3 y 4 Ship_ID 
+DETECT S ID 43
+
+INPUT: x 3 y 6 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 3 y 6 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 3 y 6 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 6 y 3 Ship_ID 
+DETECT S ID 54
+
+INPUT: x 6 y 3 Ship_ID 
+DETECT S ID 54
+
+INPUT: x 6 y 3 Ship_ID 
+DETECT S ID 54
+
+INPUT: x 2 y 7 Ship_ID 
+DETECT A ID 1
+
+INPUT: x 2 y 7 Ship_ID 
+DETECT A ID 1
+
+INPUT: x 2 y 7 Ship_ID 
+DETECT A ID 1
+
+INPUT: x 6 y 3 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 6 y 3 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 6 y 3 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 4 y 9 Ship_ID 
+DETECT S ID 15
+
+INPUT: x 4 y 9 Ship_ID 
+DETECT S ID 15
+
+INPUT: x 4 y 9 Ship_ID 
+DETECT S ID 15
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 5
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 5
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 5
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 5
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 5
+
+INPUT: x 3 y 4 Ship_ID 
+DETECT S ID 42
+
+INPUT: x 3 y 4 Ship_ID 
+DETECT S ID 42
+
+INPUT: x 3 y 6 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 3 y 6 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 3 y 6 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 2 y 7 Ship_ID 
+DETECT A ID 1
+
+INPUT: x 2 y 7 Ship_ID 
+DETECT A ID 1
+
+INPUT: x 2 y 7 Ship_ID 
+DETECT A ID 1
+
+INPUT: x 4 y 9 Ship_ID 
+DETECT S ID 28
+
+INPUT: x 4 y 9 Ship_ID 
+DETECT S ID 28
+
+INPUT: x 4 y 9 Ship_ID 
+DETECT S ID 28
+
+INPUT: x 6 y 4 Ship_ID 
+DETECT S ID 53
+
+INPUT: x 6 y 4 Ship_ID 
+DETECT S ID 53
+
+INPUT: x 6 y 4 Ship_ID 
+DETECT S ID 53
+
+INPUT: x 4 y 7 Ship_ID 
+DETECT S ID 11
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 5
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 5
+
+INPUT: x 3 y 4 Ship_ID 
+DETECT S ID 40
+
+INPUT: x 3 y 4 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 3 y 6 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 2 y 7 Ship_ID 
+DETECT A ID 1
+
+INPUT: x 2 y 7 Ship_ID 
+DETECT A ID 1
+
+INPUT: x 2 y 7 Ship_ID 
+DETECT A ID 1
+
+INPUT: x 6 y 4 Ship_ID 
+DETECT S ID 2
+
+INPUT: x 6 y 4 Ship_ID 
+DETECT S ID 2
+
+INPUT: x 6 y 4 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 6 y 6 Ship_ID 
+DETECT S ID 13
+
+INPUT: x 6 y 6 Ship_ID 
+DETECT S ID 13
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 5
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 5
+
+INPUT: x 3 y 3 Ship_ID 
+DETECT S ID 37
+
+INPUT: x 7 y 3 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 7 y 3 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 7 y 3 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 6 y 5 Ship_ID 
+DETECT S ID 38
+
+INPUT: x 4 y 7 Ship_ID 
+DETECT S ID 21
+
+INPUT: x 4 y 7 Ship_ID 
+DETECT S ID 21
+
+INPUT: x 4 y 7 Ship_ID 
+DETECT S ID 21
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 7 y 8 Ship_ID 
+DETECT S ID 22
+
+INPUT: x 2 y 7 Ship_ID 
+DETECT A ID 1
+
+INPUT: x 2 y 7 Ship_ID 
+DETECT A ID 1
+
+INPUT: x 2 y 7 Ship_ID 
+DETECT A ID 1
+
+INPUT: x 4 y 7 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 5
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 5
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 5
+
+INPUT: x 6 y 3 Ship_ID 
+DETECT S ID 49
+
+INPUT: x 6 y 3 Ship_ID 
+DETECT S ID 49
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 5
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 5
+
+INPUT: x 3 y 4 Ship_ID 
+DETECT S ID 19
+
+INPUT: x 3 y 4 Ship_ID 
+DETECT S ID 19
+
+INPUT: x 6 y 5 Ship_ID 
+DETECT S ID 37
+
+INPUT: x 6 y 5 Ship_ID 
+DETECT S ID 37
+
+INPUT: x 4 y 9 Ship_ID 
+DETECT S ID 43
+
+INPUT: x 4 y 9 Ship_ID 
+DETECT S ID 43
+
+INPUT: x 9 y 8 Ship_ID 
+DETECT S ID 22
+
+INPUT: x 9 y 8 Ship_ID 
+DETECT S ID 22
+
+INPUT: x 9 y 8 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 2 y 7 Ship_ID 
+DETECT A ID 1
+
+INPUT: x 2 y 7 Ship_ID 
+DETECT A ID 1
+
+INPUT: x 2 y 7 Ship_ID 
+DETECT A ID 1
+
+INPUT: x 5 y 7 Ship_ID 
+DETECT S ID 8
+
+INPUT: x 5 y 7 Ship_ID 
+DETECT S ID 8
+
+INPUT: x 5 y 7 Ship_ID 
+DETECT S ID 8
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 6 y 3 Ship_ID 
+DETECT S ID 47
+
+INPUT: x 6 y 3 Ship_ID 
+DETECT S ID 47
+
+INPUT: x 6 y 7 Ship_ID 
+DETECT S ID 12
+
+INPUT: x 6 y 7 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 6 y 7 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 3 y 4 Ship_ID 
+DETECT S ID 16
+
+INPUT: x 3 y 4 Ship_ID 
+DETECT S ID 16
+
+INPUT: x 6 y 5 Ship_ID 
+DETECT S ID 34
+
+INPUT: x 6 y 5 Ship_ID 
+DETECT S ID 34
+
+INPUT: x 4 y 8 Ship_ID 
+DETECT S ID 3
+
+INPUT: x 4 y 8 Ship_ID 
+DETECT S ID 3
+
+INPUT: x 4 y 8 Ship_ID 
+DETECT S ID 3
+
+INPUT: x 7 y 8 Ship_ID 
+DETECT S ID 12
+
+INPUT: x 7 y 8 Ship_ID 
+DETECT S ID 12
+
+INPUT: x 7 y 8 Ship_ID 
+DETECT S ID 12
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT S ID 48
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT S ID 48
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 4 y 4 Ship_ID 
+DETECT S ID 16
+
+INPUT: x 4 y 4 Ship_ID 
+DETECT S ID 16
+
+INPUT: x 4 y 4 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 6 y 3 Ship_ID 
+DETECT S ID 44
+
+INPUT: x 6 y 3 Ship_ID 
+DETECT S ID 44
+
+INPUT: x 9 y 2 Ship_ID 
+DETECT S ID 0
+
+INPUT: x 9 y 2 Ship_ID 
+DETECT S ID 0
+
+INPUT: x 9 y 2 Ship_ID 
+DETECT S ID 0
+
+INPUT: x 6 y 8 Ship_ID 
+DETECT S ID 29
+
+INPUT: x 6 y 8 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 6 y 8 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 4 y 6 Ship_ID 
+DETECT S ID 41
+
+INPUT: x 4 y 6 Ship_ID 
+DETECT S ID 41
+
+INPUT: x 6 y 8 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 6 y 8 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 3 y 4 Ship_ID 
+DETECT S ID 15
+
+INPUT: x 3 y 4 Ship_ID 
+DETECT S ID 15
+
+INPUT: x 6 y 5 Ship_ID 
+DETECT S ID 31
+
+INPUT: x 6 y 5 Ship_ID 
+DETECT S ID 31
+
+INPUT: x 4 y 8 Ship_ID 
+DETECT S ID 3
+
+INPUT: x 4 y 8 Ship_ID 
+DETECT S ID 3
+
+INPUT: x 4 y 8 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 5 y 9 Ship_ID 
+DETECT S ID 36
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 9 y 4 Ship_ID 
+DETECT S ID 15
+
+INPUT: x 9 y 4 Ship_ID 
+DETECT S ID 15
+
+INPUT: x 4 y 3 Ship_ID 
+DETECT S ID 8
+
+INPUT: x 4 y 3 Ship_ID 
+DETECT S ID 8
+
+INPUT: x 4 y 3 Ship_ID 
+DETECT S ID 8
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 6 y 3 Ship_ID 
+DETECT S ID 40
+
+INPUT: x 6 y 3 Ship_ID 
+DETECT S ID 40
+
+INPUT: x 9 y 3 Ship_ID 
+DETECT S ID 45
+
+INPUT: x 9 y 3 Ship_ID 
+DETECT S ID 45
+
+INPUT: x 9 y 3 Ship_ID 
+DETECT S ID 45
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 4 y 6 Ship_ID 
+DETECT S ID 38
+
+INPUT: x 4 y 6 Ship_ID 
+DETECT S ID 38
+
+INPUT: x 3 y 4 Ship_ID 
+DETECT S ID 13
+
+INPUT: x 3 y 4 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 6 y 5 Ship_ID 
+DETECT S ID 28
+
+INPUT: x 6 y 5 Ship_ID 
+DETECT S ID 28
+
+INPUT: x 4 y 5 Ship_ID 
+DETECT S ID 42
+
+INPUT: x 9 y 4 Ship_ID 
+DETECT S ID 13
+
+INPUT: x 9 y 4 Ship_ID 
+DETECT S ID 13
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 6 y 3 Ship_ID 
+DETECT S ID 39
+
+INPUT: x 6 y 3 Ship_ID 
+DETECT S ID 39
+
+INPUT: x 9 y 3 Ship_ID 
+DETECT S ID 42
+
+INPUT: x 9 y 3 Ship_ID 
+DETECT S ID 42
+
+INPUT: x 9 y 3 Ship_ID 
+DETECT S ID 42
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 3 y 3 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 0 y 9 Ship_ID 
+DETECT S ID 2
+
+INPUT: x 0 y 9 Ship_ID 
+DETECT S ID 2
+
+INPUT: x 0 y 9 Ship_ID 
+DETECT S ID 2
+
+INPUT: x 3 y 3 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 3 y 3 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 3 y 3 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 9 y 4 Ship_ID 
+DETECT S ID 12
+
+INPUT: x 9 y 4 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 6 y 2 Ship_ID 
+DETECT S ID 40
+
+INPUT: x 9 y 2 Ship_ID 
+DETECT S ID 0
+
+INPUT: x 9 y 2 Ship_ID 
+DETECT S ID 0
+
+INPUT: x 9 y 2 Ship_ID 
+DETECT S ID 0
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 5 y 5 Ship_ID 
+DETECT S ID 8
+
+INPUT: x 3 y 3 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 3 y 3 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 3 y 3 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 9 y 5 Ship_ID 
+DETECT S ID 15
+
+INPUT: x 6 y 2 Ship_ID 
+DETECT S ID 39
+
+INPUT: x 6 y 2 Ship_ID 
+DETECT S ID 39
+
+INPUT: x 9 y 3 Ship_ID 
+DETECT S ID 0
+
+INPUT: x 9 y 3 Ship_ID 
+DETECT S ID 0
+
+INPUT: x 9 y 3 Ship_ID 
+DETECT S ID 0
+
+INPUT: x 5 y 8 Ship_ID 
+DETECT S ID 34
+
+INPUT: x 2 y 5 Ship_ID 
+DETECT S ID 20
+
+INPUT: x 2 y 5 Ship_ID 
+DETECT S ID 20
+
+INPUT: x 6 y 4 Ship_ID 
+DETECT S ID 25
+
+INPUT: x 6 y 4 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 6 y 4 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 2 y 3 Ship_ID 
+DETECT S ID 40
+
+INPUT: x 2 y 3 Ship_ID 
+DETECT S ID 40
+
+INPUT: x 4 y 3 Ship_ID 
+DETECT S ID 39
+
+INPUT: x 4 y 3 Ship_ID 
+DETECT S ID 39
+
+INPUT: x 4 y 3 Ship_ID 
+DETECT S ID 39
+
+INPUT: x 4 y 3 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 4 y 3 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 4 y 3 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 4 y 3 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 9 y 5 Ship_ID 
+DETECT S ID 15
+
+INPUT: x 9 y 5 Ship_ID 
+DETECT S ID 15
+
+INPUT: x 2 y 2 Ship_ID 
+DETECT S ID 28
+
+INPUT: x 2 y 2 Ship_ID 
+DETECT S ID 28
+
+INPUT: x 2 y 2 Ship_ID 
+DETECT S ID 28
+
+INPUT: x 2 y 3 Ship_ID 
+DETECT S ID 39
+
+INPUT: x 2 y 3 Ship_ID 
+DETECT S ID 39
+
+INPUT: x 4 y 3 Ship_ID 
+DETECT S ID 40
+
+INPUT: x 4 y 3 Ship_ID 
+DETECT S ID 40
+
+INPUT: x 4 y 3 Ship_ID 
+DETECT S ID 40
+
+INPUT: x 4 y 3 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 4 y 3 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 4 y 3 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 4 y 3 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 4 y 3 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 4 y 3 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 9 y 4 Ship_ID 
+DETECT S ID 23
+
+INPUT: x 9 y 4 Ship_ID 
+DETECT S ID 23
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT S ID 26
+
+INPUT: x 3 y 5 Ship_ID 
+DETECT S ID 26
+
+INPUT: x 2 y 2 Ship_ID 
+DETECT S ID 28
+
+INPUT: x 2 y 2 Ship_ID 
+DETECT S ID 28
+
+INPUT: x 2 y 2 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 2 y 8 Ship_ID 
+DETECT S ID 22
+
+INPUT: x 2 y 8 Ship_ID 
+DETECT S ID 22
+
+INPUT: x 2 y 8 Ship_ID 
+DETECT S ID 22
+
+INPUT: x 2 y 3 Ship_ID 
+DETECT S ID 37
+
+INPUT: x 2 y 3 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 4 y 3 Ship_ID 
+DETECT S ID 38
+
+INPUT: x 4 y 3 Ship_ID 
+DETECT S ID 38
+
+INPUT: x 4 y 3 Ship_ID 
+DETECT S ID 38
+
+INPUT: x 5 y 8 Ship_ID 
+DETECT S ID 8
+
+INPUT: x 4 y 3 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 4 y 3 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 4 y 3 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 4 y 3 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 4 y 3 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 4 y 3 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 9 y 4 Ship_ID 
+DETECT S ID 22
+
+INPUT: x 9 y 4 Ship_ID 
+DETECT S ID 22
+
+INPUT: x 3 y 7 Ship_ID 
+DETECT S ID 25
+
+INPUT: x 3 y 7 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 3 y 7 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 2 y 8 Ship_ID 
+DETECT S ID 13
+
+INPUT: x 2 y 8 Ship_ID 
+DETECT S ID 13
+
+INPUT: x 2 y 8 Ship_ID 
+DETECT S ID 13
+
+INPUT: x 9 y 8 Ship_ID 
+DETECT S ID 24
+
+INPUT: x 2 y 3 Ship_ID 
+DETECT S ID 37
+
+INPUT: x 2 y 3 Ship_ID 
+DETECT S ID 37
+
+INPUT: x 4 y 3 Ship_ID 
+DETECT S ID 36
+
+INPUT: x 4 y 3 Ship_ID 
+DETECT S ID 36
+
+INPUT: x 4 y 3 Ship_ID 
+DETECT S ID 36
+
+INPUT: x 4 y 3 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 4 y 3 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 4 y 3 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 4 y 3 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 4 y 3 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 4 y 3 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 9 y 4 Ship_ID 
+DETECT S ID 21
+
+INPUT: x 9 y 4 Ship_ID 
+DETECT S ID 21
+
+INPUT: x 2 y 5 Ship_ID 
+DETECT S ID 19
+
+INPUT: x 2 y 5 Ship_ID 
+DETECT S ID 19
+
+INPUT: x 2 y 5 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 2 y 3 Ship_ID 
+DETECT S ID 35
+
+INPUT: x 2 y 3 Ship_ID 
+DETECT S ID 35
+
+INPUT: x 9 y 8 Ship_ID 
+DETECT S ID 23
+
+INPUT: x 9 y 8 Ship_ID 
+DETECT S ID 23
+
+INPUT: x 9 y 8 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 2 y 3 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 2 y 3 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 3 y 3 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 9 y 7 Ship_ID 
+DETECT A ID 2
+
+INPUT: x 9 y 7 Ship_ID 
+DETECT A ID 2
+
+INPUT: x 9 y 7 Ship_ID 
+DETECT A ID 2
+
+INPUT: x 9 y 4 Ship_ID 
+DETECT S ID 20
+
+INPUT: x 9 y 4 Ship_ID 
+DETECT S ID 20
+
+INPUT: x 9 y 3 Ship_ID 
+DETECT S ID 0
+
+INPUT: x 9 y 3 Ship_ID 
+DETECT S ID 0
+
+INPUT: x 9 y 3 Ship_ID 
+DETECT S ID 0
+
+INPUT: x 0 y 8 Ship_ID 
+DETECT S ID 21
+
+INPUT: x 0 y 8 Ship_ID 
+DETECT S ID 21
+
+INPUT: x 0 y 8 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 2 y 3 Ship_ID 
+DETECT S ID 33
+
+INPUT: x 2 y 3 Ship_ID 
+DETECT S ID 33
+
+INPUT: x 2 y 3 Ship_ID 
+DETECT S ID 33
+
+INPUT: x 2 y 3 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 2 y 3 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 3 y 3 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 3 y 3 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 3 y 3 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 9 y 7 Ship_ID 
+DETECT A ID 2
+
+INPUT: x 9 y 7 Ship_ID 
+DETECT A ID 2
+
+INPUT: x 9 y 7 Ship_ID 
+DETECT A ID 2
+
+INPUT: x 9 y 5 Ship_ID 
+DETECT S ID 14
+
+INPUT: x 9 y 5 Ship_ID 
+DETECT S ID 14
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 2 y 3 Ship_ID 
+DETECT S ID 33
+
+INPUT: x 2 y 3 Ship_ID 
+DETECT S ID 33
+
+INPUT: x 2 y 3 Ship_ID 
+DETECT S ID 33
+
+INPUT: x 2 y 3 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 2 y 3 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 3 y 3 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 3 y 3 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 3 y 3 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 2 y 4 Ship_ID 
+DETECT S ID 32
+
+INPUT: x 9 y 7 Ship_ID 
+DETECT A ID 2
+
+INPUT: x 9 y 7 Ship_ID 
+DETECT A ID 2
+
+INPUT: x 9 y 7 Ship_ID 
+DETECT A ID 2
+
+INPUT: x 9 y 6 Ship_ID 
+DETECT A ID 6
+
+INPUT: x 2 y 5 Ship_ID 
+DETECT S ID 9
+
+INPUT: x 2 y 5 Ship_ID 
+DETECT S ID 9
+
+INPUT: x 2 y 5 Ship_ID 
+DETECT S ID 9
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 2 y 4 Ship_ID 
+DETECT S ID 31
+
+INPUT: x 2 y 4 Ship_ID 
+DETECT S ID 31
+
+INPUT: x 2 y 4 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 9 y 7 Ship_ID 
+DETECT A ID 2
+
+INPUT: x 9 y 7 Ship_ID 
+DETECT A ID 2
+
+INPUT: x 3 y 3 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 3 y 3 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 3 y 3 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 3 y 3 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 3 y 3 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 2 y 4 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 2 y 4 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 2 y 4 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 9 y 7 Ship_ID 
+DETECT A ID 2
+
+INPUT: x 9 y 7 Ship_ID 
+DETECT A ID 2
+
+INPUT: x 9 y 7 Ship_ID 
+DETECT A ID 2
+
+INPUT: x 9 y 6 Ship_ID 
+DETECT A ID 6
+
+INPUT: x 9 y 6 Ship_ID 
+DETECT A ID 6
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 2 y 3 Ship_ID 
+DETECT S ID 32
+
+INPUT: x 2 y 3 Ship_ID 
+DETECT S ID 32
+
+INPUT: x 2 y 3 Ship_ID 
+DETECT S ID 32
+
+INPUT: x 9 y 7 Ship_ID 
+DETECT A ID 2
+
+INPUT: x 9 y 7 Ship_ID 
+DETECT A ID 2
+
+INPUT: x 9 y 7 Ship_ID 
+DETECT A ID 2
+
+INPUT: x 2 y 3 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 2 y 3 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 3 y 3 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 3 y 3 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 3 y 3 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 2 y 4 Ship_ID 
+DETECT S ID 31
+
+INPUT: x 2 y 4 Ship_ID 
+DETECT S ID 31
+
+INPUT: x 2 y 4 Ship_ID 
+DETECT S ID 31
+
+INPUT: x 9 y 7 Ship_ID 
+DETECT A ID 2
+
+INPUT: x 9 y 7 Ship_ID 
+DETECT A ID 2
+
+INPUT: x 9 y 7 Ship_ID 
+DETECT A ID 2
+
+INPUT: x 9 y 6 Ship_ID 
+DETECT A ID 5
+
+INPUT: x 9 y 6 Ship_ID 
+DETECT A ID 5
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT S ID 6
+
+INPUT: x 5 y 4 Ship_ID 
+DETECT S ID 6
+
+INPUT: x 2 y 6 Ship_ID 
+DETECT S ID 9
+
+INPUT: x 2 y 6 Ship_ID 
+DETECT S ID 9
+
+INPUT: x 2 y 6 Ship_ID 
+DETECT S ID 9
+
+INPUT: x 2 y 3 Ship_ID 
+DETECT S ID 31
+
+INPUT: x 2 y 3 Ship_ID 
+DETECT S ID 31
+
+INPUT: x 2 y 3 Ship_ID 
+DETECT S ID 31
+
+INPUT: x 9 y 7 Ship_ID 
+DETECT A ID 2
+
+INPUT: x 9 y 7 Ship_ID 
+DETECT A ID 2
+
+INPUT: x 9 y 7 Ship_ID 
+DETECT A ID 2
+
+INPUT: x 7 y 4 Ship_ID 
+DETECT S ID 17
+
+INPUT: x 7 y 4 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 2 y 3 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 2 y 3 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 3 y 3 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 3 y 3 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 3 y 3 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 5 y 9 Ship_ID 
+DETECT S ID 4
+
+INPUT: x 9 y 7 Ship_ID 
+DETECT A ID 2
+
+INPUT: x 9 y 7 Ship_ID 
+DETECT A ID 2
+
+INPUT: x 9 y 7 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 9 y 6 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 9 y 6 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 2 y 6 Ship_ID 
+DETECT S ID 29
+
+INPUT: x 2 y 6 Ship_ID 
+DETECT S ID 29
+
+INPUT: x 9 y 6 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 9 y 6 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 9 y 6 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 9 y 6 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 9 y 6 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 7 y 3 Ship_ID 
+DETECT A ID 2
+
+INPUT: x 7 y 3 Ship_ID 
+DETECT A ID 2
+
+INPUT: x 7 y 3 Ship_ID 
+DETECT A ID 2
+
+INPUT: x 3 y 3 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 3 y 3 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 3 y 3 Ship_ID 
+DETECT S ID 1
+
+INPUT: x 9 y 6 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 9 y 6 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 9 y 4 Ship_ID 
+DETECT S ID 0
+
+INPUT: x 9 y 4 Ship_ID 
+DETECT S ID 0
+
+INPUT: x 9 y 4 Ship_ID 
+DETECT S ID 0
+
+INPUT: x 6 y 6 Ship_ID 
+DETECT S ID 25
+
+INPUT: x 2 y 3 Ship_ID 
+DETECT S ID 27
+
+INPUT: x 2 y 3 Ship_ID 
+DETECT S ID 27
+
+INPUT: x 2 y 6 Ship_ID 
+DETECT S ID 8
+
+INPUT: x 2 y 6 Ship_ID 
+DETECT S ID 8
+
+INPUT: x 2 y 6 Ship_ID 
+DETECT . ID -1
+
+INPUT: x 9 y 6 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 9 y 6 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 9 y 6 Ship_ID 
+DETECT A ID 4
+
+INPUT: x 7 y 3 Ship_ID 
+DETECT A ID 2
+
+INPUT: x 7 y 3 Ship_ID 
+DETECT A ID 2
+
+INPUT: x 7 y 3 Ship_ID 
+DETECT A ID 2
+
+INPUT: x 3 y 3 Ship_ID 
+DETECT S ID 1
+

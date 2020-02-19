@@ -331,7 +331,7 @@ int Workshop_Near_By(int y, int x, int Player, std::vector<std::vector<char> > M
 }
 
 
-int COLISION_DETECTOR(int x, int y, std::vector<Mine_Class> Mines, std::vector<Asteroid_Class> Asteroids, std::vector<Ship_Class> Ships, int Ship_ID, char* Obj_Type)
+int COLISION_DETECTOR(int x, int y, std::vector<Mine_Class> Mines, std::vector<Asteroid_Class> Asteroids, std::vector<Ship_Class> Ships, char* Obj_Type)
 {
 	int ret_val = -1;
 	char Type = '.';
@@ -358,14 +358,14 @@ int COLISION_DETECTOR(int x, int y, std::vector<Mine_Class> Mines, std::vector<A
 	if (ret_val == -1)
 	for (int i = 0; i < Ships.size(); i++)
 	{
-		if (x == Ships[i].x && y == Ships[i].y && Ships[i].ID != Ship_ID)
+		if (x == Ships[i].x && y == Ships[i].y)
 		{
 			Type = 'S';
 			ret_val = i;
 			break;
 		}
 	}
-	COLISION_DETECTOR_LOG << "INPUT: x " << x << " y " << y << " Ship_ID " << Ship_ID << std::endl;
+	COLISION_DETECTOR_LOG << "INPUT: x " << x << " y " << y << " Ship_ID " << std::endl;
 	COLISION_DETECTOR_LOG << "DETECT " << Type << " ID " << ret_val << std::endl;
 	COLISION_DETECTOR_LOG << std::endl;
 	*Obj_Type = Type;
@@ -510,7 +510,7 @@ int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, s
 								{
 									char Type, colision_object;
 									int Colision_Rotation = 0;
-									int Colision_ID = COLISION_DETECTOR(p_x, p_y, Mines, Asteroids, Ships, Move_ID, &Type);
+									int Colision_ID = COLISION_DETECTOR(p_x, p_y, Mines, Asteroids, Ships, &Type);
 									if (Type == 'M')
 									{
 										colision_object = 'M';
@@ -713,7 +713,7 @@ int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, s
 					int Shoot_iterator = -1;
 					for (int i = 0; i < Ships.size(); i++)
 					{
-						if (Shoot_ID == Ships[i].ID &&  Ships[i].Player == Player)
+						if (Shoot_ID == Ships[i].ID && Ships[i].Player == Player)
 						{
 							Shoot_iterator = i;
 						}
@@ -734,7 +734,7 @@ int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, s
 									{
 										flag = 1;
 										char Type, col_obj;
-										int Colision_ID = COLISION_DETECTOR(p_x +i +1, p_y, Mines, Asteroids, Ships, Shoot_ID, &Type);
+										int Colision_ID = COLISION_DETECTOR(p_x +i +1, p_y, Mines, Asteroids, Ships, &Type);
 										if (Type == 'M')
 										{
 											Mines[Colision_ID].HP -= Ships[Shoot_iterator].Damage;
@@ -782,13 +782,13 @@ int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, s
 										break;
 									}
 								}
-								if (Ships[Shoot_iterator].Rotation == 2 && p_x > i +1) 
+								if (Ships[Shoot_iterator].Rotation == 2 && p_x > i) 
 								{
 									if (MAP[p_y][p_x -i -1] != '.')
 									{
 										flag = 1;
 										char Type, col_obj;
-										int Colision_ID = COLISION_DETECTOR(p_x -i -1, p_y, Mines, Asteroids, Ships, Shoot_ID, &Type);
+										int Colision_ID = COLISION_DETECTOR(p_x -i -1, p_y, Mines, Asteroids, Ships, &Type);
 										if (Type == 'M')
 										{
 											Mines[Colision_ID].HP -= Ships[Shoot_iterator].Damage;
@@ -842,7 +842,7 @@ int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, s
 									{
 										flag = 1;
 										char Type, col_obj;
-										int Colision_ID = COLISION_DETECTOR(p_x, p_y +i +1, Mines, Asteroids, Ships, Shoot_ID, &Type);
+										int Colision_ID = COLISION_DETECTOR(p_x, p_y +i +1, Mines, Asteroids, Ships, &Type);
 										if (Type == 'M')
 										{
 											Mines[Colision_ID].HP -= Ships[Shoot_iterator].Damage;
@@ -890,13 +890,13 @@ int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, s
 										break;
 									}
 								}
-								if (Ships[Shoot_iterator].Rotation == 4 && p_y > i +1)
+								if (Ships[Shoot_iterator].Rotation == 4 && p_y > i)
 								{
 									if (MAP[p_y -i -1][p_x] != '.')
 									{
 										flag = 1;
 										char Type, col_obj;
-										int Colision_ID = COLISION_DETECTOR(p_x, p_y -i -1, Mines, Asteroids, Ships, Shoot_ID, &Type);
+										int Colision_ID = COLISION_DETECTOR(p_x, p_y -i -1, Mines, Asteroids, Ships, &Type);
 										if (Type == 'M')
 										{
 											Mines[Colision_ID].HP -= Ships[Shoot_iterator].Damage;
@@ -1074,6 +1074,11 @@ int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, s
 									{
 										Ships[Dig_iterator].Storage = Ships[Dig_iterator].MAX_Storage;
 									}
+									Draw_Dig(p_x, p_y, Ships[Dig_iterator].Rotation, Player, Ships[Dig_iterator].Type, 'M');
+								}
+								else
+								{
+									Draw_Dig(p_x, p_y, Ships[Dig_iterator].Rotation, Player, Ships[Dig_iterator].Type, '.');
 								}
 							}
 							if (Ships[Dig_iterator].Rotation == 2 && p_x > 1) 
@@ -1094,6 +1099,11 @@ int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, s
 									{
 										Ships[Dig_iterator].Storage = Ships[Dig_iterator].MAX_Storage;
 									}
+									Draw_Dig(p_x, p_y, Ships[Dig_iterator].Rotation, Player, Ships[Dig_iterator].Type, 'M');
+								}
+								else
+								{
+									Draw_Dig(p_x, p_y, Ships[Dig_iterator].Rotation, Player, Ships[Dig_iterator].Type, '.');
 								}
 							}
 							if (Ships[Dig_iterator].Rotation == 3 && p_y < MAP_SIZE -1)
@@ -1114,9 +1124,14 @@ int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, s
 									{
 										Ships[Dig_iterator].Storage = Ships[Dig_iterator].MAX_Storage;
 									}
+									Draw_Dig(p_x, p_y, Ships[Dig_iterator].Rotation, Player, Ships[Dig_iterator].Type, 'M');
+								}
+								else
+								{
+									Draw_Dig(p_x, p_y, Ships[Dig_iterator].Rotation, Player, Ships[Dig_iterator].Type, '.');
 								}
 							}
-							if (Ships[Dig_iterator].Rotation == 4 && p_y > i +1)
+							if (Ships[Dig_iterator].Rotation == 4 && p_y > 1)
 							{
 								if (MAP[p_y -1][p_x] == 'M')
 								{
@@ -1134,6 +1149,11 @@ int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, s
 									{
 										Ships[Dig_iterator].Storage = Ships[Dig_iterator].MAX_Storage;
 									}
+									Draw_Dig(p_x, p_y, Ships[Dig_iterator].Rotation, Player, Ships[Dig_iterator].Type, 'M');
+								}
+								else
+								{
+									Draw_Dig(p_x, p_y, Ships[Dig_iterator].Rotation, Player, Ships[Dig_iterator].Type, '.');
 								}
 							}
 							Winner = Destroy_Ships(Mines, Asteroids, Ships);
