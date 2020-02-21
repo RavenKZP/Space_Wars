@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <iostream>
 #include <vector>
+#include <thread>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_image.h>
 #include <allegro5/allegro_font.h>
@@ -15,18 +16,23 @@
 #define FONT_SIZE 180/MAP_SIZE
 
 float animation_speed = 0.05;
+int Display_IDs = 0;
+int Display_HPs = 0;
+int Display_STs = 0;
+int Player_1_Type = 0;
+int	Player_2_Type = 0;
+int seed;
+int Title_Screen = 1;
+extern int MAP_SIZE;
 
 float Ship_Rotate(std::vector<Ship_Class> Ships, int y, int x);
 
-int Player_1_Type = 0;
-int	Player_2_Type = 0;
-
-int seed;
-extern int MAP_SIZE;
 
 std::vector<std::vector< Graphical_Data_type>> Graphical_Data_Matrix;
 
 ALLEGRO_DISPLAY *display = NULL;
+ALLEGRO_MOUSE_STATE mouse_state;
+std::thread thread_Mouse;
 
 ALLEGRO_BITMAP *Asteroid_1 = NULL;
 ALLEGRO_BITMAP *Asteroid_2 = NULL;
@@ -68,6 +74,7 @@ ALLEGRO_BITMAP *Workshop_4 = NULL;
 ALLEGRO_BITMAP *Ship = NULL;
 
 ALLEGRO_FONT *font = NULL;
+ALLEGRO_FONT *title_font = NULL;
 ALLEGRO_FONT *Winner_font = NULL;
 
 void Create_Display()
@@ -105,10 +112,13 @@ void Create_Display()
 	al_init_image_addon();
 	al_init_font_addon();
 	al_init_ttf_addon();
-	display = al_create_display(MAP_SIZE*TILE_SIZE+TILE_SIZE*10, MAP_SIZE*TILE_SIZE);
+	al_install_mouse();
+	al_install_keyboard();
+	display = al_create_display(MAP_SIZE*TILE_SIZE+TILE_SIZE*5, MAP_SIZE*TILE_SIZE);
 
 
   font = al_load_ttf_font("Fonts/Credit Valley.ttf", FONT_SIZE, 0 );
+	title_font = al_load_ttf_font("Fonts/Credit Valley.ttf", MAP_SIZE*5, 0 );
 	Winner_font = al_load_ttf_font("Fonts/Credit Valley.ttf", MAP_SIZE*5, 0 );
 
 
@@ -149,105 +159,240 @@ void Create_Display()
 	Workshop_2 = al_load_bitmap("Images/Workshop_2.png");
 	Workshop_3 = al_load_bitmap("Images/Workshop_3.png");
 	Workshop_4 = al_load_bitmap("Images/Workshop_4.png");
+
+	thread_Mouse = std::thread(Mouse_functions);
+}
+
+void TITLE_SCREEN()
+{
+	float Scale = TILE_SIZE/IMAGE_SIZE;
+	float Center = IMAGE_SIZE/2;
+
+	al_clear_to_color(al_map_rgb(0,0,0));
+	al_draw_scaled_rotated_bitmap(Mine_4, Center, Center, (MAP_SIZE*TILE_SIZE+TILE_SIZE*5)/2,(MAP_SIZE*TILE_SIZE)/2+FONT_SIZE*5, Scale, Scale, rand(), 0);
+	al_draw_text(title_font, al_map_rgb(255,255,255), (MAP_SIZE*TILE_SIZE+TILE_SIZE*5)/2, (MAP_SIZE*TILE_SIZE)/2, ALLEGRO_ALIGN_CENTRE, "SPACE WARS");
+	al_draw_text(font, al_map_rgb(255,255,255), (MAP_SIZE*TILE_SIZE+TILE_SIZE*5)/2, (MAP_SIZE*TILE_SIZE)/2+FONT_SIZE*5, ALLEGRO_ALIGN_CENTRE, "START");
+	al_flip_display();
+	while(Title_Screen)
+	{
+
+	}
+}
+
+void Mouse_functions()
+{
+	extern int MAP_seed;
+	extern int MAP_SIZE;
+	extern int Player_Alg[];
+	extern int game_end;
+
+	int LMB_clicked = 0;
+	int LMB_clicked_old = 0;
+	int Mouse_position_x;
+	int Mouse_position_y;
+	
+	while (Title_Screen)
+	{
+		al_get_mouse_state(&mouse_state);
+
+		if (mouse_state.buttons & 1)
+			LMB_clicked = 1;
+		else
+			LMB_clicked = 0;
+		al_rest(0.01);
+
+		if (LMB_clicked == 1 && LMB_clicked_old == 0)
+		{
+			Mouse_position_x = mouse_state.x;
+			Mouse_position_y = mouse_state.y;
+			if ( Mouse_position_x > (MAP_SIZE*TILE_SIZE+TILE_SIZE*5)/2 - FONT_SIZE*2 && Mouse_position_x < (MAP_SIZE*TILE_SIZE+TILE_SIZE*5)/2 + FONT_SIZE*2 && Mouse_position_y > (MAP_SIZE*TILE_SIZE)/2 && Mouse_position_y < (MAP_SIZE*TILE_SIZE)/2+FONT_SIZE*5)
+				Title_Screen = 0;
+
+			
+		}
+		LMB_clicked_old = LMB_clicked;
+	}
+
+	while(game_end > 0)
+	{
+		al_get_mouse_state(&mouse_state);
+
+		if (mouse_state.buttons & 1)
+			LMB_clicked = 1;
+		else
+			LMB_clicked = 0;
+		al_rest(0.01);
+
+		if (LMB_clicked == 1 && LMB_clicked_old == 0)
+		{
+			Mouse_position_x = mouse_state.x;
+			Mouse_position_y = mouse_state.y;
+			if ( Mouse_position_x > (MAP_SIZE+1)*TILE_SIZE && Mouse_position_x < (MAP_SIZE+2)*TILE_SIZE && Mouse_position_y > TILE_SIZE && Mouse_position_y < 2*TILE_SIZE)
+			{
+				if (Display_IDs == 1)
+					Display_IDs = 0;
+				else //if (Display_IDs == 0)
+					Display_IDs = 1;
+			}
+			if ( Mouse_position_x > (MAP_SIZE+2)*TILE_SIZE && Mouse_position_x <(MAP_SIZE+3)*TILE_SIZE && Mouse_position_y > TILE_SIZE && Mouse_position_y < 2*TILE_SIZE)
+			{
+				if (Display_HPs == 1)
+					Display_HPs = 0;
+				else //if (Display_HPs == 0)
+					Display_HPs = 1;
+			}
+			if ( Mouse_position_x > (MAP_SIZE+3)*TILE_SIZE && Mouse_position_x < (MAP_SIZE+4)*TILE_SIZE && Mouse_position_y > TILE_SIZE && Mouse_position_y < 2*TILE_SIZE)
+			{
+				if (Display_STs == 1)
+					Display_STs = 0;
+				else //if (Display_STs == 0)
+					Display_STs = 1;
+			}
+
+			if ( Mouse_position_x > (MAP_SIZE)*TILE_SIZE && Mouse_position_x < (MAP_SIZE+1)*TILE_SIZE && Mouse_position_y > TILE_SIZE*3 && Mouse_position_y < 4*TILE_SIZE)
+			{
+				animation_speed = 0.1000;
+			}
+			if ( Mouse_position_x > (MAP_SIZE+1)*TILE_SIZE && Mouse_position_x < (MAP_SIZE+2)*TILE_SIZE && Mouse_position_y > TILE_SIZE*3 && Mouse_position_y < 4*TILE_SIZE)
+			{
+				animation_speed = 0.0500;
+			}
+			if ( Mouse_position_x > (MAP_SIZE+2)*TILE_SIZE && Mouse_position_x < (MAP_SIZE+3)*TILE_SIZE && Mouse_position_y > TILE_SIZE*3 && Mouse_position_y < 4*TILE_SIZE)
+			{
+				animation_speed = 0.0250;
+			}
+			if ( Mouse_position_x > (MAP_SIZE+3)*TILE_SIZE && Mouse_position_x < (MAP_SIZE+4)*TILE_SIZE && Mouse_position_y > TILE_SIZE*3 && Mouse_position_y < 4*TILE_SIZE)
+			{
+				animation_speed = 0.0125;
+			}
+			if ( Mouse_position_x > (MAP_SIZE+4)*TILE_SIZE && Mouse_position_x < (MAP_SIZE+5)*TILE_SIZE && Mouse_position_y > TILE_SIZE*3 && Mouse_position_y < 4*TILE_SIZE)
+			{
+				animation_speed = 0.0000;
+			}
+
+			if ( Mouse_position_x > (MAP_SIZE+4)*TILE_SIZE && Mouse_position_x < (MAP_SIZE+5)*TILE_SIZE && Mouse_position_y > TILE_SIZE*(MAP_SIZE-1) && Mouse_position_y < TILE_SIZE*MAP_SIZE)
+			{
+				game_end = 0;
+			}
+		}
+		LMB_clicked_old = LMB_clicked;
+	}
 }
 
 void Display_Stats(std::vector<Mine_Class> Mines, std::vector<Asteroid_Class> Asteroids, std::vector<Ship_Class> Ships)
 {
 	float Scale = TILE_SIZE/IMAGE_SIZE;
 	float Center = IMAGE_SIZE/2;
-	for (int i = 0; i < 10; i++)
-	{
-		for (int j = 0; j < MAP_SIZE; j++)
+
+	if (Display_IDs || Display_HPs)
+		for (int i = 0; i < Mines.size(); i++)
 		{
-			int Position_x = i*TILE_SIZE + MAP_SIZE*TILE_SIZE + TILE_SIZE/2;
-			int Position_y = j*TILE_SIZE + TILE_SIZE/2;
-			al_draw_scaled_rotated_bitmap(Black, Center, Center, Position_x, Position_y, Scale, Scale,  0, 0);
+			std::string Mine_ID, Mine_HP;
+			int M_x = Mines[i].x;
+			int M_y = Mines[i].y;
+			std::string M_ID = std::to_string(Mines[i].ID);
+			std::string M_HP = std::to_string(Mines[i].HP);
+
+			Mine_ID = "ID " + M_ID;
+			Mine_HP = "HP " + M_HP;
+			char ID[Mine_ID.size()];
+			char HP[Mine_HP.size()];
+
+			memset(ID, ' ', Mine_ID.size());
+			memset(HP, ' ', Mine_HP.size());
+
+			for (int j = 0; j < sizeof(Mine_ID); j++)
+		  	ID[j] = Mine_ID[j];
+			for (int j = 0; j < sizeof(Mine_HP); j++)
+				HP[j] = Mine_HP[j];
+
+			int position = 0;
+
+			if (Display_IDs)
+				al_draw_text(font, al_map_rgb(255,255,255), M_x*TILE_SIZE+TILE_SIZE/2, (++position)*FONT_SIZE+M_y*TILE_SIZE, ALLEGRO_ALIGN_CENTRE, ID);
+			if (Display_HPs)
+				al_draw_text(font, al_map_rgb(255,255,255), M_x*TILE_SIZE+TILE_SIZE/2, (++position)*FONT_SIZE+M_y*TILE_SIZE, ALLEGRO_ALIGN_CENTRE, HP);
 		}
-	}
-	int global_i = 0;
-	for (int i = 0; i < Mines.size(); i++)
-	{
-		std::string Mine_description;
-		std::string M_x = std::to_string(Mines[i].x);
-		std::string M_y = std::to_string(Mines[i].y);
-		std::string M_ID = std::to_string(Mines[i].ID);
-		std::string M_HP = std::to_string(Mines[i].HP);
 
-		Mine_description = "Mine x " + M_x + " y " + M_y + " ID " + M_ID + " HP " + M_HP;
-		char desc[Mine_description.size()];
-		for (int j = 0; j < sizeof(desc); j++) 
-		{ 
-    	desc[j] = Mine_description[j]; 
-    } 
-		al_draw_text(font, al_map_rgb(255,255,255), MAP_SIZE*TILE_SIZE+TILE_SIZE*2.5, global_i*FONT_SIZE, ALLEGRO_ALIGN_CENTRE, desc);
-		global_i += 1;
-	}
-	for (int i = 0; i < Asteroids.size(); i++)
-	{
-		std::string Asteroid_description;
-		std::string A_x = std::to_string(Asteroids[i].x);
-		std::string A_y = std::to_string(Asteroids[i].y);
-		std::string A_ID = std::to_string(Asteroids[i].ID);
-		std::string A_HP = std::to_string(Asteroids[i].HP);
-		std::string A_Workshop = std::to_string(Asteroids[i].Workshop);
+	if (Display_IDs || Display_HPs)
+		for (int i = 0; i < Asteroids.size(); i++)
+		{
+			ALLEGRO_COLOR color = al_map_rgb(255,255,255);
+			std::string Asteroid_ID, Asteroid_HP;
+			int A_x = Asteroids[i].x;
+			int A_y = Asteroids[i].y;
+			std::string A_ID = std::to_string(Asteroids[i].ID);
+			std::string A_HP = std::to_string(Asteroids[i].HP);
 
-		Asteroid_description = "Asteroid x " + A_x + " y " + A_y + " ID " + A_ID + " HP " +  A_HP + " Workshop: " + A_Workshop;
-		char desc[Asteroid_description.size()];
-		for (int j = 0; j < sizeof(desc); j++) 
-		{ 
-    	desc[j] = Asteroid_description[j]; 
-    }
-		if (A_Workshop == "0")
-			al_draw_text(font, al_map_rgb(255,255,255), MAP_SIZE*TILE_SIZE+TILE_SIZE*2.5, global_i*FONT_SIZE, ALLEGRO_ALIGN_CENTRE, desc);
-		if (A_Workshop == "1")
-			al_draw_text(font, al_map_rgb(0,255,0), MAP_SIZE*TILE_SIZE+TILE_SIZE*2.5, global_i*FONT_SIZE, ALLEGRO_ALIGN_CENTRE, desc);
-		if (A_Workshop == "2")
-			al_draw_text(font, al_map_rgb(255,0,0), MAP_SIZE*TILE_SIZE+TILE_SIZE*2.5, global_i*FONT_SIZE, ALLEGRO_ALIGN_CENTRE, desc);
-		global_i += 1;
-	}
-	global_i = 0;
-	for (int i = 0; i < Ships.size(); i++)
-	{
-		std::string Ship_description_1;
-		std::string Ship_description_2;
-		std::string S_Type;
-		std::string S_x = std::to_string(Ships[i].x);
-		std::string S_y = std::to_string(Ships[i].y);
-		std::string S_ID = std::to_string(Ships[i].ID);
-		std::string S_HP = std::to_string(Ships[i].HP);
-		std::string S_Storage = std::to_string(Ships[i].Storage);
-		std::string S_Speed = std::to_string(Ships[i].Speed);
-		if ( Ships[i].Type == 0)
-			S_Type = "HQ";
-		if ( Ships[i].Type == 1)
-			S_Type = "Figher";
-		if ( Ships[i].Type == 2)
-			S_Type = "Transport";
+			if (Asteroids[i].Workshop == 1)
+				color = al_map_rgb(0,255,0);
+			if (Asteroids[i].Workshop == 2)
+				color = al_map_rgb(255,0,0);
 
-		Ship_description_1 = "Ship x " + S_x + " y " + S_y + " ID " + S_ID + " HP " + S_HP;
-		Ship_description_2 = "Type " + S_Type + " Storage " + S_Storage + " Moves left " + S_Speed;
+			Asteroid_ID = "ID " + A_ID;
+			Asteroid_HP = "HP " + A_HP;
+			char ID[Asteroid_ID.size()];
+			char HP[Asteroid_HP.size()];
 
-		char desc_1[Ship_description_1.size()];
-		char desc_2[Ship_description_2.size()];
-		for (int j = 0; j < sizeof(desc_1); j++) 
-		{ 
-    	desc_1[j] = Ship_description_1[j]; 
-    }
-		if (Ships[i].Player == 1)
-			al_draw_text(font, al_map_rgb(0,255,0), MAP_SIZE*TILE_SIZE+TILE_SIZE*7.5, global_i*FONT_SIZE, ALLEGRO_ALIGN_CENTRE, desc_1);
-		if (Ships[i].Player == 2)
-			al_draw_text(font, al_map_rgb(255,0,0), MAP_SIZE*TILE_SIZE+TILE_SIZE*7.5, global_i*FONT_SIZE, ALLEGRO_ALIGN_CENTRE, desc_1);
-		global_i += 1;
-		for (int j = 0; j < sizeof(desc_2); j++) 
-		{ 
-    	desc_2[j] = Ship_description_2[j]; 
-    }
-		if (Ships[i].Player == 1)
-			al_draw_text(font, al_map_rgb(0,255,0), MAP_SIZE*TILE_SIZE+TILE_SIZE*7.5, global_i*FONT_SIZE, ALLEGRO_ALIGN_CENTRE, desc_2);
-		if (Ships[i].Player == 2)
-			al_draw_text(font, al_map_rgb(255,0,0), MAP_SIZE*TILE_SIZE+TILE_SIZE*7.5, global_i*FONT_SIZE, ALLEGRO_ALIGN_CENTRE, desc_2);
-		global_i += 1;
-	}
+			memset(ID, ' ', Asteroid_ID.size());
+			memset(HP, ' ', Asteroid_HP.size());
+
+			for (int j = 0; j < sizeof(Asteroid_ID); j++)
+		  	ID[j] = Asteroid_ID[j];
+			for (int j = 0; j < sizeof(Asteroid_HP); j++)
+				HP[j] = Asteroid_HP[j];
+
+			int position = 0;
+
+			if (Display_IDs)
+				al_draw_text(font, color, A_x*TILE_SIZE+TILE_SIZE/2, (++position)*FONT_SIZE+A_y*TILE_SIZE, ALLEGRO_ALIGN_CENTRE, ID);
+			if (Display_HPs)
+				al_draw_text(font, color, A_x*TILE_SIZE+TILE_SIZE/2, (++position)*FONT_SIZE+A_y*TILE_SIZE, ALLEGRO_ALIGN_CENTRE, HP);
+		}
+
+	if (Display_IDs || Display_HPs || Display_STs)
+		for (int i = 0; i < Ships.size(); i++)
+		{
+			ALLEGRO_COLOR color = al_map_rgb(255,255,255);
+			std::string Ship_ID, Ship_HP, Ship_ST;
+			int S_x = Ships[i].x;
+			int S_y = Ships[i].y;
+			std::string S_ID = std::to_string(Ships[i].ID);
+			std::string S_HP = std::to_string(Ships[i].HP);
+			std::string S_ST = std::to_string(Ships[i].Storage);
+
+			if (Ships[i].Player == 1)
+				color = al_map_rgb(0,255,0);
+			if (Ships[i].Player == 2)
+				color = al_map_rgb(255,0,0);
+
+			Ship_ID = "ID " + S_ID;
+			Ship_HP = "HP " + S_HP;
+			Ship_ST = "ST " + S_ST;
+			char ID[Ship_ID.size()];
+			char HP[Ship_HP.size()];
+			char ST[Ship_ST.size()];
+
+			memset(ID, ' ', Ship_ID.size());
+			memset(HP, ' ', Ship_HP.size());
+			memset(ST, ' ', Ship_ST.size());
+
+			for (int j = 0; j < sizeof(Ship_ID); j++)
+		  	ID[j] = Ship_ID[j];
+			for (int j = 0; j < sizeof(Ship_HP); j++)
+				HP[j] = Ship_HP[j];
+			for (int j = 0; j < sizeof(Ship_ST); j++)
+				ST[j] = Ship_ST[j];
+
+			int position = 0;
+
+			if (Display_IDs)
+				al_draw_text(font, color, S_x*TILE_SIZE+TILE_SIZE/2, (++position)*FONT_SIZE+S_y*TILE_SIZE, ALLEGRO_ALIGN_CENTRE, ID);
+			if (Display_HPs)
+				al_draw_text(font, color, S_x*TILE_SIZE+TILE_SIZE/2, (++position)*FONT_SIZE+S_y*TILE_SIZE, ALLEGRO_ALIGN_CENTRE, HP);
+			if (Display_STs)
+				al_draw_text(font, color, S_x*TILE_SIZE+TILE_SIZE/2, (++position)*FONT_SIZE+S_y*TILE_SIZE, ALLEGRO_ALIGN_CENTRE, ST);
+		}
 }
 
 void Display_Winner(int Player)
@@ -272,9 +417,9 @@ void Display_Winner(int Player)
 		}
 	}
 	if (Player == 1)
-		al_draw_text(Winner_font, al_map_rgb(0,255,0), (MAP_SIZE*TILE_SIZE+TILE_SIZE*10)/2, MAP_SIZE*TILE_SIZE/2, ALLEGRO_ALIGN_CENTRE, Winner);
+		al_draw_text(Winner_font, al_map_rgb(0,255,0), (MAP_SIZE*TILE_SIZE+TILE_SIZE*5)/2, MAP_SIZE*TILE_SIZE/2, ALLEGRO_ALIGN_CENTRE, Winner);
 	if (Player == 2)
-		al_draw_text(Winner_font, al_map_rgb(255,0,0), (MAP_SIZE*TILE_SIZE+TILE_SIZE*10)/2, MAP_SIZE*TILE_SIZE/2, ALLEGRO_ALIGN_CENTRE, Winner);
+		al_draw_text(Winner_font, al_map_rgb(255,0,0), (MAP_SIZE*TILE_SIZE+TILE_SIZE*5)/2, MAP_SIZE*TILE_SIZE/2, ALLEGRO_ALIGN_CENTRE, Winner);
 	al_flip_display();
 	al_rest(animation_speed*100);
 }
@@ -331,9 +476,38 @@ void Draw_Whole_MAP(std::vector<std::vector<char> > MAP, std::vector<Mine_Class>
 			}
 		}
 	}
-	Display_Stats(Mines, Asteroids, Ships);
+	if (Display_IDs || Display_HPs || Display_STs)
+		Display_Stats(Mines, Asteroids, Ships);
+
+	al_draw_scaled_rotated_bitmap(Mine_1, Center, Center, (MAP_SIZE+1)*TILE_SIZE + TILE_SIZE/2, TILE_SIZE + TILE_SIZE/2, Scale, Scale, rand(), 0);
+	al_draw_text(font, al_map_rgb(255,255,255), (MAP_SIZE+1)*TILE_SIZE + TILE_SIZE/2, TILE_SIZE + TILE_SIZE/2, ALLEGRO_ALIGN_CENTRE, "ID");
+
+	al_draw_scaled_rotated_bitmap(Mine_2, Center, Center, (MAP_SIZE+2)*TILE_SIZE + TILE_SIZE/2, TILE_SIZE + TILE_SIZE/2, Scale, Scale, rand(), 0);
+	al_draw_text(font, al_map_rgb(255,255,255), (MAP_SIZE+2)*TILE_SIZE + TILE_SIZE/2, TILE_SIZE + TILE_SIZE/2, ALLEGRO_ALIGN_CENTRE, "HP");
+
+	al_draw_scaled_rotated_bitmap(Mine_3, Center, Center, (MAP_SIZE+3)*TILE_SIZE + TILE_SIZE/2, TILE_SIZE + TILE_SIZE/2, Scale, Scale, rand(), 0);
+	al_draw_text(font, al_map_rgb(255,255,255), (MAP_SIZE+3)*TILE_SIZE + TILE_SIZE/2, TILE_SIZE + TILE_SIZE/2, ALLEGRO_ALIGN_CENTRE, "ST");
+
+	al_draw_scaled_rotated_bitmap(Mine_4, Center, Center, (MAP_SIZE)*TILE_SIZE + TILE_SIZE/2, TILE_SIZE*3 + TILE_SIZE/2, Scale, Scale, rand(), 0);
+	al_draw_text(font, al_map_rgb(255,255,255), (MAP_SIZE)*TILE_SIZE + TILE_SIZE/2, TILE_SIZE*3 + TILE_SIZE/2, ALLEGRO_ALIGN_CENTRE, "Speed x0.5");
+
+	al_draw_scaled_rotated_bitmap(Mine_1, Center, Center, (MAP_SIZE+1)*TILE_SIZE + TILE_SIZE/2, TILE_SIZE*3 + TILE_SIZE/2, Scale, Scale, rand(), 0);
+	al_draw_text(font, al_map_rgb(255,255,255), (MAP_SIZE+1)*TILE_SIZE + TILE_SIZE/2, TILE_SIZE*3 + TILE_SIZE/2, ALLEGRO_ALIGN_CENTRE, "Speed x1");
+
+	al_draw_scaled_rotated_bitmap(Mine_2, Center, Center, (MAP_SIZE+2)*TILE_SIZE + TILE_SIZE/2, TILE_SIZE*3 + TILE_SIZE/2, Scale, Scale, rand(), 0);
+	al_draw_text(font, al_map_rgb(255,255,255), (MAP_SIZE+2)*TILE_SIZE + TILE_SIZE/2, TILE_SIZE*3 + TILE_SIZE/2, ALLEGRO_ALIGN_CENTRE, "Speed x2");
+
+	al_draw_scaled_rotated_bitmap(Mine_3, Center, Center, (MAP_SIZE+3)*TILE_SIZE + TILE_SIZE/2, TILE_SIZE*3 + TILE_SIZE/2, Scale, Scale, rand(), 0);
+	al_draw_text(font, al_map_rgb(255,255,255), (MAP_SIZE+3)*TILE_SIZE + TILE_SIZE/2, TILE_SIZE*3 + TILE_SIZE/2, ALLEGRO_ALIGN_CENTRE, "Speed x4");
+
+	al_draw_scaled_rotated_bitmap(Mine_4, Center, Center, (MAP_SIZE+4)*TILE_SIZE + TILE_SIZE/2, TILE_SIZE*3 + TILE_SIZE/2, Scale, Scale, rand(), 0);
+	al_draw_text(font, al_map_rgb(255,255,255), (MAP_SIZE+4)*TILE_SIZE + TILE_SIZE/2, TILE_SIZE*3 + TILE_SIZE/2, ALLEGRO_ALIGN_CENTRE, "Speed MAX");
+
+	al_draw_scaled_rotated_bitmap(Mine_4, Center, Center, (MAP_SIZE+4)*TILE_SIZE + TILE_SIZE/2, TILE_SIZE*(MAP_SIZE-1) + TILE_SIZE/2, Scale, Scale, rand(), 0);
+	al_draw_text(font, al_map_rgb(255,255,255), (MAP_SIZE+4)*TILE_SIZE + TILE_SIZE/2, TILE_SIZE*(MAP_SIZE-1) + TILE_SIZE/2, ALLEGRO_ALIGN_CENTRE, "Exit");
+
 	al_flip_display();
-	al_rest(animation_speed*2);
+	al_rest(animation_speed);
 }
 
 void Draw_Explosion(int x, int y)

@@ -9,7 +9,10 @@
 #include <cctype>
 #include <thread>
 
+int MAP_seed = time(NULL);
 int MAP_SIZE = 10;
+int Player_Alg[2] = {1,1};
+int game_end = MAP_SIZE*MAP_SIZE*5;
 
 #include "Algorithms/Algorithms.h"
 #include "Space_Functions.h"
@@ -21,8 +24,9 @@ int main()
 	std::ofstream MAP_LOG;
 	MAP_LOG.open("logs/MAP_LOG.log");
 	Space_Functions_Open();
-	int seed = time(NULL);
-	srand(seed);
+	Create_Display();
+	TITLE_SCREEN();
+	srand(MAP_seed);
 	//MAP
 	std::vector<std::vector<char> > MAP;
 	//generating map
@@ -140,14 +144,12 @@ int main()
 		}
 	}
 
-	Create_Display();
-	int game_end = MAP_SIZE*MAP_SIZE*5;
 	int Winner = 0;
 	int Player = 1;
 	int Other_Player = 2;
-	int Player_Alg[2] = {1,1};
 
-	MAP_LOG << seed << std::endl;
+	MAP_LOG << MAP_seed << std::endl;
+	game_end = MAP_SIZE*MAP_SIZE*5;
 
 	while(game_end > 0 && Winner == 0)
 	{
@@ -231,12 +233,46 @@ int main()
 
 		Draw_Whole_MAP(MAP, Mines, Asteroids, Ships);
 		// MAP is ready, now let's call algorithms
-		MAP_LOG <<"Turn: " << MAP_SIZE*MAP_SIZE*5 - game_end << std::endl;
+		MAP_LOG << "Turn: " << MAP_SIZE*MAP_SIZE*5 - game_end << std::endl;
+
+		MAP_LOG << "MINES" << std::endl;
+		for (int i = 0; i < Mines.size(); i++)
+		{
+			MAP_LOG << "Mine coords: x = " << Mines[i].x << " y = " << Mines[i].y;
+			MAP_LOG << " ID: " << Mines[i].ID;
+			MAP_LOG << " HP: " << Mines[i].HP;
+			MAP_LOG << std::endl;
+			
+		}
+		MAP_LOG << "ASTEROIDS" << std::endl;
+		for (int i = 0; i < Asteroids.size(); i++)
+		{
+			MAP_LOG << "Asteroid coords: x = " << Asteroids[i].x << " y = " << Asteroids[i].y;
+			MAP_LOG << " ID: " << Asteroids[i].ID;
+			MAP_LOG << " HP: " << Asteroids[i].HP;
+			MAP_LOG << " Ws: " << Asteroids[i].Workshop;
+			MAP_LOG << std::endl;
+			
+		}
+
+		MAP_LOG << "SHIPS" << std::endl;
+		for (int i = 0; i < Ships.size(); i++)
+		{
+			MAP_LOG << "Ship coords: x = " << Ships[i].x << " y = " << Ships[i].y;
+			MAP_LOG << " ID: " << Ships[i].ID;
+			MAP_LOG << " Tp: " << Ships[i].Type;
+			MAP_LOG << " Rt: " << Ships[i].Rotation;
+			MAP_LOG << " HP: " << Ships[i].HP;
+			MAP_LOG << " St: " << Ships[i].Storage;
+			MAP_LOG << " Mv: " << Ships[i].Speed;
+			MAP_LOG << std::endl;	
+		}
+
 		for (int i = 0; i < MAP.size(); i++)
 		{
 			for (int j = 0; j < MAP[i].size(); j++)
 			{
-				MAP_LOG << MAP[j][i];
+				MAP_LOG << MAP[i][j];
 			}
 		MAP_LOG << std::endl;
 		}
@@ -268,9 +304,9 @@ int main()
 		std::thread thread_Player;
 
 		if (Player_Alg[Player-1] == 1)
-			thread_Player = std::thread(Test_Alg_1, Input_Player, std::ref(Output_Player) );
+			thread_Player = std::thread(Ants_Algorithm, Input_Player, std::ref(Output_Player) );
 		if (Player_Alg[Player-1] == 2)
-			thread_Player = std::thread(Test_Alg_2, Input_Player, std::ref(Output_Player) );
+			thread_Player = std::thread(Replayer_Alborithm, Input_Player, std::ref(Output_Player) );
 
 		usleep(500);
 
@@ -312,7 +348,7 @@ int main()
 
 		std::swap(Player, Other_Player);
 
-		std::cout << "Seed: " << seed << std::endl;
+		std::cout << "Seed: " << MAP_seed << std::endl;
 		std::cout << "Turns Left: " << --game_end << std::endl;
 	}
 	if (Winner == 0)

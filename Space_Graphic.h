@@ -14,6 +14,8 @@ typedef struct Graphical_Data
 } Graphical_Data_type;
 
 void Create_Display();
+void TITLE_SCREEN();
+void Mouse_functions ();
 void Display_Stats(std::vector<Mine_Class> Mines, std::vector<Asteroid_Class> Asteroids, std::vector<Ship_Class> Ships);
 void Display_Winner(int Player);
 void Draw_Whole_MAP(std::vector<std::vector<char> > MAP, std::vector<Mine_Class> Mines, std::vector<Asteroid_Class> Asteroids, std::vector<Ship_Class> Ships);

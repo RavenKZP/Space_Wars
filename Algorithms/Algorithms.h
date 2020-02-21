@@ -3,7 +3,7 @@
 
 #include "../Return_Types.h"
 
-void Test_Alg_1 (Input_type Input, Output_type &Output);
-void Test_Alg_2 (Input_type Input, Output_type &Output);
+void Ants_Algorithm (Input_type Input, Output_type &Output);
+void Replayer_Alborithm (Input_type Input, Output_type &Output);
 
 #endif

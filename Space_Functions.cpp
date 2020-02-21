@@ -380,6 +380,7 @@ int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, s
 	ACTIONS_LOG << "Player" << Player << std::endl;
 	int MAP_SIZE = MAP[0].size();
 	int Winner = 0;
+	extern int game_end;
 	for (int i = 0; i < Output_Player.Commands_OUT.size(); i++)
 	{
 		if (Winner != 0)
@@ -622,7 +623,6 @@ int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, s
 									MAP[p_y][p_x] = p_ship;
 									Draw_Ship_Move(p_x, p_y, Ships[Move_iterator].Rotation, Player, Ships[Move_iterator].Type, '.', 0);
 								}
-							Draw_Whole_MAP(MAP, Mines, Asteroids, Ships);
 							}
 							else
 							{
@@ -973,7 +973,6 @@ int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, s
 							{
 								Draw_Laser(Ships[Shoot_iterator].x, Ships[Shoot_iterator].y, Ships[Shoot_iterator].Rotation, Player, Ships[Shoot_iterator].Type, '.', 0, Ships[Shoot_iterator].Range);
 							}
-							Draw_Whole_MAP(MAP, Mines, Asteroids, Ships);
 						}
 						else
 						{
@@ -1105,7 +1104,7 @@ int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, s
 									Draw_Dig(p_x, p_y, Ships[Dig_iterator].Rotation, Player, Ships[Dig_iterator].Type, '.');
 								}
 							}
-							if (Ships[Dig_iterator].Rotation == 2 && p_x > 1) 
+							if (Ships[Dig_iterator].Rotation == 2 && p_x > 0) 
 							{
 								if (MAP[p_y][p_x -1] == 'M')
 								{
@@ -1153,7 +1152,7 @@ int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, s
 									Draw_Dig(p_x, p_y, Ships[Dig_iterator].Rotation, Player, Ships[Dig_iterator].Type, '.');
 								}
 							}
-							if (Ships[Dig_iterator].Rotation == 4 && p_y > 1)
+							if (Ships[Dig_iterator].Rotation == 4 && p_y > 0)
 							{
 								if (MAP[p_y -1][p_x] == 'M')
 								{
@@ -1205,12 +1204,12 @@ int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, s
 					ERROR_ACTIONS_LOG << "WRONG DIG COMMAND" << std::endl;
 				}
 			}
-			if (split[0] == "END")
+			if (split[0] == "END" || game_end == 0)
 			{
 				break;
 			}
 		}
-		Display_Stats(Mines, Asteroids, Ships);
+		Draw_Whole_MAP(MAP, Mines, Asteroids, Ships);
 	}
 	return Winner;
 }
