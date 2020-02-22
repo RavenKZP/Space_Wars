@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <iostream>
+#include <fstream>
 #include <unistd.h>
 
 #include "Algorithms.h"
@@ -768,10 +769,31 @@ void Ants_Algorithm (Input_type Input, Output_type &Output)
 	Output = Output_local;
 }
 
-
+int move = 0;
 void Replayer_Alborithm (Input_type Input, Output_type &Output)
 {
-	static int line = 0;
+	Output_type Output_local;
+	std::string OUT;
+	std::ifstream file;
+	file.open("Replays/ACTIONS_LOG.log");
+	int Turn = 1;
+	int int_move = 0;
+	getline(file, OUT); // ignore first (seed) line
+	while (Turn != 0 && !file.eof() )
+	{
+		getline(file, OUT);
+		if (move == int_move && !OUT.empty())
+			Output_local.Commands_OUT.push_back(OUT);
+		if (OUT == "END")
+		{
+			if (move == int_move)
+				Turn = 0;
+			else
+				int_move++;
+		}
+	}
+	move++;
+	Output = Output_local;
 }
 
 

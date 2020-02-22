@@ -1,44 +1,449 @@
-1582250824
+1582333072
 Turn: 0
 MINES
-Mine coords: x = 1 y = 4 ID: 0 HP: 50
-Mine coords: x = 8 y = 5 ID: 1 HP: 50
-Mine coords: x = 6 y = 0 ID: 2 HP: 50
-Mine coords: x = 3 y = 9 ID: 3 HP: 50
-Mine coords: x = 3 y = 6 ID: 4 HP: 50
-Mine coords: x = 6 y = 3 ID: 5 HP: 50
-Mine coords: x = 3 y = 4 ID: 6 HP: 50
-Mine coords: x = 6 y = 5 ID: 7 HP: 50
-Mine coords: x = 2 y = 4 ID: 8 HP: 50
-Mine coords: x = 7 y = 5 ID: 9 HP: 50
-Mine coords: x = 2 y = 2 ID: 10 HP: 50
-Mine coords: x = 7 y = 7 ID: 11 HP: 50
-Mine coords: x = 2 y = 3 ID: 12 HP: 50
-Mine coords: x = 7 y = 6 ID: 13 HP: 50
+Mine coords: x = 3 y = 0 ID: 0 HP: 50
+Mine coords: x = 6 y = 9 ID: 1 HP: 50
+Mine coords: x = 0 y = 6 ID: 2 HP: 50
+Mine coords: x = 9 y = 3 ID: 3 HP: 50
+Mine coords: x = 6 y = 1 ID: 4 HP: 50
+Mine coords: x = 3 y = 8 ID: 5 HP: 50
+Mine coords: x = 5 y = 2 ID: 6 HP: 50
+Mine coords: x = 4 y = 7 ID: 7 HP: 50
+Mine coords: x = 0 y = 5 ID: 8 HP: 50
+Mine coords: x = 9 y = 4 ID: 9 HP: 50
+Mine coords: x = 4 y = 5 ID: 10 HP: 50
+Mine coords: x = 5 y = 4 ID: 11 HP: 50
+Mine coords: x = 1 y = 4 ID: 12 HP: 50
+Mine coords: x = 8 y = 5 ID: 13 HP: 50
+Mine coords: x = 0 y = 4 ID: 14 HP: 50
+Mine coords: x = 9 y = 5 ID: 15 HP: 50
 ASTEROIDS
-Asteroid coords: x = 3 y = 2 ID: 0 HP: 50 Ws: 0
-Asteroid coords: x = 6 y = 7 ID: 1 HP: 50 Ws: 0
-Asteroid coords: x = 5 y = 0 ID: 2 HP: 50 Ws: 0
-Asteroid coords: x = 4 y = 9 ID: 3 HP: 50 Ws: 0
-Asteroid coords: x = 4 y = 5 ID: 4 HP: 50 Ws: 0
-Asteroid coords: x = 5 y = 4 ID: 5 HP: 50 Ws: 0
-Asteroid coords: x = 7 y = 1 ID: 6 HP: 50 Ws: 0
-Asteroid coords: x = 2 y = 8 ID: 7 HP: 50 Ws: 0
-Asteroid coords: x = 9 y = 0 ID: 8 HP: 50 Ws: 0
-Asteroid coords: x = 0 y = 9 ID: 9 HP: 50 Ws: 0
-Asteroid coords: x = 5 y = 2 ID: 10 HP: 50 Ws: 0
-Asteroid coords: x = 4 y = 7 ID: 11 HP: 50 Ws: 0
+Asteroid coords: x = 4 y = 4 ID: 0 HP: 50 Ws: 0
+Asteroid coords: x = 5 y = 5 ID: 1 HP: 50 Ws: 0
+Asteroid coords: x = 3 y = 4 ID: 2 HP: 50 Ws: 0
+Asteroid coords: x = 6 y = 5 ID: 3 HP: 50 Ws: 0
+Asteroid coords: x = 8 y = 1 ID: 4 HP: 50 Ws: 0
+Asteroid coords: x = 1 y = 8 ID: 5 HP: 50 Ws: 0
+Asteroid coords: x = 5 y = 4 ID: 6 HP: 50 Ws: 0
+Asteroid coords: x = 4 y = 5 ID: 7 HP: 50 Ws: 0
+Asteroid coords: x = 3 y = 5 ID: 8 HP: 50 Ws: 0
+Asteroid coords: x = 6 y = 4 ID: 9 HP: 50 Ws: 0
+Asteroid coords: x = 7 y = 2 ID: 10 HP: 50 Ws: 0
+Asteroid coords: x = 2 y = 7 ID: 11 HP: 50 Ws: 0
+Asteroid coords: x = 1 y = 3 ID: 12 HP: 50 Ws: 0
+Asteroid coords: x = 8 y = 6 ID: 13 HP: 50 Ws: 0
+Asteroid coords: x = 4 y = 2 ID: 14 HP: 50 Ws: 0
+Asteroid coords: x = 5 y = 7 ID: 15 HP: 50 Ws: 0
 SHIPS
 Ship coords: x = 0 y = 0 ID: 0 Tp: 0 Rt: 3 HP: 100 St: 100 Mv: 2
 Ship coords: x = 9 y = 9 ID: 1 Tp: 0 Rt: 4 HP: 100 St: 100 Mv: 2
-H....AM..A
-.......A..
-..MA.A....
-..M...M...
-.MMM.A....
-....A.MMM.
-...M...M..
-....A.AM..
-..A.......
-A..MA....h
+H..M......
+......M.A.
+....AM.A..
+.A.......M
+MM.AAMA..M
+M..AMAA.MM
+M.......A.
+..A.MA....
+.A.M......
+......M..h
+
+Turn: 1
+MINES
+Mine coords: x = 3 y = 0 ID: 0 HP: 50
+Mine coords: x = 6 y = 9 ID: 1 HP: 50
+Mine coords: x = 0 y = 6 ID: 2 HP: 50
+Mine coords: x = 9 y = 3 ID: 3 HP: 50
+Mine coords: x = 6 y = 1 ID: 4 HP: 50
+Mine coords: x = 3 y = 8 ID: 5 HP: 50
+Mine coords: x = 5 y = 2 ID: 6 HP: 50
+Mine coords: x = 4 y = 7 ID: 7 HP: 50
+Mine coords: x = 0 y = 5 ID: 8 HP: 50
+Mine coords: x = 9 y = 4 ID: 9 HP: 50
+Mine coords: x = 4 y = 5 ID: 10 HP: 50
+Mine coords: x = 5 y = 4 ID: 11 HP: 50
+Mine coords: x = 1 y = 4 ID: 12 HP: 50
+Mine coords: x = 8 y = 5 ID: 13 HP: 50
+Mine coords: x = 0 y = 4 ID: 14 HP: 50
+Mine coords: x = 9 y = 5 ID: 15 HP: 50
+ASTEROIDS
+Asteroid coords: x = 4 y = 4 ID: 0 HP: 50 Ws: 0
+Asteroid coords: x = 5 y = 5 ID: 1 HP: 50 Ws: 0
+Asteroid coords: x = 3 y = 4 ID: 2 HP: 50 Ws: 0
+Asteroid coords: x = 6 y = 5 ID: 3 HP: 50 Ws: 0
+Asteroid coords: x = 8 y = 1 ID: 4 HP: 50 Ws: 0
+Asteroid coords: x = 1 y = 8 ID: 5 HP: 50 Ws: 0
+Asteroid coords: x = 5 y = 4 ID: 6 HP: 50 Ws: 0
+Asteroid coords: x = 4 y = 5 ID: 7 HP: 50 Ws: 0
+Asteroid coords: x = 3 y = 5 ID: 8 HP: 50 Ws: 0
+Asteroid coords: x = 6 y = 4 ID: 9 HP: 50 Ws: 0
+Asteroid coords: x = 7 y = 2 ID: 10 HP: 50 Ws: 0
+Asteroid coords: x = 2 y = 7 ID: 11 HP: 50 Ws: 0
+Asteroid coords: x = 1 y = 3 ID: 12 HP: 50 Ws: 0
+Asteroid coords: x = 8 y = 6 ID: 13 HP: 50 Ws: 0
+Asteroid coords: x = 4 y = 2 ID: 14 HP: 50 Ws: 0
+Asteroid coords: x = 5 y = 7 ID: 15 HP: 50 Ws: 0
+SHIPS
+Ship coords: x = 0 y = 2 ID: 0 Tp: 0 Rt: 3 HP: 100 St: 80 Mv: 2
+Ship coords: x = 9 y = 9 ID: 1 Tp: 0 Rt: 4 HP: 100 St: 100 Mv: 2
+Ship coords: x = 1 y = 2 ID: 2 Tp: 1 Rt: 2 HP: 5 St: 0 Mv: 3
+Ship coords: x = 0 y = 3 ID: 3 Tp: 1 Rt: 1 HP: 5 St: 0 Mv: 3
+Ship coords: x = 0 y = 1 ID: 4 Tp: 1 Rt: 1 HP: 5 St: 0 Mv: 3
+...M......
+F.....M.A.
+HF..AM.A..
+FA.......M
+MM.AAMA..M
+M..AMAA.MM
+M.......A.
+..A.MA....
+.A.M......
+......M..h
+
+Turn: 2
+MINES
+Mine coords: x = 3 y = 0 ID: 0 HP: 50
+Mine coords: x = 6 y = 9 ID: 1 HP: 50
+Mine coords: x = 0 y = 6 ID: 2 HP: 50
+Mine coords: x = 9 y = 3 ID: 3 HP: 50
+Mine coords: x = 6 y = 1 ID: 4 HP: 50
+Mine coords: x = 3 y = 8 ID: 5 HP: 50
+Mine coords: x = 5 y = 2 ID: 6 HP: 50
+Mine coords: x = 4 y = 7 ID: 7 HP: 50
+Mine coords: x = 0 y = 5 ID: 8 HP: 50
+Mine coords: x = 9 y = 4 ID: 9 HP: 50
+Mine coords: x = 4 y = 5 ID: 10 HP: 50
+Mine coords: x = 5 y = 4 ID: 11 HP: 50
+Mine coords: x = 1 y = 4 ID: 12 HP: 50
+Mine coords: x = 8 y = 5 ID: 13 HP: 50
+Mine coords: x = 0 y = 4 ID: 14 HP: 50
+Mine coords: x = 9 y = 5 ID: 15 HP: 50
+ASTEROIDS
+Asteroid coords: x = 4 y = 4 ID: 0 HP: 50 Ws: 0
+Asteroid coords: x = 5 y = 5 ID: 1 HP: 50 Ws: 0
+Asteroid coords: x = 3 y = 4 ID: 2 HP: 50 Ws: 0
+Asteroid coords: x = 6 y = 5 ID: 3 HP: 50 Ws: 0
+Asteroid coords: x = 8 y = 1 ID: 4 HP: 50 Ws: 0
+Asteroid coords: x = 1 y = 8 ID: 5 HP: 50 Ws: 0
+Asteroid coords: x = 5 y = 4 ID: 6 HP: 50 Ws: 0
+Asteroid coords: x = 4 y = 5 ID: 7 HP: 50 Ws: 0
+Asteroid coords: x = 3 y = 5 ID: 8 HP: 50 Ws: 0
+Asteroid coords: x = 6 y = 4 ID: 9 HP: 50 Ws: 0
+Asteroid coords: x = 7 y = 2 ID: 10 HP: 50 Ws: 0
+Asteroid coords: x = 2 y = 7 ID: 11 HP: 50 Ws: 0
+Asteroid coords: x = 1 y = 3 ID: 12 HP: 50 Ws: 0
+Asteroid coords: x = 8 y = 6 ID: 13 HP: 50 Ws: 0
+Asteroid coords: x = 4 y = 2 ID: 14 HP: 50 Ws: 0
+Asteroid coords: x = 5 y = 7 ID: 15 HP: 50 Ws: 0
+SHIPS
+Ship coords: x = 0 y = 2 ID: 0 Tp: 0 Rt: 3 HP: 100 St: 80 Mv: 2
+Ship coords: x = 9 y = 7 ID: 1 Tp: 0 Rt: 4 HP: 100 St: 50 Mv: 2
+Ship coords: x = 1 y = 2 ID: 2 Tp: 1 Rt: 2 HP: 5 St: 0 Mv: 3
+Ship coords: x = 0 y = 3 ID: 3 Tp: 1 Rt: 1 HP: 5 St: 0 Mv: 3
+Ship coords: x = 0 y = 1 ID: 4 Tp: 1 Rt: 1 HP: 5 St: 0 Mv: 3
+Ship coords: x = 8 y = 7 ID: 5 Tp: 2 Rt: 4 HP: 10 St: 0 Mv: 2
+Ship coords: x = 9 y = 8 ID: 6 Tp: 2 Rt: 4 HP: 10 St: 0 Mv: 2
+Ship coords: x = 9 y = 6 ID: 7 Tp: 2 Rt: 2 HP: 10 St: 0 Mv: 2
+...M......
+F.....M.A.
+HF..AM.A..
+FA.......M
+MM.AAMA..M
+M..AMAA.MM
+M.......At
+..A.MA..th
+.A.M.....t
+......M...
+
+Turn: 3
+MINES
+Mine coords: x = 3 y = 0 ID: 0 HP: 50
+Mine coords: x = 6 y = 9 ID: 1 HP: 50
+Mine coords: x = 0 y = 6 ID: 2 HP: 50
+Mine coords: x = 9 y = 3 ID: 3 HP: 50
+Mine coords: x = 6 y = 1 ID: 4 HP: 50
+Mine coords: x = 3 y = 8 ID: 5 HP: 50
+Mine coords: x = 5 y = 2 ID: 6 HP: 50
+Mine coords: x = 4 y = 7 ID: 7 HP: 50
+Mine coords: x = 0 y = 5 ID: 8 HP: 50
+Mine coords: x = 9 y = 4 ID: 9 HP: 50
+Mine coords: x = 4 y = 5 ID: 10 HP: 50
+Mine coords: x = 5 y = 4 ID: 11 HP: 50
+Mine coords: x = 1 y = 4 ID: 12 HP: 50
+Mine coords: x = 8 y = 5 ID: 13 HP: 50
+Mine coords: x = 0 y = 4 ID: 14 HP: 50
+Mine coords: x = 9 y = 5 ID: 15 HP: 50
+ASTEROIDS
+Asteroid coords: x = 4 y = 4 ID: 0 HP: 50 Ws: 0
+Asteroid coords: x = 5 y = 5 ID: 1 HP: 50 Ws: 0
+Asteroid coords: x = 3 y = 4 ID: 2 HP: 50 Ws: 0
+Asteroid coords: x = 6 y = 5 ID: 3 HP: 50 Ws: 0
+Asteroid coords: x = 8 y = 1 ID: 4 HP: 50 Ws: 0
+Asteroid coords: x = 1 y = 8 ID: 5 HP: 50 Ws: 0
+Asteroid coords: x = 5 y = 4 ID: 6 HP: 50 Ws: 0
+Asteroid coords: x = 4 y = 5 ID: 7 HP: 50 Ws: 0
+Asteroid coords: x = 3 y = 5 ID: 8 HP: 50 Ws: 0
+Asteroid coords: x = 6 y = 4 ID: 9 HP: 50 Ws: 0
+Asteroid coords: x = 7 y = 2 ID: 10 HP: 50 Ws: 0
+Asteroid coords: x = 2 y = 7 ID: 11 HP: 50 Ws: 0
+Asteroid coords: x = 1 y = 3 ID: 12 HP: 50 Ws: 1
+Asteroid coords: x = 8 y = 6 ID: 13 HP: 50 Ws: 0
+Asteroid coords: x = 4 y = 2 ID: 14 HP: 50 Ws: 0
+Asteroid coords: x = 5 y = 7 ID: 15 HP: 50 Ws: 0
+SHIPS
+Ship coords: x = 1 y = 2 ID: 0 Tp: 0 Rt: 1 HP: 100 St: 62 Mv: 2
+Ship coords: x = 9 y = 7 ID: 1 Tp: 0 Rt: 4 HP: 100 St: 50 Mv: 2
+Ship coords: x = 1 y = 0 ID: 2 Tp: 1 Rt: 4 HP: 5 St: 0 Mv: 3
+Ship coords: x = 0 y = 3 ID: 3 Tp: 1 Rt: 3 HP: 5 St: 0 Mv: 3
+Ship coords: x = 3 y = 1 ID: 4 Tp: 1 Rt: 1 HP: 5 St: 0 Mv: 3
+Ship coords: x = 8 y = 7 ID: 5 Tp: 2 Rt: 4 HP: 10 St: 0 Mv: 2
+Ship coords: x = 9 y = 8 ID: 6 Tp: 2 Rt: 4 HP: 10 St: 0 Mv: 2
+Ship coords: x = 9 y = 6 ID: 7 Tp: 2 Rt: 2 HP: 10 St: 0 Mv: 2
+.F.M......
+...F..M.A.
+.H..AM.A..
+FW.......M
+MM.AAMA..M
+M..AMAA.MM
+M.......At
+..A.MA..th
+.A.M.....t
+......M...
+
+Turn: 4
+MINES
+Mine coords: x = 3 y = 0 ID: 0 HP: 50
+Mine coords: x = 6 y = 9 ID: 1 HP: 50
+Mine coords: x = 0 y = 6 ID: 2 HP: 50
+Mine coords: x = 9 y = 3 ID: 3 HP: 50
+Mine coords: x = 6 y = 1 ID: 4 HP: 50
+Mine coords: x = 3 y = 8 ID: 5 HP: 50
+Mine coords: x = 5 y = 2 ID: 6 HP: 50
+Mine coords: x = 4 y = 7 ID: 7 HP: 50
+Mine coords: x = 0 y = 5 ID: 8 HP: 50
+Mine coords: x = 9 y = 4 ID: 9 HP: 50
+Mine coords: x = 4 y = 5 ID: 10 HP: 50
+Mine coords: x = 5 y = 4 ID: 11 HP: 50
+Mine coords: x = 1 y = 4 ID: 12 HP: 50
+Mine coords: x = 8 y = 5 ID: 13 HP: 50
+Mine coords: x = 0 y = 4 ID: 14 HP: 50
+Mine coords: x = 9 y = 5 ID: 15 HP: 49
+ASTEROIDS
+Asteroid coords: x = 4 y = 4 ID: 0 HP: 50 Ws: 0
+Asteroid coords: x = 5 y = 5 ID: 1 HP: 50 Ws: 0
+Asteroid coords: x = 3 y = 4 ID: 2 HP: 50 Ws: 0
+Asteroid coords: x = 6 y = 5 ID: 3 HP: 50 Ws: 0
+Asteroid coords: x = 8 y = 1 ID: 4 HP: 50 Ws: 0
+Asteroid coords: x = 1 y = 8 ID: 5 HP: 50 Ws: 0
+Asteroid coords: x = 5 y = 4 ID: 6 HP: 50 Ws: 0
+Asteroid coords: x = 4 y = 5 ID: 7 HP: 50 Ws: 0
+Asteroid coords: x = 3 y = 5 ID: 8 HP: 50 Ws: 0
+Asteroid coords: x = 6 y = 4 ID: 9 HP: 50 Ws: 0
+Asteroid coords: x = 7 y = 2 ID: 10 HP: 50 Ws: 0
+Asteroid coords: x = 2 y = 7 ID: 11 HP: 50 Ws: 0
+Asteroid coords: x = 1 y = 3 ID: 12 HP: 50 Ws: 1
+Asteroid coords: x = 8 y = 6 ID: 13 HP: 50 Ws: 2
+Asteroid coords: x = 4 y = 2 ID: 14 HP: 50 Ws: 0
+Asteroid coords: x = 5 y = 7 ID: 15 HP: 50 Ws: 0
+SHIPS
+Ship coords: x = 1 y = 2 ID: 0 Tp: 0 Rt: 1 HP: 100 St: 62 Mv: 2
+Ship coords: x = 8 y = 7 ID: 1 Tp: 0 Rt: 2 HP: 100 St: 22 Mv: 2
+Ship coords: x = 1 y = 0 ID: 2 Tp: 1 Rt: 4 HP: 5 St: 0 Mv: 3
+Ship coords: x = 0 y = 3 ID: 3 Tp: 1 Rt: 3 HP: 5 St: 0 Mv: 3
+Ship coords: x = 3 y = 1 ID: 4 Tp: 1 Rt: 1 HP: 5 St: 0 Mv: 3
+Ship coords: x = 7 y = 7 ID: 5 Tp: 2 Rt: 2 HP: 10 St: 0 Mv: 2
+Ship coords: x = 8 y = 8 ID: 6 Tp: 2 Rt: 2 HP: 10 St: 0 Mv: 2
+Ship coords: x = 9 y = 6 ID: 7 Tp: 2 Rt: 4 HP: 10 St: 5 Mv: 2
+Ship coords: x = 9 y = 7 ID: 8 Tp: 1 Rt: 3 HP: 5 St: 0 Mv: 3
+.F.M......
+...F..M.A.
+.H..AM.A..
+FW.......M
+MM.AAMA..M
+M..AMAA.MM
+M.......wt
+..A.MA.thf
+.A.M....t.
+......M...
+
+Turn: 5
+MINES
+Mine coords: x = 3 y = 0 ID: 0 HP: 49
+Mine coords: x = 6 y = 9 ID: 1 HP: 50
+Mine coords: x = 0 y = 6 ID: 2 HP: 50
+Mine coords: x = 9 y = 3 ID: 3 HP: 50
+Mine coords: x = 6 y = 1 ID: 4 HP: 49
+Mine coords: x = 3 y = 8 ID: 5 HP: 50
+Mine coords: x = 5 y = 2 ID: 6 HP: 50
+Mine coords: x = 4 y = 7 ID: 7 HP: 50
+Mine coords: x = 0 y = 5 ID: 8 HP: 50
+Mine coords: x = 9 y = 4 ID: 9 HP: 50
+Mine coords: x = 4 y = 5 ID: 10 HP: 50
+Mine coords: x = 5 y = 4 ID: 11 HP: 50
+Mine coords: x = 1 y = 4 ID: 12 HP: 50
+Mine coords: x = 8 y = 5 ID: 13 HP: 50
+Mine coords: x = 0 y = 4 ID: 14 HP: 49
+Mine coords: x = 9 y = 5 ID: 15 HP: 49
+ASTEROIDS
+Asteroid coords: x = 4 y = 4 ID: 0 HP: 50 Ws: 0
+Asteroid coords: x = 5 y = 5 ID: 1 HP: 50 Ws: 0
+Asteroid coords: x = 3 y = 4 ID: 2 HP: 50 Ws: 0
+Asteroid coords: x = 6 y = 5 ID: 3 HP: 50 Ws: 0
+Asteroid coords: x = 8 y = 1 ID: 4 HP: 50 Ws: 0
+Asteroid coords: x = 1 y = 8 ID: 5 HP: 50 Ws: 0
+Asteroid coords: x = 5 y = 4 ID: 6 HP: 50 Ws: 0
+Asteroid coords: x = 4 y = 5 ID: 7 HP: 50 Ws: 0
+Asteroid coords: x = 3 y = 5 ID: 8 HP: 50 Ws: 0
+Asteroid coords: x = 6 y = 4 ID: 9 HP: 50 Ws: 0
+Asteroid coords: x = 7 y = 2 ID: 10 HP: 50 Ws: 0
+Asteroid coords: x = 2 y = 7 ID: 11 HP: 50 Ws: 0
+Asteroid coords: x = 1 y = 3 ID: 12 HP: 50 Ws: 1
+Asteroid coords: x = 8 y = 6 ID: 13 HP: 50 Ws: 2
+Asteroid coords: x = 4 y = 2 ID: 14 HP: 50 Ws: 1
+Asteroid coords: x = 5 y = 7 ID: 15 HP: 50 Ws: 0
+SHIPS
+Ship coords: x = 3 y = 2 ID: 0 Tp: 0 Rt: 1 HP: 100 St: 14 Mv: 2
+Ship coords: x = 8 y = 7 ID: 1 Tp: 0 Rt: 2 HP: 100 St: 22 Mv: 2
+Ship coords: x = 2 y = 0 ID: 2 Tp: 1 Rt: 1 HP: 5 St: 5 Mv: 3
+Ship coords: x = 0 y = 3 ID: 3 Tp: 1 Rt: 3 HP: 5 St: 5 Mv: 3
+Ship coords: x = 5 y = 1 ID: 4 Tp: 1 Rt: 1 HP: 5 St: 5 Mv: 3
+Ship coords: x = 7 y = 7 ID: 5 Tp: 2 Rt: 2 HP: 10 St: 0 Mv: 2
+Ship coords: x = 8 y = 8 ID: 6 Tp: 2 Rt: 2 HP: 10 St: 0 Mv: 2
+Ship coords: x = 9 y = 6 ID: 7 Tp: 2 Rt: 4 HP: 10 St: 5 Mv: 2
+Ship coords: x = 9 y = 7 ID: 8 Tp: 1 Rt: 3 HP: 5 St: 0 Mv: 3
+Ship coords: x = 2 y = 2 ID: 9 Tp: 1 Rt: 3 HP: 5 St: 0 Mv: 3
+Ship coords: x = 3 y = 3 ID: 10 Tp: 1 Rt: 4 HP: 5 St: 0 Mv: 3
+Ship coords: x = 3 y = 1 ID: 11 Tp: 1 Rt: 3 HP: 5 St: 0 Mv: 3
+..FM......
+...F.FM.A.
+..FHWM.A..
+FW.F.....M
+MM.AAMA..M
+M..AMAA.MM
+M.......wt
+..A.MA.thf
+.A.M....t.
+......M...
+
+Turn: 6
+MINES
+Mine coords: x = 3 y = 0 ID: 0 HP: 49
+Mine coords: x = 6 y = 9 ID: 1 HP: 50
+Mine coords: x = 0 y = 6 ID: 2 HP: 50
+Mine coords: x = 9 y = 3 ID: 3 HP: 50
+Mine coords: x = 6 y = 1 ID: 4 HP: 49
+Mine coords: x = 3 y = 8 ID: 5 HP: 50
+Mine coords: x = 5 y = 2 ID: 6 HP: 50
+Mine coords: x = 4 y = 7 ID: 7 HP: 50
+Mine coords: x = 0 y = 5 ID: 8 HP: 50
+Mine coords: x = 9 y = 4 ID: 9 HP: 50
+Mine coords: x = 4 y = 5 ID: 10 HP: 50
+Mine coords: x = 5 y = 4 ID: 11 HP: 50
+Mine coords: x = 1 y = 4 ID: 12 HP: 50
+Mine coords: x = 8 y = 5 ID: 13 HP: 50
+Mine coords: x = 0 y = 4 ID: 14 HP: 49
+Mine coords: x = 9 y = 5 ID: 15 HP: 47
+ASTEROIDS
+Asteroid coords: x = 4 y = 4 ID: 0 HP: 50 Ws: 0
+Asteroid coords: x = 5 y = 5 ID: 1 HP: 50 Ws: 0
+Asteroid coords: x = 3 y = 4 ID: 2 HP: 50 Ws: 0
+Asteroid coords: x = 6 y = 5 ID: 3 HP: 50 Ws: 0
+Asteroid coords: x = 8 y = 1 ID: 4 HP: 50 Ws: 0
+Asteroid coords: x = 1 y = 8 ID: 5 HP: 50 Ws: 0
+Asteroid coords: x = 5 y = 4 ID: 6 HP: 50 Ws: 0
+Asteroid coords: x = 4 y = 5 ID: 7 HP: 50 Ws: 0
+Asteroid coords: x = 3 y = 5 ID: 8 HP: 50 Ws: 0
+Asteroid coords: x = 6 y = 4 ID: 9 HP: 50 Ws: 0
+Asteroid coords: x = 7 y = 2 ID: 10 HP: 50 Ws: 0
+Asteroid coords: x = 2 y = 7 ID: 11 HP: 50 Ws: 0
+Asteroid coords: x = 1 y = 3 ID: 12 HP: 50 Ws: 1
+Asteroid coords: x = 8 y = 6 ID: 13 HP: 50 Ws: 2
+Asteroid coords: x = 4 y = 2 ID: 14 HP: 50 Ws: 1
+Asteroid coords: x = 5 y = 7 ID: 15 HP: 50 Ws: 0
+SHIPS
+Ship coords: x = 3 y = 2 ID: 0 Tp: 0 Rt: 1 HP: 100 St: 14 Mv: 2
+Ship coords: x = 7 y = 7 ID: 1 Tp: 0 Rt: 3 HP: 100 St: 8 Mv: 2
+Ship coords: x = 2 y = 0 ID: 2 Tp: 1 Rt: 1 HP: 5 St: 5 Mv: 3
+Ship coords: x = 0 y = 3 ID: 3 Tp: 1 Rt: 3 HP: 5 St: 5 Mv: 3
+Ship coords: x = 5 y = 1 ID: 4 Tp: 1 Rt: 1 HP: 5 St: 5 Mv: 3
+Ship coords: x = 6 y = 7 ID: 5 Tp: 2 Rt: 4 HP: 10 St: 0 Mv: 2
+Ship coords: x = 6 y = 8 ID: 6 Tp: 2 Rt: 2 HP: 10 St: 0 Mv: 2
+Ship coords: x = 9 y = 6 ID: 7 Tp: 2 Rt: 4 HP: 10 St: 15 Mv: 2
+Ship coords: x = 9 y = 9 ID: 8 Tp: 1 Rt: 1 HP: 5 St: 0 Mv: 3
+Ship coords: x = 2 y = 2 ID: 9 Tp: 1 Rt: 3 HP: 5 St: 0 Mv: 3
+Ship coords: x = 3 y = 3 ID: 10 Tp: 1 Rt: 4 HP: 5 St: 0 Mv: 3
+Ship coords: x = 3 y = 1 ID: 11 Tp: 1 Rt: 3 HP: 5 St: 0 Mv: 3
+Ship coords: x = 7 y = 6 ID: 12 Tp: 1 Rt: 3 HP: 5 St: 0 Mv: 3
+Ship coords: x = 8 y = 7 ID: 13 Tp: 1 Rt: 1 HP: 5 St: 0 Mv: 3
+..FM......
+...F.FM.A.
+..FHWM.A..
+FW.F.....M
+MM.AAMA..M
+M..AMAA.MM
+M......fwt
+..A.MAthf.
+.A.M..t...
+......M..f
+
+Turn: 7
+MINES
+Mine coords: x = 3 y = 0 ID: 0 HP: 49
+Mine coords: x = 6 y = 9 ID: 1 HP: 50
+Mine coords: x = 0 y = 6 ID: 2 HP: 50
+Mine coords: x = 9 y = 3 ID: 3 HP: 50
+Mine coords: x = 6 y = 1 ID: 4 HP: 49
+Mine coords: x = 3 y = 8 ID: 5 HP: 50
+Mine coords: x = 5 y = 2 ID: 6 HP: 50
+Mine coords: x = 4 y = 7 ID: 7 HP: 50
+Mine coords: x = 0 y = 5 ID: 8 HP: 50
+Mine coords: x = 9 y = 4 ID: 9 HP: 50
+Mine coords: x = 4 y = 5 ID: 10 HP: 50
+Mine coords: x = 5 y = 4 ID: 11 HP: 50
+Mine coords: x = 1 y = 4 ID: 12 HP: 50
+Mine coords: x = 8 y = 5 ID: 13 HP: 50
+Mine coords: x = 0 y = 4 ID: 14 HP: 49
+Mine coords: x = 9 y = 5 ID: 15 HP: 47
+ASTEROIDS
+Asteroid coords: x = 4 y = 4 ID: 0 HP: 50 Ws: 0
+Asteroid coords: x = 5 y = 5 ID: 1 HP: 50 Ws: 0
+Asteroid coords: x = 3 y = 4 ID: 2 HP: 50 Ws: 0
+Asteroid coords: x = 6 y = 5 ID: 3 HP: 50 Ws: 0
+Asteroid coords: x = 8 y = 1 ID: 4 HP: 50 Ws: 0
+Asteroid coords: x = 1 y = 8 ID: 5 HP: 50 Ws: 0
+Asteroid coords: x = 5 y = 4 ID: 6 HP: 50 Ws: 0
+Asteroid coords: x = 4 y = 5 ID: 7 HP: 50 Ws: 0
+Asteroid coords: x = 3 y = 5 ID: 8 HP: 50 Ws: 0
+Asteroid coords: x = 6 y = 4 ID: 9 HP: 50 Ws: 0
+Asteroid coords: x = 7 y = 2 ID: 10 HP: 50 Ws: 0
+Asteroid coords: x = 2 y = 7 ID: 11 HP: 50 Ws: 0
+Asteroid coords: x = 1 y = 3 ID: 12 HP: 50 Ws: 1
+Asteroid coords: x = 8 y = 6 ID: 13 HP: 50 Ws: 2
+Asteroid coords: x = 4 y = 2 ID: 14 HP: 50 Ws: 1
+Asteroid coords: x = 5 y = 7 ID: 15 HP: 50 Ws: 0
+SHIPS
+Ship coords: x = 3 y = 2 ID: 0 Tp: 0 Rt: 1 HP: 100 St: 18 Mv: 2
+Ship coords: x = 7 y = 7 ID: 1 Tp: 0 Rt: 3 HP: 100 St: 8 Mv: 2
+Ship coords: x = 2 y = 0 ID: 2 Tp: 1 Rt: 1 HP: 5 St: 5 Mv: 3
+Ship coords: x = 0 y = 3 ID: 3 Tp: 1 Rt: 3 HP: 5 St: 5 Mv: 3
+Ship coords: x = 5 y = 1 ID: 4 Tp: 1 Rt: 1 HP: 5 St: 5 Mv: 3
+Ship coords: x = 6 y = 7 ID: 5 Tp: 2 Rt: 4 HP: 10 St: 0 Mv: 2
+Ship coords: x = 6 y = 8 ID: 6 Tp: 2 Rt: 2 HP: 10 St: 0 Mv: 2
+Ship coords: x = 9 y = 6 ID: 7 Tp: 2 Rt: 4 HP: 10 St: 15 Mv: 2
+Ship coords: x = 9 y = 9 ID: 8 Tp: 1 Rt: 1 HP: 5 St: 0 Mv: 3
+Ship coords: x = 2 y = 2 ID: 9 Tp: 1 Rt: 3 HP: 5 St: 0 Mv: 3
+Ship coords: x = 3 y = 3 ID: 10 Tp: 1 Rt: 4 HP: 5 St: 0 Mv: 3
+Ship coords: x = 1 y = 1 ID: 11 Tp: 1 Rt: 2 HP: 5 St: 0 Mv: 3
+Ship coords: x = 7 y = 6 ID: 12 Tp: 1 Rt: 3 HP: 5 St: 0 Mv: 3
+Ship coords: x = 8 y = 7 ID: 13 Tp: 1 Rt: 1 HP: 5 St: 0 Mv: 3
+..FM......
+.F...FM.A.
+..FHWM.A..
+FW.F.....M
+MM.AAMA..M
+M..AMAA.MM
+M......fwt
+..A.MAthf.
+.A.M..t...
+......M..f
 

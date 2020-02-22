@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include <thread>
 #include <allegro5/allegro.h>
@@ -72,6 +73,10 @@ ALLEGRO_BITMAP *Workshop_2 = NULL;
 ALLEGRO_BITMAP *Workshop_3 = NULL;
 ALLEGRO_BITMAP *Workshop_4 = NULL;
 ALLEGRO_BITMAP *Ship = NULL;
+
+ALLEGRO_BITMAP *Ant_alg = NULL;
+ALLEGRO_BITMAP *Replayer = NULL;
+
 
 ALLEGRO_FONT *font = NULL;
 ALLEGRO_FONT *title_font = NULL;
@@ -160,27 +165,61 @@ void Create_Display()
 	Workshop_3 = al_load_bitmap("Images/Workshop_3.png");
 	Workshop_4 = al_load_bitmap("Images/Workshop_4.png");
 
+	Ant_alg = al_load_bitmap("Images/Ant.png");
+	Replayer = al_load_bitmap("Images/Replayer.png");
+
 	thread_Mouse = std::thread(Mouse_functions);
 }
 
 void TITLE_SCREEN()
 {
+	extern int Player_Alg[];
 	float Scale = TILE_SIZE/IMAGE_SIZE;
 	float Center = IMAGE_SIZE/2;
 
 	al_clear_to_color(al_map_rgb(0,0,0));
-	al_draw_scaled_rotated_bitmap(Mine_4, Center, Center, (MAP_SIZE*TILE_SIZE+TILE_SIZE*5)/2,(MAP_SIZE*TILE_SIZE)/2+FONT_SIZE*5, Scale, Scale, rand(), 0);
 	al_draw_text(title_font, al_map_rgb(255,255,255), (MAP_SIZE*TILE_SIZE+TILE_SIZE*5)/2, (MAP_SIZE*TILE_SIZE)/2, ALLEGRO_ALIGN_CENTRE, "SPACE WARS");
+
+	al_draw_scaled_rotated_bitmap(Mine_4, Center, Center, (MAP_SIZE*TILE_SIZE+TILE_SIZE*5)/2,(MAP_SIZE*TILE_SIZE)/2+FONT_SIZE*5, Scale, Scale, rand(), 0);
 	al_draw_text(font, al_map_rgb(255,255,255), (MAP_SIZE*TILE_SIZE+TILE_SIZE*5)/2, (MAP_SIZE*TILE_SIZE)/2+FONT_SIZE*5, ALLEGRO_ALIGN_CENTRE, "START");
-	al_flip_display();
+	al_draw_scaled_rotated_bitmap(Replayer, Center, Center, (MAP_SIZE*TILE_SIZE+TILE_SIZE*5)/2,(MAP_SIZE*TILE_SIZE)/2+FONT_SIZE*5 + TILE_SIZE, Scale, Scale, 0, 0);
+	al_draw_text(font, al_map_rgb(0,0,255), (MAP_SIZE*TILE_SIZE+TILE_SIZE*5)/2, (MAP_SIZE*TILE_SIZE)/2+FONT_SIZE*5 + TILE_SIZE, ALLEGRO_ALIGN_CENTRE, "REPLAYER");
+
 	while(Title_Screen)
 	{
+		if (Player_Alg[0] == 2)
+		{
+			al_draw_scaled_rotated_bitmap(Black, Center, Center, TILE_SIZE, TILE_SIZE, Scale, Scale, 0, 0);
+			al_draw_scaled_rotated_bitmap(Ant_alg, Center, Center, TILE_SIZE, TILE_SIZE, Scale, Scale, 0, 0);
+		}
+		if (Player_Alg[0] == 2)
+		{
+			al_draw_scaled_rotated_bitmap(Black, Center, Center, TILE_SIZE, TILE_SIZE, Scale, Scale, 0, 0);
+			al_draw_scaled_rotated_bitmap(Replayer, Center, Center, TILE_SIZE, TILE_SIZE, Scale, Scale, 0, 0);
+		}
+		al_draw_text(font, al_map_rgb(0,255,0), TILE_SIZE, TILE_SIZE, ALLEGRO_ALIGN_CENTRE, "Player 1");
 
+		if (Player_Alg[1] == 1)
+		{
+			al_draw_scaled_rotated_bitmap(Black, Center, Center, MAP_SIZE*TILE_SIZE+TILE_SIZE*4, TILE_SIZE, Scale, Scale, 0, 0);
+			al_draw_scaled_rotated_bitmap(Ant_alg, Center, Center, MAP_SIZE*TILE_SIZE+TILE_SIZE*4, TILE_SIZE, Scale, Scale, 0, 0);
+		}
+		if (Player_Alg[1] == 2)
+		{
+			al_draw_scaled_rotated_bitmap(Black, Center, Center, MAP_SIZE*TILE_SIZE+TILE_SIZE*4, TILE_SIZE, Scale, Scale, 0, 0);
+			al_draw_scaled_rotated_bitmap(Replayer, Center, Center, MAP_SIZE*TILE_SIZE+TILE_SIZE*4, TILE_SIZE, Scale, Scale, 0, 0);
+		}
+
+		al_draw_text(font, al_map_rgb(255,0,0), MAP_SIZE*TILE_SIZE+TILE_SIZE*4, TILE_SIZE, ALLEGRO_ALIGN_CENTRE, "Player 2");
+		al_flip_display();
+		al_rest(0.1);
 	}
 }
 
 void Mouse_functions()
 {
+	float Scale = TILE_SIZE/IMAGE_SIZE;
+	float Center = IMAGE_SIZE/2;
 	extern int MAP_seed;
 	extern int MAP_SIZE;
 	extern int Player_Alg[];
@@ -205,10 +244,22 @@ void Mouse_functions()
 		{
 			Mouse_position_x = mouse_state.x;
 			Mouse_position_y = mouse_state.y;
-			if ( Mouse_position_x > (MAP_SIZE*TILE_SIZE+TILE_SIZE*5)/2 - FONT_SIZE*2 && Mouse_position_x < (MAP_SIZE*TILE_SIZE+TILE_SIZE*5)/2 + FONT_SIZE*2 && Mouse_position_y > (MAP_SIZE*TILE_SIZE)/2 && Mouse_position_y < (MAP_SIZE*TILE_SIZE)/2+FONT_SIZE*5)
+//(MAP_SIZE*TILE_SIZE+TILE_SIZE*5)/2, (MAP_SIZE*TILE_SIZE)/2+FONT_SIZE*5
+			if ( Mouse_position_x > ((MAP_SIZE*TILE_SIZE+TILE_SIZE*5)/2 - TILE_SIZE/2) && Mouse_position_x < ((MAP_SIZE*TILE_SIZE+TILE_SIZE*5)/2 + TILE_SIZE/2) && Mouse_position_y > ((MAP_SIZE*TILE_SIZE)/2+FONT_SIZE*5 - TILE_SIZE/2) && Mouse_position_y <  ((MAP_SIZE*TILE_SIZE)/2+FONT_SIZE*5 + TILE_SIZE/2) )
 				Title_Screen = 0;
 
-			
+			if ( Mouse_position_x > ((MAP_SIZE*TILE_SIZE+TILE_SIZE*5)/2 - TILE_SIZE/2) && Mouse_position_x < ((MAP_SIZE*TILE_SIZE+TILE_SIZE*5)/2 + TILE_SIZE/2) && Mouse_position_y > ((MAP_SIZE*TILE_SIZE)/2+FONT_SIZE*5 - TILE_SIZE/2 + TILE_SIZE) && Mouse_position_y <  ((MAP_SIZE*TILE_SIZE)/2+FONT_SIZE*5 + TILE_SIZE/2 + TILE_SIZE) )
+			{
+				int seed;
+				std::ifstream replay_file;
+				replay_file.open("Replays/ACTIONS_LOG.log");
+				replay_file >> seed;
+				MAP_seed = seed;
+				replay_file.close();
+
+				Player_Alg[0] = 2;
+				Player_Alg[1] = 2;
+			}
 		}
 		LMB_clicked_old = LMB_clicked;
 	}
@@ -407,19 +458,13 @@ void Display_Winner(int Player)
 		Winner[18] = '1';
 	else
 		Winner[18] = '2';
-	for(int j = 0; j < MAP_SIZE; j++)
-	{
-		for(int i = 0; i < MAP_SIZE; i++)
-		{
-			float Rotate = Graphical_Data_Matrix[j][i].Rotate_Data;
-			int Space_Type = Graphical_Data_Matrix[j][i].Space_Data;
-			Draw_Space(Space_Type, i, j, Center, Scale, Rotate);
-		}
-	}
+
 	if (Player == 1)
 		al_draw_text(Winner_font, al_map_rgb(0,255,0), (MAP_SIZE*TILE_SIZE+TILE_SIZE*5)/2, MAP_SIZE*TILE_SIZE/2, ALLEGRO_ALIGN_CENTRE, Winner);
-	if (Player == 2)
+	else if (Player == 2)
 		al_draw_text(Winner_font, al_map_rgb(255,0,0), (MAP_SIZE*TILE_SIZE+TILE_SIZE*5)/2, MAP_SIZE*TILE_SIZE/2, ALLEGRO_ALIGN_CENTRE, Winner);
+	else
+		al_draw_text(Winner_font, al_map_rgb(255,255,255), (MAP_SIZE*TILE_SIZE+TILE_SIZE*5)/2, MAP_SIZE*TILE_SIZE/2, ALLEGRO_ALIGN_CENTRE, "There is no winner");
 	al_flip_display();
 	al_rest(animation_speed*100);
 }
@@ -1356,6 +1401,7 @@ void Draw_Build_Workshop(int x, int y, int Player)
 
 void Destroy_Display()
 {
+	thread_Mouse.join();
 /*
 	al_destroy_bitmap(Ship);
 

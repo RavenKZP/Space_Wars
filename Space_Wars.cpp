@@ -351,16 +351,19 @@ int main()
 		std::cout << "Seed: " << MAP_seed << std::endl;
 		std::cout << "Turns Left: " << --game_end << std::endl;
 	}
-	if (Winner == 0)
+	if (Winner == 0 && game_end == 0)
+	{
 		if (Ships[0].Storage > Ships[1].Storage)
 			Winner = 1;
 		else
 			Winner = 2;
+	}
+	game_end = 0;
 
 	std::cout << "WINNER IS: Player " << Winner << std::endl;
 	Display_Winner(Winner);
 	MAP_LOG.close();
-	Destroy_Display();	
+	Destroy_Display();
 	Space_Functions_Close();
 	return E_OK;
 }

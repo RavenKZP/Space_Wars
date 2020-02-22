@@ -376,10 +376,19 @@ int COLISION_DETECTOR(int x, int y, std::vector<Mine_Class> Mines, std::vector<A
 
 int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, std::vector<Asteroid_Class>& Asteroids, std::vector<Ship_Class>& Ships, std::vector<std::vector<char> >& MAP, int Player)
 {
+	static int first_line = 0;
+	if (first_line == 0)
+	{
+		extern int MAP_seed;
+		first_line = 1;
+		ACTIONS_LOG << MAP_seed << std::endl;
+	}
 	ACTIONS_LOG << std::endl;
 	ACTIONS_LOG << "Player" << Player << std::endl;
 	int MAP_SIZE = MAP[0].size();
 	int Winner = 0;
+	extern int game_end;
+	
 	for (int i = 0; i < Output_Player.Commands_OUT.size(); i++)
 	{
 		if (Winner != 0)
@@ -1210,6 +1219,8 @@ int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, s
 		}
 		Draw_Whole_MAP(MAP, Mines, Asteroids, Ships);
 	}
+	if (Winner != 0)
+		ACTIONS_LOG << "END" << std::endl << std::endl;
 	return Winner;
 }
 
