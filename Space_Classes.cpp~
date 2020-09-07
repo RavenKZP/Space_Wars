@@ -39,7 +39,7 @@ Ship_Class::Ship_Class (int p_Type, int p_Player, int p_x, int p_y, int p_Rotati
 		HP = 100;
 		Damage = 1;
 		MAX_Storage = 10000;
-		Storage = 50;
+		Storage = 100;
 		Speed = 0;
 		Range = 2;
 	}

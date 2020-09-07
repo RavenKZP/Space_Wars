@@ -3,6 +3,7 @@
 #include <fstream>
 #include <vector>
 #include <thread>
+#include <limits>
 #include <allegro5/allegro.h>
 #include <allegro5/allegro_image.h>
 #include <allegro5/allegro_font.h>
@@ -39,6 +40,8 @@ ALLEGRO_BITMAP *Asteroid_1 = NULL;
 ALLEGRO_BITMAP *Asteroid_2 = NULL;
 ALLEGRO_BITMAP *Asteroid_3 = NULL;
 ALLEGRO_BITMAP *Black = NULL;
+ALLEGRO_BITMAP *Black_Red = NULL;
+ALLEGRO_BITMAP *Black_Blue = NULL;
 ALLEGRO_BITMAP *Explosion_1 = NULL;
 ALLEGRO_BITMAP *Fighter_1 = NULL;
 ALLEGRO_BITMAP *Fighter_2 = NULL;
@@ -75,6 +78,7 @@ ALLEGRO_BITMAP *Workshop_4 = NULL;
 ALLEGRO_BITMAP *Ship = NULL;
 
 ALLEGRO_BITMAP *Ant_alg = NULL;
+ALLEGRO_BITMAP *Bee_alg = NULL;
 ALLEGRO_BITMAP *Replayer = NULL;
 
 
@@ -132,6 +136,8 @@ void Create_Display()
 	Asteroid_3 = al_load_bitmap("Images/Asteroid_3.png");
 	Explosion_1 = al_load_bitmap("Images/Explosion_1.png");
 	Black = al_load_bitmap("Images/Black.png");
+	Black_Red = al_load_bitmap("Images/Black_red.png");
+	Black_Blue = al_load_bitmap("Images/Black_blue.png");
 	Fighter_1 = al_load_bitmap("Images/Fighter_1.png");
 	Fighter_2 = al_load_bitmap("Images/Fighter_2.png");
 	Fighter_3 = al_load_bitmap("Images/Fighter_3.png");
@@ -166,6 +172,7 @@ void Create_Display()
 	Workshop_4 = al_load_bitmap("Images/Workshop_4.png");
 
 	Ant_alg = al_load_bitmap("Images/Ant.png");
+	Bee_alg = al_load_bitmap("Images/Bee.png");
 	Replayer = al_load_bitmap("Images/Replayer.png");
 
 	thread_Mouse = std::thread(Mouse_functions);
@@ -185,34 +192,49 @@ void TITLE_SCREEN()
 	al_draw_scaled_rotated_bitmap(Replayer, Center, Center, (MAP_SIZE*TILE_SIZE+TILE_SIZE*5)/2,(MAP_SIZE*TILE_SIZE)/2+FONT_SIZE*5 + TILE_SIZE, Scale, Scale, 0, 0);
 	al_draw_text(font, al_map_rgb(0,0,255), (MAP_SIZE*TILE_SIZE+TILE_SIZE*5)/2, (MAP_SIZE*TILE_SIZE)/2+FONT_SIZE*5 + TILE_SIZE, ALLEGRO_ALIGN_CENTRE, "REPLAYER");
 
+	al_draw_scaled_rotated_bitmap(Ant_alg, Center, Center, TILE_SIZE, 2*TILE_SIZE, Scale, Scale, 0, 0);
+	al_draw_scaled_rotated_bitmap(Ant_alg, Center, Center, MAP_SIZE*TILE_SIZE+TILE_SIZE*4, 2*TILE_SIZE, Scale, Scale, 0, 0);
+	al_draw_scaled_rotated_bitmap(Bee_alg, Center, Center, TILE_SIZE, 3*TILE_SIZE, Scale, Scale, 0, 0);
+	al_draw_scaled_rotated_bitmap(Bee_alg, Center, Center, MAP_SIZE*TILE_SIZE+TILE_SIZE*4, 3*TILE_SIZE, Scale, Scale, 0, 0);
+
 	while(Title_Screen)
 	{
 		if (Player_Alg[0] == 1)
 		{
-			al_draw_scaled_rotated_bitmap(Black, Center, Center, TILE_SIZE, TILE_SIZE, Scale, Scale, 0, 0);
+			al_draw_scaled_rotated_bitmap(Black_Blue, Center, Center, TILE_SIZE, TILE_SIZE, Scale, Scale, 0, 0);
 			al_draw_scaled_rotated_bitmap(Ant_alg, Center, Center, TILE_SIZE, TILE_SIZE, Scale, Scale, 0, 0);
 		}
 		if (Player_Alg[0] == 2)
 		{
-			al_draw_scaled_rotated_bitmap(Black, Center, Center, TILE_SIZE, TILE_SIZE, Scale, Scale, 0, 0);
+			al_draw_scaled_rotated_bitmap(Black_Blue, Center, Center, TILE_SIZE, TILE_SIZE, Scale, Scale, 0, 0);
 			al_draw_scaled_rotated_bitmap(Replayer, Center, Center, TILE_SIZE, TILE_SIZE, Scale, Scale, 0, 0);
+		}
+		if (Player_Alg[0] == 3)
+		{
+			al_draw_scaled_rotated_bitmap(Black_Blue, Center, Center, TILE_SIZE, TILE_SIZE, Scale, Scale, 0, 0);
+			al_draw_scaled_rotated_bitmap(Bee_alg, Center, Center, TILE_SIZE, TILE_SIZE, Scale, Scale, 0, 0);
 		}
 		al_draw_text(font, al_map_rgb(0,255,0), TILE_SIZE, TILE_SIZE, ALLEGRO_ALIGN_CENTRE, "Player 1");
 
+
 		if (Player_Alg[1] == 1)
 		{
-			al_draw_scaled_rotated_bitmap(Black, Center, Center, MAP_SIZE*TILE_SIZE+TILE_SIZE*4, TILE_SIZE, Scale, Scale, 0, 0);
+			al_draw_scaled_rotated_bitmap(Black_Red, Center, Center, MAP_SIZE*TILE_SIZE+TILE_SIZE*4, TILE_SIZE, Scale, Scale, 0, 0);
 			al_draw_scaled_rotated_bitmap(Ant_alg, Center, Center, MAP_SIZE*TILE_SIZE+TILE_SIZE*4, TILE_SIZE, Scale, Scale, 0, 0);
 		}
 		if (Player_Alg[1] == 2)
 		{
-			al_draw_scaled_rotated_bitmap(Black, Center, Center, MAP_SIZE*TILE_SIZE+TILE_SIZE*4, TILE_SIZE, Scale, Scale, 0, 0);
+			al_draw_scaled_rotated_bitmap(Black_Red, Center, Center, MAP_SIZE*TILE_SIZE+TILE_SIZE*4, TILE_SIZE, Scale, Scale, 0, 0);
 			al_draw_scaled_rotated_bitmap(Replayer, Center, Center, MAP_SIZE*TILE_SIZE+TILE_SIZE*4, TILE_SIZE, Scale, Scale, 0, 0);
+		}
+		if (Player_Alg[1] == 3)
+		{
+			al_draw_scaled_rotated_bitmap(Black_Red, Center, Center, MAP_SIZE*TILE_SIZE+TILE_SIZE*4, TILE_SIZE, Scale, Scale, 0, 0);
+			al_draw_scaled_rotated_bitmap(Bee_alg, Center, Center, MAP_SIZE*TILE_SIZE+TILE_SIZE*4, TILE_SIZE, Scale, Scale, 0, 0);
 		}
 
 		al_draw_text(font, al_map_rgb(255,0,0), MAP_SIZE*TILE_SIZE+TILE_SIZE*4, TILE_SIZE, ALLEGRO_ALIGN_CENTRE, "Player 2");
 		al_flip_display();
-		al_rest(0.1);
 	}
 }
 
@@ -230,7 +252,7 @@ void Mouse_functions()
 	int Mouse_position_x;
 	int Mouse_position_y;
 	
-	while (Title_Screen)
+	while (Title_Screen != 0)
 	{
 		al_get_mouse_state(&mouse_state);
 
@@ -244,21 +266,51 @@ void Mouse_functions()
 		{
 			Mouse_position_x = mouse_state.x;
 			Mouse_position_y = mouse_state.y;
-//(MAP_SIZE*TILE_SIZE+TILE_SIZE*5)/2, (MAP_SIZE*TILE_SIZE)/2+FONT_SIZE*5
 			if ( Mouse_position_x > ((MAP_SIZE*TILE_SIZE+TILE_SIZE*5)/2 - TILE_SIZE/2) && Mouse_position_x < ((MAP_SIZE*TILE_SIZE+TILE_SIZE*5)/2 + TILE_SIZE/2) && Mouse_position_y > ((MAP_SIZE*TILE_SIZE)/2+FONT_SIZE*5 - TILE_SIZE/2) && Mouse_position_y <  ((MAP_SIZE*TILE_SIZE)/2+FONT_SIZE*5 + TILE_SIZE/2) )
+			{
+				if(Player_Alg[0] == 2 && Player_Alg[1] == 2)
+				{
+					int seed;
+					std::ifstream replay_file;
+					replay_file.open("Replays/ACTIONS_LOG.log");
+					replay_file >> seed;
+					MAP_seed = seed;
+					replay_file.close();
+				}
 				Title_Screen = 0;
-
+			}
 			if ( Mouse_position_x > ((MAP_SIZE*TILE_SIZE+TILE_SIZE*5)/2 - TILE_SIZE/2) && Mouse_position_x < ((MAP_SIZE*TILE_SIZE+TILE_SIZE*5)/2 + TILE_SIZE/2) && Mouse_position_y > ((MAP_SIZE*TILE_SIZE)/2+FONT_SIZE*5 - TILE_SIZE/2 + TILE_SIZE) && Mouse_position_y <  ((MAP_SIZE*TILE_SIZE)/2+FONT_SIZE*5 + TILE_SIZE/2 + TILE_SIZE) )
 			{
-				int seed;
-				std::ifstream replay_file;
-				replay_file.open("Replays/ACTIONS_LOG.log");
-				replay_file >> seed;
-				MAP_seed = seed;
-				replay_file.close();
-
 				Player_Alg[0] = 2;
 				Player_Alg[1] = 2;
+			}
+
+			if ( Mouse_position_x > TILE_SIZE/2 && Mouse_position_x < TILE_SIZE + TILE_SIZE/2 && Mouse_position_y > TILE_SIZE + TILE_SIZE/2 && Mouse_position_y < 2*TILE_SIZE + TILE_SIZE/2 )
+			{
+				if (Player_Alg[1] == 2);
+					Player_Alg[1] = 1;
+				Player_Alg[0] = 1;
+			}
+
+			if ( Mouse_position_x > MAP_SIZE*TILE_SIZE+TILE_SIZE*4 - TILE_SIZE/2 && Mouse_position_x < MAP_SIZE*TILE_SIZE+TILE_SIZE*5 - TILE_SIZE/2 && Mouse_position_y > TILE_SIZE - TILE_SIZE/2 && Mouse_position_y < 2*TILE_SIZE - TILE_SIZE/2)
+			{
+				if (Player_Alg[0] == 2);
+					Player_Alg[0] = 1;
+				Player_Alg[1] = 1;
+			}
+
+			if ( Mouse_position_x > TILE_SIZE/2 && Mouse_position_x < TILE_SIZE + TILE_SIZE/2 && Mouse_position_y > 2*TILE_SIZE + TILE_SIZE/2 && Mouse_position_y < 3*TILE_SIZE + TILE_SIZE/2 )
+			{
+				if (Player_Alg[1] == 2);
+					Player_Alg[1] = 1;
+				Player_Alg[0] = 3;
+			}
+
+			if ( Mouse_position_x > MAP_SIZE*TILE_SIZE+TILE_SIZE*4 - TILE_SIZE/2 && Mouse_position_x < MAP_SIZE*TILE_SIZE+TILE_SIZE*5 - TILE_SIZE/2 && Mouse_position_y > 2*TILE_SIZE - TILE_SIZE/2 && Mouse_position_y < 3*TILE_SIZE - TILE_SIZE/2)
+			{
+				if (Player_Alg[0] == 2);
+					Player_Alg[0] = 1;
+				Player_Alg[1] = 3;
 			}
 		}
 		LMB_clicked_old = LMB_clicked;
@@ -302,23 +354,43 @@ void Mouse_functions()
 
 			if ( Mouse_position_x > (MAP_SIZE)*TILE_SIZE && Mouse_position_x < (MAP_SIZE+1)*TILE_SIZE && Mouse_position_y > TILE_SIZE*3 && Mouse_position_y < 4*TILE_SIZE)
 			{
-				animation_speed = 0.1000;
+				animation_speed = 3600.000;
 			}
 			if ( Mouse_position_x > (MAP_SIZE+1)*TILE_SIZE && Mouse_position_x < (MAP_SIZE+2)*TILE_SIZE && Mouse_position_y > TILE_SIZE*3 && Mouse_position_y < 4*TILE_SIZE)
 			{
-				animation_speed = 0.0500;
+				animation_speed = 1.500;
 			}
 			if ( Mouse_position_x > (MAP_SIZE+2)*TILE_SIZE && Mouse_position_x < (MAP_SIZE+3)*TILE_SIZE && Mouse_position_y > TILE_SIZE*3 && Mouse_position_y < 4*TILE_SIZE)
 			{
-				animation_speed = 0.0250;
+				animation_speed = 0.800;
 			}
 			if ( Mouse_position_x > (MAP_SIZE+3)*TILE_SIZE && Mouse_position_x < (MAP_SIZE+4)*TILE_SIZE && Mouse_position_y > TILE_SIZE*3 && Mouse_position_y < 4*TILE_SIZE)
 			{
-				animation_speed = 0.0125;
+				animation_speed = 0.400;
 			}
 			if ( Mouse_position_x > (MAP_SIZE+4)*TILE_SIZE && Mouse_position_x < (MAP_SIZE+5)*TILE_SIZE && Mouse_position_y > TILE_SIZE*3 && Mouse_position_y < 4*TILE_SIZE)
 			{
-				animation_speed = 0.0000;
+				animation_speed = 0.200;
+			}
+			if ( Mouse_position_x > (MAP_SIZE)*TILE_SIZE && Mouse_position_x < (MAP_SIZE+1)*TILE_SIZE && Mouse_position_y > TILE_SIZE*4 && Mouse_position_y < 5*TILE_SIZE)
+			{
+				animation_speed = 0.100;
+			}
+			if ( Mouse_position_x > (MAP_SIZE+1)*TILE_SIZE && Mouse_position_x < (MAP_SIZE+2)*TILE_SIZE && Mouse_position_y > TILE_SIZE*4 && Mouse_position_y < 5*TILE_SIZE)
+			{
+				animation_speed = 0.050;
+			}
+			if ( Mouse_position_x > (MAP_SIZE+2)*TILE_SIZE && Mouse_position_x < (MAP_SIZE+3)*TILE_SIZE && Mouse_position_y > TILE_SIZE*4 && Mouse_position_y < 5*TILE_SIZE)
+			{
+				animation_speed = 0.025;
+			}
+			if ( Mouse_position_x > (MAP_SIZE+3)*TILE_SIZE && Mouse_position_x < (MAP_SIZE+4)*TILE_SIZE && Mouse_position_y > TILE_SIZE*4 && Mouse_position_y < 5*TILE_SIZE)
+			{
+				animation_speed = 0.012;
+			}
+			if ( Mouse_position_x > (MAP_SIZE+4)*TILE_SIZE && Mouse_position_x < (MAP_SIZE+5)*TILE_SIZE && Mouse_position_y > TILE_SIZE*4 && Mouse_position_y < 5*TILE_SIZE)
+			{
+				animation_speed = 0.000;
 			}
 
 			if ( Mouse_position_x > (MAP_SIZE+4)*TILE_SIZE && Mouse_position_x < (MAP_SIZE+5)*TILE_SIZE && Mouse_position_y > TILE_SIZE*(MAP_SIZE-1) && Mouse_position_y < TILE_SIZE*MAP_SIZE)
@@ -466,7 +538,7 @@ void Display_Winner(int Player)
 	else
 		al_draw_text(Winner_font, al_map_rgb(255,255,255), (MAP_SIZE*TILE_SIZE+TILE_SIZE*5)/2, MAP_SIZE*TILE_SIZE/2, ALLEGRO_ALIGN_CENTRE, "There is no winner");
 	al_flip_display();
-	al_rest(animation_speed*100);
+	al_rest(10.0);
 }
 
 void Draw_Whole_MAP(std::vector<std::vector<char> > MAP, std::vector<Mine_Class> Mines, std::vector<Asteroid_Class> Asteroids, std::vector<Ship_Class> Ships)
@@ -533,26 +605,42 @@ void Draw_Whole_MAP(std::vector<std::vector<char> > MAP, std::vector<Mine_Class>
 	al_draw_scaled_rotated_bitmap(Mine_3, Center, Center, (MAP_SIZE+3)*TILE_SIZE + TILE_SIZE/2, TILE_SIZE + TILE_SIZE/2, Scale, Scale, rand(), 0);
 	al_draw_text(font, al_map_rgb(255,255,255), (MAP_SIZE+3)*TILE_SIZE + TILE_SIZE/2, TILE_SIZE + TILE_SIZE/2, ALLEGRO_ALIGN_CENTRE, "ST");
 
+	al_draw_scaled_rotated_bitmap(Mine_4, Center, Center, (MAP_SIZE)*TILE_SIZE + TILE_SIZE/2, TILE_SIZE*4 + TILE_SIZE/2, Scale, Scale, rand(), 0);
+	al_draw_text(font, al_map_rgb(255,255,255), (MAP_SIZE)*TILE_SIZE + TILE_SIZE/2, TILE_SIZE*4 + TILE_SIZE/2, ALLEGRO_ALIGN_CENTRE, "Speed x0.5");
+
+	al_draw_scaled_rotated_bitmap(Mine_1, Center, Center, (MAP_SIZE+1)*TILE_SIZE + TILE_SIZE/2, TILE_SIZE*4 + TILE_SIZE/2, Scale, Scale, rand(), 0);
+	al_draw_text(font, al_map_rgb(255,255,255), (MAP_SIZE+1)*TILE_SIZE + TILE_SIZE/2, TILE_SIZE*4 + TILE_SIZE/2, ALLEGRO_ALIGN_CENTRE, "Speed x1");
+
+	al_draw_scaled_rotated_bitmap(Mine_2, Center, Center, (MAP_SIZE+2)*TILE_SIZE + TILE_SIZE/2, TILE_SIZE*4 + TILE_SIZE/2, Scale, Scale, rand(), 0);
+	al_draw_text(font, al_map_rgb(255,255,255), (MAP_SIZE+2)*TILE_SIZE + TILE_SIZE/2, TILE_SIZE*4 + TILE_SIZE/2, ALLEGRO_ALIGN_CENTRE, "Speed x2");
+
+	al_draw_scaled_rotated_bitmap(Mine_3, Center, Center, (MAP_SIZE+3)*TILE_SIZE + TILE_SIZE/2, TILE_SIZE*4 + TILE_SIZE/2, Scale, Scale, rand(), 0);
+	al_draw_text(font, al_map_rgb(255,255,255), (MAP_SIZE+3)*TILE_SIZE + TILE_SIZE/2, TILE_SIZE*4 + TILE_SIZE/2, ALLEGRO_ALIGN_CENTRE, "Speed x4");
+
+	al_draw_scaled_rotated_bitmap(Mine_4, Center, Center, (MAP_SIZE+4)*TILE_SIZE + TILE_SIZE/2, TILE_SIZE*4 + TILE_SIZE/2, Scale, Scale, rand(), 0);
+	al_draw_text(font, al_map_rgb(255,255,255), (MAP_SIZE+4)*TILE_SIZE + TILE_SIZE/2, TILE_SIZE*4 + TILE_SIZE/2, ALLEGRO_ALIGN_CENTRE, "Speed MAX");
+
 	al_draw_scaled_rotated_bitmap(Mine_4, Center, Center, (MAP_SIZE)*TILE_SIZE + TILE_SIZE/2, TILE_SIZE*3 + TILE_SIZE/2, Scale, Scale, rand(), 0);
-	al_draw_text(font, al_map_rgb(255,255,255), (MAP_SIZE)*TILE_SIZE + TILE_SIZE/2, TILE_SIZE*3 + TILE_SIZE/2, ALLEGRO_ALIGN_CENTRE, "Speed x0.5");
+	al_draw_text(font, al_map_rgb(255,255,255), (MAP_SIZE)*TILE_SIZE + TILE_SIZE/2, TILE_SIZE*3 + TILE_SIZE/2, ALLEGRO_ALIGN_CENTRE, "Speed MIN");
 
 	al_draw_scaled_rotated_bitmap(Mine_1, Center, Center, (MAP_SIZE+1)*TILE_SIZE + TILE_SIZE/2, TILE_SIZE*3 + TILE_SIZE/2, Scale, Scale, rand(), 0);
-	al_draw_text(font, al_map_rgb(255,255,255), (MAP_SIZE+1)*TILE_SIZE + TILE_SIZE/2, TILE_SIZE*3 + TILE_SIZE/2, ALLEGRO_ALIGN_CENTRE, "Speed x1");
+	al_draw_text(font, al_map_rgb(255,255,255), (MAP_SIZE+1)*TILE_SIZE + TILE_SIZE/2, TILE_SIZE*3 + TILE_SIZE/2, ALLEGRO_ALIGN_CENTRE, "Speed x0.02");
 
 	al_draw_scaled_rotated_bitmap(Mine_2, Center, Center, (MAP_SIZE+2)*TILE_SIZE + TILE_SIZE/2, TILE_SIZE*3 + TILE_SIZE/2, Scale, Scale, rand(), 0);
-	al_draw_text(font, al_map_rgb(255,255,255), (MAP_SIZE+2)*TILE_SIZE + TILE_SIZE/2, TILE_SIZE*3 + TILE_SIZE/2, ALLEGRO_ALIGN_CENTRE, "Speed x2");
+	al_draw_text(font, al_map_rgb(255,255,255), (MAP_SIZE+2)*TILE_SIZE + TILE_SIZE/2, TILE_SIZE*3 + TILE_SIZE/2, ALLEGRO_ALIGN_CENTRE, "Speed x0.05");
 
 	al_draw_scaled_rotated_bitmap(Mine_3, Center, Center, (MAP_SIZE+3)*TILE_SIZE + TILE_SIZE/2, TILE_SIZE*3 + TILE_SIZE/2, Scale, Scale, rand(), 0);
-	al_draw_text(font, al_map_rgb(255,255,255), (MAP_SIZE+3)*TILE_SIZE + TILE_SIZE/2, TILE_SIZE*3 + TILE_SIZE/2, ALLEGRO_ALIGN_CENTRE, "Speed x4");
+	al_draw_text(font, al_map_rgb(255,255,255), (MAP_SIZE+3)*TILE_SIZE + TILE_SIZE/2, TILE_SIZE*3 + TILE_SIZE/2, ALLEGRO_ALIGN_CENTRE, "Speed x0.1");
 
 	al_draw_scaled_rotated_bitmap(Mine_4, Center, Center, (MAP_SIZE+4)*TILE_SIZE + TILE_SIZE/2, TILE_SIZE*3 + TILE_SIZE/2, Scale, Scale, rand(), 0);
-	al_draw_text(font, al_map_rgb(255,255,255), (MAP_SIZE+4)*TILE_SIZE + TILE_SIZE/2, TILE_SIZE*3 + TILE_SIZE/2, ALLEGRO_ALIGN_CENTRE, "Speed MAX");
+	al_draw_text(font, al_map_rgb(255,255,255), (MAP_SIZE+4)*TILE_SIZE + TILE_SIZE/2, TILE_SIZE*3 + TILE_SIZE/2, ALLEGRO_ALIGN_CENTRE, "Speed x0.25");
 
 	al_draw_scaled_rotated_bitmap(Mine_4, Center, Center, (MAP_SIZE+4)*TILE_SIZE + TILE_SIZE/2, TILE_SIZE*(MAP_SIZE-1) + TILE_SIZE/2, Scale, Scale, rand(), 0);
 	al_draw_text(font, al_map_rgb(255,255,255), (MAP_SIZE+4)*TILE_SIZE + TILE_SIZE/2, TILE_SIZE*(MAP_SIZE-1) + TILE_SIZE/2, ALLEGRO_ALIGN_CENTRE, "Exit");
 
 	al_flip_display();
-	al_rest(animation_speed);
+	for (double i = 0.0; i < animation_speed; i+=0.001)
+		al_rest(0.001);
 }
 
 void Draw_Explosion(int x, int y)
@@ -565,7 +653,8 @@ void Draw_Explosion(int x, int y)
 		Scale = (TILE_SIZE/IMAGE_SIZE) * (i/10.0);
 		al_draw_scaled_rotated_bitmap(Explosion_1, Center, Center, x*TILE_SIZE +TILE_SIZE/2, y*TILE_SIZE +TILE_SIZE/2, Scale, Scale,  Rotate, 0);
 		al_flip_display();
-		al_rest(animation_speed);
+		for (double i = 0.0; i < animation_speed; i+=0.001)
+			al_rest(0.001);
 	}
 }
 
@@ -749,7 +838,8 @@ void Draw_Build_Ship(int x, int y, int Type, int Rotation, int Player)
 		//DRAW SHIP ON ANIMATED TILES
 		al_draw_scaled_rotated_bitmap(Ship, Center, Center, Position_x, Position_y, Currect_Scale, Currect_Scale, (i*Rotate)/14.0, 0);
 		al_flip_display();
-		al_rest(animation_speed);
+		for (double i = 0.0; i < animation_speed; i+=0.001)
+			al_rest(0.001);
 	}
 }
 
@@ -828,7 +918,8 @@ void Draw_Ship_Rotation(int x, int y, int Type, int Player, char Rotation, int O
 		//DRAW SHIP ON ANIMATED TILES
 		al_draw_scaled_rotated_bitmap(Ship, Center, Center, Position_x, Position_y, Scale, Scale, Rotate, 0);
 		al_flip_display();
-		al_rest(animation_speed);
+		for (double i = 0.0; i < animation_speed; i+=0.001)
+			al_rest(0.001);
 	}
 }
 
@@ -977,7 +1068,8 @@ void Draw_Dig(int x, int y, int Rotation, int Player, int Type, char Mine)
 
 		al_draw_scaled_rotated_bitmap(Ship, Center, Center, first_x, first_y, Scale, Scale, Ship_Rotate, 0);
 		al_flip_display();
-		al_rest(animation_speed);
+		for (double i = 0.0; i < animation_speed; i+=0.001)
+			al_rest(0.001);
 	}
 		al_draw_scaled_rotated_bitmap(Black, Center, Center, first_x, first_y, Scale, Scale,  0, 0);
 		if (Range >= 1)
@@ -996,8 +1088,10 @@ void Draw_Dig(int x, int y, int Rotation, int Player, int Type, char Mine)
 		}
 		al_draw_scaled_rotated_bitmap(Ship, Center, Center, first_x, first_y, Scale, Scale, Ship_Rotate, 0);
 		al_flip_display();
-		al_rest(animation_speed);
+		for (double i = 0.0; i < animation_speed; i+=0.001)
+			al_rest(0.001);
 }
+
 void Draw_Laser(int x, int y, int Rotation, int Player, int Type, char Colision, int Other_Rotation, int Range)
 {
 	float Scale = TILE_SIZE/IMAGE_SIZE;
@@ -1035,7 +1129,7 @@ void Draw_Laser(int x, int y, int Rotation, int Player, int Type, char Colision,
 			Range = 0;
 		else if (x_2 > MAP_SIZE -1)
 			Range = 1;
-		else if (x_2 > MAP_SIZE -1)
+		else if (x_3 > MAP_SIZE -1)
 			Range = 2;
 	}
 	if (Rotation == 2)
@@ -1050,7 +1144,7 @@ void Draw_Laser(int x, int y, int Rotation, int Player, int Type, char Colision,
 			Range = 0;
 		else if (x_2 < 0)
 			Range = 1;
-		else if (x_2 < 0)
+		else if (x_3 < 0)
 			Range = 2;
 	}
 	if (Rotation == 3)
@@ -1065,7 +1159,7 @@ void Draw_Laser(int x, int y, int Rotation, int Player, int Type, char Colision,
 			Range = 0;
 		else if (y_2 > MAP_SIZE -1)
 			Range = 1;
-		else if (y_2 > MAP_SIZE -1)
+		else if (y_3 > MAP_SIZE -1)
 			Range = 2;
 	}
 	if (Rotation == 4)
@@ -1080,7 +1174,7 @@ void Draw_Laser(int x, int y, int Rotation, int Player, int Type, char Colision,
 			Range = 0;
 		else if (y_2 < 0)
 			Range = 1;
-		else if (y_2 < 0)
+		else if (y_3 < 0)
 			Range = 2;
 	}
 
@@ -1217,7 +1311,8 @@ void Draw_Laser(int x, int y, int Rotation, int Player, int Type, char Colision,
 
 		al_draw_scaled_rotated_bitmap(Ship, Center, Center, first_x, first_y, Scale, Scale, Ship_Rotate, 0);
 		al_flip_display();
-		al_rest(animation_speed);
+		for (double i = 0.0; i < animation_speed; i+=0.001)
+			al_rest(0.001);
 	}
 }
 
@@ -1351,7 +1446,8 @@ void Draw_Ship_Move(int x, int y, int Rotation, int Player, int Type, char Colis
 		//DRAW SHIP ON ANIMATED TILES
 		al_draw_scaled_rotated_bitmap(Ship, Center, Center, Position_x, Position_y, Scale, Scale, Rotate, 0);
 		al_flip_display();
-		al_rest(animation_speed);
+		for (double i = 0.0; i < animation_speed; i+=0.001)
+			al_rest(0.001);
 	}
 }
 
@@ -1380,7 +1476,8 @@ void Draw_Build_Workshop(int x, int y, int Player)
 		Draw_Asteroid(Graphical_Data_Matrix[y][x].Asteroid_Data, x, y, Center, Currect_Scale, Graphical_Data_Matrix[y][x].Rotate_Data);
 
 		al_flip_display();
-		al_rest(animation_speed);
+		for (double i = 0.0; i < animation_speed; i+=0.001)
+			al_rest(0.001);
 	}
 
 	for (int i = 0; i < 15; i++)
@@ -1395,7 +1492,8 @@ void Draw_Build_Workshop(int x, int y, int Player)
 		Draw_Workshop(Player_Type, x, y, Center, Currect_Scale, Graphical_Data_Matrix[y][x].Rotate_Data);
 
 		al_flip_display();
-		al_rest(animation_speed);
+		for (double i = 0.0; i < animation_speed; i+=0.001)
+			al_rest(0.001);
 	}
 }
 

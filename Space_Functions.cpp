@@ -365,7 +365,7 @@ int COLISION_DETECTOR(int x, int y, std::vector<Mine_Class> Mines, std::vector<A
 			break;
 		}
 	}
-	COLISION_DETECTOR_LOG << "INPUT: x " << x << " y " << y << " Ship_ID " << std::endl;
+	COLISION_DETECTOR_LOG << "INPUT: x " << x << " y " << y << std::endl;
 	COLISION_DETECTOR_LOG << "DETECT " << Type << " ID " << ret_val << std::endl;
 	COLISION_DETECTOR_LOG << std::endl;
 	*Obj_Type = Type;

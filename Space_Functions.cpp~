@@ -365,7 +365,7 @@ int COLISION_DETECTOR(int x, int y, std::vector<Mine_Class> Mines, std::vector<A
 			break;
 		}
 	}
-	COLISION_DETECTOR_LOG << "INPUT: x " << x << " y " << y << " Ship_ID " << std::endl;
+	COLISION_DETECTOR_LOG << "INPUT: x " << x << " y " << y << std::endl;
 	COLISION_DETECTOR_LOG << "DETECT " << Type << " ID " << ret_val << std::endl;
 	COLISION_DETECTOR_LOG << std::endl;
 	*Obj_Type = Type;
@@ -384,7 +384,6 @@ int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, s
 		ACTIONS_LOG << MAP_seed << std::endl;
 	}
 	ACTIONS_LOG << std::endl;
-	ACTIONS_LOG << "Player" << Player << std::endl;
 	int MAP_SIZE = MAP[0].size();
 	int Winner = 0;
 	extern int game_end;
@@ -927,7 +926,7 @@ int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, s
 										{
 											Mines[Colision_ID].HP -= Ships[Shoot_iterator].Damage;
 											col_obj = 'M';
-											Draw_Laser(p_x, p_y, Ships[Shoot_iterator].Rotation, Player, Ships[Shoot_iterator].Type, col_obj, 0, i+1);
+											Draw_Laser(p_x, p_y, Ships[Shoot_iterator].Rotation, Player, Ships[Shoot_iterator].Type, col_obj, 0, i);
 											Draw_Explosion(Mines[Colision_ID].x, Mines[Colision_ID].y);
 											if (Mines[Colision_ID].HP <= 0)
 												MAP[Mines[Colision_ID].y][Mines[Colision_ID].x] = '.';
@@ -941,7 +940,7 @@ int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, s
 												col_obj = 'W';
 											if (Asteroids[Colision_ID].Workshop == 2)
 												col_obj = 'w';
-											Draw_Laser(p_x, p_y, Ships[Shoot_iterator].Rotation, Player, Ships[Shoot_iterator].Type, col_obj, 0, i+1);
+											Draw_Laser(p_x, p_y, Ships[Shoot_iterator].Rotation, Player, Ships[Shoot_iterator].Type, col_obj, 0, i);
 											Draw_Explosion(Asteroids[Colision_ID].x, Asteroids[Colision_ID].y);
 											if (Asteroids[Colision_ID].HP <= 0)
 												MAP[Asteroids[Colision_ID].y][Asteroids[Colision_ID].x] = '.';
@@ -967,7 +966,7 @@ int Perform_Actions(Output_type Output_Player, std::vector<Mine_Class>& Mines, s
 												if (Ships[Colision_ID].Type == 2)
 													col_obj = 't';
 											}
-											Draw_Laser(p_x, p_y, Ships[Shoot_iterator].Rotation, Player, Ships[Shoot_iterator].Type, col_obj, Ships[Colision_ID].Rotation, i+1);
+											Draw_Laser(p_x, p_y, Ships[Shoot_iterator].Rotation, Player, Ships[Shoot_iterator].Type, col_obj, Ships[Colision_ID].Rotation, i);
 											Draw_Explosion(Ships[Colision_ID].x, Ships[Colision_ID].y);
 											if (Ships[Colision_ID].HP <= 0)
 												MAP[Ships[Colision_ID].y][Ships[Colision_ID].x] = '.';

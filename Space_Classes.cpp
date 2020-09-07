@@ -45,7 +45,7 @@ Ship_Class::Ship_Class (int p_Type, int p_Player, int p_x, int p_y, int p_Rotati
 	}
 	if (Type == 1)
 	{
-		HP = 5;
+		HP = 4;
 		Damage = 2;
 		MAX_Storage = 5;
 		Storage = 0;

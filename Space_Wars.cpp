@@ -111,10 +111,18 @@ int main()
 			}
 			else
 			{
-				Asteroid_Class Asteroid = Asteroid_Class(x,y);
-				Asteroids.push_back(Asteroid); 
-				Asteroid_Class Asteroid_2 = Asteroid_Class(MAP_SIZE - x - 1,MAP_SIZE - y - 1);
-				Asteroids.push_back(Asteroid_2);
+				if (MAP[y][x] == '.')
+				{
+					Asteroid_Class Asteroid = Asteroid_Class(x,y);
+					Asteroids.push_back(Asteroid);
+					MAP[y][x] = 'A';
+				}
+				if (MAP[MAP_SIZE - y - 1][MAP_SIZE - x - 1] == '.')
+				{
+					Asteroid_Class Asteroid_2 = Asteroid_Class(MAP_SIZE - x - 1,MAP_SIZE - y - 1);
+					Asteroids.push_back(Asteroid_2);
+					MAP[MAP_SIZE - y - 1][MAP_SIZE - x - 1] = 'A';
+				}
 				break;
 			}
 		}
@@ -135,10 +143,18 @@ int main()
 			}
 			else
 			{
-				Mine_Class Mine = Mine_Class(x,y);
-				Mines.push_back(Mine);
-				Mine_Class Mine_2 = Mine_Class(MAP_SIZE -x -1,MAP_SIZE -y -1);
-				Mines.push_back(Mine_2);
+				if (MAP[y][x] == '.')
+				{
+					Mine_Class Mine = Mine_Class(x,y);
+					Mines.push_back(Mine);
+					MAP[y][x] = 'M';
+				}
+				if (MAP[MAP_SIZE - y - 1][MAP_SIZE - x - 1] == '.')
+				{
+					Mine_Class Mine_2 = Mine_Class(MAP_SIZE -x -1,MAP_SIZE -y -1);
+					Mines.push_back(Mine_2);
+					MAP[MAP_SIZE - y - 1][MAP_SIZE - x - 1] = 'M';
+				}
 				break;
 			}
 		}
@@ -305,19 +321,25 @@ int main()
 
 		if (Player_Alg[Player-1] == 1)
 			thread_Player = std::thread(Ants_Algorithm, Input_Player, std::ref(Output_Player) );
-		if (Player_Alg[Player-1] == 2)
-			thread_Player = std::thread(Replayer_Alborithm, Input_Player, std::ref(Output_Player) );
+		else if (Player_Alg[Player-1] == 2)
+			thread_Player = std::thread(Replayer_Algorithm, Input_Player, std::ref(Output_Player) );
+		else if (Player_Alg[Player-1] == 3)
+			thread_Player = std::thread(Bees_Algorithm, Input_Player, std::ref(Output_Player) );
 
-		usleep(500);
+		std::cout << Player << std::endl;
+		//usleep(500);
+		thread_Player.join();
 
 		if (!Output_Player.Commands_OUT.empty())
 			Winner = Perform_Actions(Output_Player, Mines, Asteroids, Ships, MAP, Player);
 		else
+		{
 			Winner = Other_Player;
+			std::cout << "TIMEOUT" << std::endl;
+		}
+		//thread_Player.detach();
 
-		thread_Player.detach();
-
-		for (int i = 2; i < Ships.size(); i++)
+		for (int i = 1; i < Ships.size(); i++)
 		{
 			if (Ships[i].Player == 1)
 			{
@@ -327,7 +349,7 @@ int main()
 					Ships[i].Storage = 0;
 				}
 			}
-			if (Player == 2)
+			if (Ships[i].Player == 2)
 			{
 				if ( (Ships[i].x +1 == Ships[1].x && Ships[i].y == Ships[1].y) || (Ships[i].x == Ships[1].x -1 && Ships[i].y == Ships[1].y) || (Ships[i].x == Ships[1].x && Ships[i].y +1 == Ships[1].y) || (Ships[i].x == Ships[1].x && Ships[i].y -1 == Ships[1].y))
 				{
@@ -357,10 +379,13 @@ int main()
 			Winner = 1;
 		else
 			Winner = 2;
+	std::cout << "WINNER IS: Player " << Winner << std::endl;
 	}
+	else
+		std::cout << "There is no Winner " << std::endl;
+
 	game_end = 0;
 
-	std::cout << "WINNER IS: Player " << Winner << std::endl;
 	Display_Winner(Winner);
 	MAP_LOG.close();
 	Destroy_Display();
